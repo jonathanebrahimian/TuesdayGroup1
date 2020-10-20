@@ -1,0 +1,200 @@
+Maine
+Boothbay Harbor
+Burnt Island
+Cape Elizabeth
+Cranberry Island
+Cross Island
+Crumple Island
+Damariscove Island
+Fletcher's Neck
+Hunniwell's Beach
+Jerry's Point
+Jonesport
+Quoddy Head
+Rockland
+South Portland
+Southwest Harbor
+White Head
+
+New Hampshire
+Hampton Beach
+Isle of Shoals
+Portsmouth Harbor
+Rye Beach
+Wallis Sands
+
+Vermont
+Burlington
+
+Massachusetts
+Boston
+Brant Point
+Brant Rock
+Cahoons Hollow
+Cape Cod Canal
+Chatham
+City Point
+Coskata
+Cuttyhunk
+Fourth Cliff
+Gloucester
+Gurnet
+High Head
+Highland
+Maddaket
+Manomet Point
+Menemsha
+
+Rhode Island
+Block Island
+Brenton Point
+Castle Hill
+
+Connecticut
+New Haven
+New London
+
+New York
+Amagansett
+Bellport
+Blue Point
+City Island
+Coney Island
+Ditch Plain
+
+New Jersey
+Sandy Hook
+Spermaceti Cove
+
+Pennsylvania
+Philadelphia
+
+Delaware
+Bethany Beach
+Cape Henlopen
+Fenwick Island
+
+Maryland
+Annapolis
+Crisfield
+Green Run Inlet
+Isle of Wight
+
+Washington, D.C.
+Washington, D.C.
+
+Virginia
+Assateague Beach
+Cape Charles
+Cape Henry
+
+North Carolina
+Big Kinnakeet
+Bodie Island
+Bogue Inlet
+
+South Carolina
+Georgetown
+Sullivan's Island
+
+Georgia
+Brunswick
+Tybee Island
+
+Florida
+Cortez
+Fort Myers Beach
+Lake Worth Inlet
+Carrabelle
+Destin
+
+Puerto Rico
+San Juan
+
+Alabama
+Dauphin Island
+
+Mississippi
+Gulfport
+Natchez
+Pascagoula
+
+Louisiana
+Grand Isle
+Venice
+
+Texas
+Houston
+Aransas
+Freeport
+Galveston
+Port O'Connor
+
+Kentucky
+Louisville
+
+Ohio
+Ashtabula
+Cleveland Harbor
+Fairport
+Lorain
+
+Michigan
+Alpena AUXOP
+Beaver Island
+Belle Isle
+Bois Blanc
+Charlevoix
+
+Indiana
+Michigan City
+
+Illinois
+Calumet Harbor
+Chicago
+Jackson Park
+Wilmette Harbor
+
+Wisconsin
+Bayfield
+Baileys Harbor
+Green Bay
+Kenosha
+Kewaunee
+
+Minnesota
+Duluth
+
+California
+Arena Cove
+Bodega Bay
+Bolinas Bay
+Channel Islands Harbor
+Fort Point
+Golden Gate
+
+Oregon
+Chetco River
+Coos Bay
+Coquille River
+Depoe Bay
+
+Washington
+Bellingham
+Cape Disappointment
+Grays Harbor
+Klipsan Beach
+
+Hawaii
+Honolulu
+Maui
+Kauai
+
+Guam
+Apra Harbor
+
+Alaska
+Juneau
+Ketchikan
+Nome
+Valdez

@@ -1,0 +1,112 @@
+California
+NAWS China Lake
+NB Coronado
+NAS Lemoore
+NPS Monterey
+NAS North Island
+NB Point Loma
+NB Ventura County-NAS Point Mugu
+NB Ventura County-NCBC Port Hueneme
+Naval Base San Diego
+
+Connecticut
+NSB New London
+
+Washington, D.C.
+Washington NY
+United States Naval Research Laboratory
+
+Florida
+Corry Station NTTC
+NAS Jacksonville
+NAS Key West
+NS Mayport
+NSA Orlando
+NSA Panama City
+NAS Pensacola
+NAS Whiting Field
+
+Georgia
+General Lucius D. Clay National Guard Center
+NSB Kings Bay
+Dobbins ARB
+
+Guam
+Naval Base Guam
+
+Hawaii
+NS Barking Sands
+Joint Base Pearl Harbor Hickam
+
+Illinois
+NS Great Lakes
+
+Indiana
+NSWC Crane Division
+NASJRB New Orleans
+
+Maine
+Portsmouth NS
+
+Maryland
+Cryptologic Warfare Group Six (Fort Meade)
+NSA Annapolis (Annapolis)
+NAS Patuxent River
+NSF Thurmont
+United States Naval Academy
+Indian Head Naval Surface Warfare Center
+Joint Base Andrews (USN/USAF)
+
+Mississippi
+NCBC Gulfport
+NAS Meridian
+NS Pascagoula
+
+Nevada
+NAS Fallon
+
+New Jersey
+NWS Earle
+NAES Lakehurst
+
+New York
+NSA Saratoga Springs
+
+Pennsylvania
+NAS Willow Grove
+
+Rhode Island
+NS Newport
+
+South Carolina
+NSA Charleston
+
+Tennessee
+NSA Mid-South
+
+Texas
+NAS Corpus Christi
+NAS JRB Fort Worth
+NAS Kingsville
+
+Virginia
+Chesapeake NSGA
+NSASP
+Training Support Center Hampton Roads
+NAB Little Creek
+NS Norfolk
+NAS Oceana
+Wallops Island ASCS
+NWS Yorktown
+
+Guam
+Andersen Air Force Base
+
+Washington
+NBK Bangor
+NBK Bremerton
+NAS Whidbey Island
+NS Everett
+
+West Virginia
+NIOC Sugar Grove

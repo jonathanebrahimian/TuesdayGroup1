@@ -3,13 +3,23 @@ import './App.css';
 import axios from 'axios';
 import ResultsTable from './ResultsTable';
 
-class App extends React.Component {
+import 'bootstrap';
+import { ResultsFilter } from './ResultsFilter';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
+class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      number: "",
-      values: []
+      filter: {
+        name: "",
+        gender: {Male: true, Female: true},
+        age: {min: -Infinity, max: Infinity},
+        branch: {Army: true, Marines: true, Navy: true, "Air Force": true, "Coast Guard": true},
+        location: "",
+        baseName: "",
+        baseLocation: ""
+      }
     };
     // this.handleChange = this.handleChange.bind(this);
     // this.handleSubmit = this.handleSubmit.bind(this);
@@ -41,10 +51,11 @@ class App extends React.Component {
 
   // tell app to fetch values from db on first load (if initialized)
   componentDidMount(){
-    this.fetchVals();
+//    this.fetchVals();
   }
 
   // fetches vals of db via GET request
+  /*
   fetchVals = () => {
     axios.get('http://localhost:8000/values').then(
       res => {
@@ -53,25 +64,19 @@ class App extends React.Component {
         this.setState({ values: values.data });
     });
   }
+  */
 
+  onFilterChange = newFilter => {
+    this.setState({filter: newFilter});
+  };
 
-  render(){
+  render() {
     return (
       <div className="App">
-        {/*
-        <header className="App-header">
-        <button onClick={this.reset}> Initialize DB </button>
-          <form onSubmit={this.handleSubmit}>
-            <input type="text" value={this.state.number} onChange={this.handleChange}/>
-            <br/>
-            <input type="submit" value="Submit" />
-          </form>
-          <ul>
-            { this.state.values.map((value, i) => <li key={i}>{value.value}</li>) }
-          </ul>
-        </header>
-        */}
-        <ResultsTable/>
+        <ResultsFilter
+          onFilterChange={this.onFilterChange}
+          filter={this.state.filter}/>
+        <ResultsTable filter={this.state.filter}/>
       </div>
     );
   }

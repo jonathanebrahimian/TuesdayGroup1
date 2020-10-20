@@ -1,4 +1,5 @@
 import React from 'react';
+import './ResultsTable.css'
 
 class ResultsTable extends React.Component {
   constructor(props) {
@@ -35,7 +36,6 @@ class ResultsTable extends React.Component {
   }
 
   sortBy(field) {
-    console.log("Sorting by " + field);
     let reversed = this.state.reversed;
     if (field === this.state.lastSort) reversed = !reversed;
     else reversed = false;
@@ -49,6 +49,7 @@ class ResultsTable extends React.Component {
           if (!reversed) return a[field].localeCompare(b[field]);
           else return b[field].localeCompare(a[field]);
         }
+        return prevState;
       });
 
 
@@ -57,14 +58,27 @@ class ResultsTable extends React.Component {
 
       return prevState;
     });
-
-    console.log("State is now...");
-    console.log(this.state);
   }
 
   showDetails(index) {
     console.log("TODO: Show details for:")
     console.log(this.state.results[index]);
+  }
+
+  personMatchesFilter(person, filter) {
+    /*
+    let nameMatch = person.name.match(filter.name).length > 0;
+    let ageMatch = person.age >= filter.age.min && person.age <= filter.age.max;
+    let branchMatch = filter.branch[person.branch];
+    let locationMatch = person.location.match(filter)
+    */
+    return (person.name.match(filter.name) &&
+      filter.gender[person.gender] &&
+      (person.age >= filter.age.min && person.age <= filter.age.max) &&
+      filter.branch[person.branch] &&
+      person.location.match(filter.location) &&
+      person.baseName.match(filter.baseName) &&
+      person.baseLocation.match(filter.baseLocation))
   }
 
   render() {
@@ -77,21 +91,23 @@ class ResultsTable extends React.Component {
               <th onClick={() => this.sortBy("name")}>Name</th>
               <th onClick={() => this.sortBy("gender")}>Gender</th>
               <th onClick={() => this.sortBy("age")}>Age</th>
-              <th onClick={() => this.sortBy("branch")}>Branch</th>
               <th onClick={() => this.sortBy("location")}>Location</th>
+              <th onClick={() => this.sortBy("branch")}>Branch</th>
               <th onClick={() => this.sortBy("baseName")}>Base Name</th>
               <th onClick={() => this.sortBy("baseLocation")}>Base Location</th>
               </tr>
           </thead>
           <tbody>
             { this.state.results.map((person, i) => {
+              if (!this.personMatchesFilter(person, this.props.filter))
+                return <tr key={i} className="hidden"></tr>
               return (
-                <tr>
+                <tr key={i}>
                   <td onClick={() => this.showDetails(i)}>{person.name}</td>
                   <td>{person.gender}</td>
                   <td>{person.age}</td>
-                  <td>{person.branch}</td>
                   <td>{person.location}</td>
+                  <td>{person.branch}</td>
                   <td>{person.baseName}</td>
                   <td>{person.baseLocation}</td>
                 </tr>

@@ -3,8 +3,8 @@ import axios from 'axios';
 import { ResultsTable } from './ResultsTable';
 import { ResultsFilter } from './ResultsFilter';
 
-import './general.css';
-import './App.css';
+import './style/general.css';
+import './style/App.css';
 
 import 'bootstrap';
 //import 'bootstrap/dist/css/bootstrap.min.css';

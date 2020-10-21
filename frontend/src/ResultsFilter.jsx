@@ -1,7 +1,7 @@
 import React from 'react';
 
-import './general.css';
-import './ResultsFilter.css';
+import './style/general.css';
+import './style/ResultsFilter.css';
 
 export class ResultsFilter extends React.Component {
 

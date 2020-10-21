@@ -1,7 +1,9 @@
 import React from 'react';
-import './ResultsTable.css'
 
-class ResultsTable extends React.Component {
+import './general.css';
+import './ResultsTable.css';
+
+export class ResultsTable extends React.Component {
   constructor(props) {
     super(props);
 
@@ -119,5 +121,3 @@ class ResultsTable extends React.Component {
     )
   }
 }
-
-export default ResultsTable;

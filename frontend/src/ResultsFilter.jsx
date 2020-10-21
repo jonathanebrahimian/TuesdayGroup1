@@ -1,4 +1,6 @@
 import React from 'react';
+
+import './general.css';
 import './ResultsFilter.css';
 
 export class ResultsFilter extends React.Component {
@@ -20,7 +22,7 @@ export class ResultsFilter extends React.Component {
 
               this.props.onFilterChange(newFilter);
             }}/>
-           <br/>
+          <br/>
             
           <label htmlFor="filter_male">Male: </label>
           <input type="checkbox"

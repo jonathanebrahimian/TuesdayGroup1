@@ -1,10 +1,12 @@
 import React from 'react';
-import './App.css';
 import axios from 'axios';
-import ResultsTable from './ResultsTable';
+import { ResultsTable } from './ResultsTable';
+import { ResultsFilter } from './ResultsFilter';
+
+import './general.css';
+import './App.css';
 
 import 'bootstrap';
-import { ResultsFilter } from './ResultsFilter';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {

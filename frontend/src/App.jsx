@@ -8,6 +8,8 @@ import './style/App.css';
 
 import 'bootstrap';
 import { DocumentSubmission } from './DocumentSubmission';
+import { InformationRequest } from './InformationRequest';
+
 //import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
@@ -81,6 +83,7 @@ class App extends React.Component {
           filter={this.state.filter}/>
         <ResultsTable filter={this.state.filter}/>
         <DocumentSubmission/>
+        <InformationRequest soldierName="John Smith"></InformationRequest>
       </div>
     );
   }

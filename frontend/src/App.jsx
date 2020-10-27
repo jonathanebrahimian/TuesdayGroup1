@@ -7,6 +7,7 @@ import './style/general.css';
 import './style/App.css';
 
 import 'bootstrap';
+import { DocumentSubmission } from './DocumentSubmission';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
@@ -79,6 +80,7 @@ class App extends React.Component {
           onFilterChange={this.onFilterChange}
           filter={this.state.filter}/>
         <ResultsTable filter={this.state.filter}/>
+        <DocumentSubmission/>
       </div>
     );
   }

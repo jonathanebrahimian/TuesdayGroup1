@@ -1,7 +1,7 @@
 import React from 'react';
 
-import './style/general.css';
-import './style/Login.css';
+import './../style/general.css';
+import './../style/Login.css';
 
 export class Login extends React.Component {
     constructor() {

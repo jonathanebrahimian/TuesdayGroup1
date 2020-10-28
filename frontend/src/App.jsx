@@ -1,20 +1,17 @@
 import React from 'react';
 import axios from 'axios';
-import { ResultsTable } from './ResultsTable';
-import { ResultsFilter } from './ResultsFilter';
-import { PersonnelManagement } from './PersonnelManagement';
+import { ResultsTable } from './components/ResultsTable';
+import { ResultsFilter } from './components/ResultsFilter';
+import { PersonnelManagement } from './components/PersonnelManagement';
+import { NotificationPage } from './components/NotificationPage';
+import { DocumentSubmission } from './components/DocumentSubmission';
+import { InformationRequest } from './components/InformationRequest';
 
 import './style/general.css';
 import './style/App.css';
 
 import 'bootstrap';
-<<<<<<< HEAD
-import { NotificationPage } from './NotificationPage';
-=======
-import { DocumentSubmission } from './DocumentSubmission';
-import { InformationRequest } from './InformationRequest';
 
->>>>>>> 7206f6fbc386d6bfde190db8f3ef79dfc10cd0db
 //import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
@@ -83,13 +80,13 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {/*<ResultsFilter
+        <ResultsFilter
           onFilterChange={this.onFilterChange}
           filter={this.state.filter}/>
         <ResultsTable filter={this.state.filter}/>
         <DocumentSubmission/>
         <InformationRequest soldierName="John Smith"></InformationRequest>
-        */}
+        
       </div>
     );
   }

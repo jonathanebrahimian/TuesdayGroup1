@@ -1,7 +1,7 @@
 import React from 'react';
 
-import './style/general.css';
-import './style/DocumentSubmission.css';
+import './../style/general.css';
+import './../style/DocumentSubmission.css';
 
 export class DocumentSubmission extends React.Component {
     constructor(props) {

@@ -8,7 +8,13 @@ import './style/general.css';
 import './style/App.css';
 
 import 'bootstrap';
+<<<<<<< HEAD
 import { NotificationPage } from './NotificationPage';
+=======
+import { DocumentSubmission } from './DocumentSubmission';
+import { InformationRequest } from './InformationRequest';
+
+>>>>>>> 7206f6fbc386d6bfde190db8f3ef79dfc10cd0db
 //import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
@@ -80,8 +86,10 @@ class App extends React.Component {
         {/*<ResultsFilter
           onFilterChange={this.onFilterChange}
           filter={this.state.filter}/>
-        <ResultsTable filter={this.state.filter}/>*/}
-        <NotificationPage/>
+        <ResultsTable filter={this.state.filter}/>
+        <DocumentSubmission/>
+        <InformationRequest soldierName="John Smith"></InformationRequest>
+        */}
       </div>
     );
   }

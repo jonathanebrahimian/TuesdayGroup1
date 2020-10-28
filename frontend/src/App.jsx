@@ -2,11 +2,13 @@ import React from 'react';
 import axios from 'axios';
 import { ResultsTable } from './ResultsTable';
 import { ResultsFilter } from './ResultsFilter';
+import { PersonnelManagement } from './PersonnelManagement';
 
 import './style/general.css';
 import './style/App.css';
 
 import 'bootstrap';
+import { NotificationPage } from './NotificationPage';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
@@ -75,10 +77,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <ResultsFilter
+        {/*<ResultsFilter
           onFilterChange={this.onFilterChange}
           filter={this.state.filter}/>
-        <ResultsTable filter={this.state.filter}/>
+        <ResultsTable filter={this.state.filter}/>*/}
+        <NotificationPage/>
       </div>
     );
   }

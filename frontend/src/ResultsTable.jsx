@@ -15,11 +15,12 @@ export class ResultsTable extends React.Component {
   }
 
   componentDidMount(){
-    function dummyData(name, gender, age, branch, location, baseName, baseLocation) {
+    function dummyData(name, gender, age, branch, rank, location, baseName, baseLocation) {
       this.name = name;
       this.gender = gender;
       this.age = age;
       this.branch = branch;
+      this.rank = rank;
       this.location = location;
       this.baseName = baseName;
       this.baseLocation = baseLocation;
@@ -27,12 +28,12 @@ export class ResultsTable extends React.Component {
 
     this.setState({
       results: [
-        new dummyData("John Smith", "Male", 27, "Army", "Florida", "Florida Base", "Florida"),
-        new dummyData("Samantha Jones", "Female", 25, "Army", "Florida", "Florida Base", "Florida"),
-        new dummyData("Franklin O'Riley", "Male", 34, "Army", "Florida", "Florida Base", "Florida"),
-        new dummyData("George Baker", "Male", 35, "Navy", "California", "California Base", "California"),
-        new dummyData("Juliet Terry", "Female", 22, "Navy", "California", "California Base", "California"),
-        new dummyData("Amy Rose", "Female", 29, "Navy", "California", "California Base", "California")
+        new dummyData("John Smith", "Male", 27, "Army", "Private", "Florida", "Florida Base", "Florida"),
+        new dummyData("Samantha Jones", "Female", 25, "Army", "Corporal", "Florida", "Florida Base", "Florida"),
+        new dummyData("Franklin O'Riley", "Male", 34, "Army", "Sergeant", "Florida", "Florida Base", "Florida"),
+        new dummyData("George Baker", "Male", 35, "Navy", "Ensign", "California", "California Base", "California"),
+        new dummyData("Juliet Terry", "Female", 22, "Navy", "Seaman", "California", "California Base", "California"),
+        new dummyData("Amy Rose", "Female", 29, "Navy", "Chief Petty Officer", "California", "California Base", "California")
       ]
     })
   }
@@ -95,6 +96,7 @@ export class ResultsTable extends React.Component {
               <th onClick={() => this.sortBy("age")}>Age</th>
               <th onClick={() => this.sortBy("location")}>Location</th>
               <th onClick={() => this.sortBy("branch")}>Branch</th>
+              <th onClick={() => this.sortBy("rank")}>Rank</th>
               <th onClick={() => this.sortBy("baseName")}>Base Name</th>
               <th onClick={() => this.sortBy("baseLocation")}>Base Location</th>
               </tr>
@@ -110,6 +112,7 @@ export class ResultsTable extends React.Component {
                   <td>{person.age}</td>
                   <td>{person.location}</td>
                   <td>{person.branch}</td>
+                  <td>{person.rank}</td>
                   <td>{person.baseName}</td>
                   <td>{person.baseLocation}</td>
                 </tr>

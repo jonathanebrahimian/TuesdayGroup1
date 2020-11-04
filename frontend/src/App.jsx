@@ -21,8 +21,9 @@ class App extends React.Component {
       filter: {
         name: "",
         gender: {Male: true, Female: true},
-        age: {min: -Infinity, max: Infinity},
-        branch: {Army: true, Marines: true, Navy: true, "Air Force": true, "Coast Guard": true},
+        age: {min: "0", max: "100"},
+        branch: 0,
+        rank: "",
         location: "",
         baseName: "",
         baseLocation: ""
@@ -80,13 +81,21 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <ResultsFilter
+        {
+        <ResultsTable
           onFilterChange={this.onFilterChange}
           filter={this.state.filter}/>
-        <ResultsTable filter={this.state.filter}/>
+        }
+        {/*
+        <PersonnelManagement />
+        */}
+        {/*
+        <NotificationPage />
+        */}
+        {/*
         <DocumentSubmission/>
         <InformationRequest soldierName="John Smith"></InformationRequest>
-        
+        */}
       </div>
     );
   }

@@ -2,10 +2,6 @@
   box-sizing: border-box;
 }
 
-.primary-color {
-
-}
-
-.second-color {
-
+div.App {
+  padding: .5rem;
 }

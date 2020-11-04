@@ -1,5 +1,8 @@
 import React from 'react';
 
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 export class PersonnelManagement extends React.Component {
   state = {
     results: [],
@@ -49,8 +52,8 @@ export class PersonnelManagement extends React.Component {
     return (<>
       <h1>Personnel Management</h1>
       <form>
-        <table>
-          <thead>
+        <table className="table table-striped">
+          <thead className="thead-dark">
             <th>Name</th>
             <th>Gender</th>
             <th>Age</th>
@@ -64,31 +67,31 @@ export class PersonnelManagement extends React.Component {
           <tbody>
             {this.state.results.map((person, i) => {
               return (<tr>
-                <td><input type="text" value={person.name} onChange={e => {
+                <td><input type="text" className="form-control" value={person.name} onChange={e => {
                   this.updateProfile(i, "name", e.target.value);
                 }}/></td>
-                <td><input type="text" value={person.gender} onChange={e => {
+                <td><input type="text" className="form-control" value={person.gender} onChange={e => {
                   this.updateProfile(i, "gender", e.target.value);
                 }}/></td>
-                <td><input type="text" value={person.age} onChange={e => {
+                <td><input type="text" className="form-control" value={person.age} onChange={e => {
                   this.updateProfile(i, "age", e.target.value);
                 }}/></td>
-                <td><input type="text" value={person.branch} onChange={e => {
+                <td><input type="text" className="form-control" value={person.branch} onChange={e => {
                   this.updateProfile(i, "branch", e.target.value);
                 }}/></td>
-                <td><input type="text" value={person.rank} onChange={e => {
+                <td><input type="text" className="form-control" value={person.rank} onChange={e => {
                   this.updateProfile(i, "rank", e.target.value);
                 }}/></td>
-                <td><input type="text" value={person.location} onChange={e => {
+                <td><input type="text" className="form-control" value={person.location} onChange={e => {
                   this.updateProfile(i, "location", e.target.value);
                 }}/></td>
-                <td><input type="text" value={person.baseName} onChange={e => {
+                <td><input type="text" className="form-control" value={person.baseName} onChange={e => {
                   this.updateProfile(i, "baseName", e.target.value);
                 }}/></td>
-                <td><input type="text" value={person.baseLocation} onChange={e => {
+                <td><input type="text" className="form-control" value={person.baseLocation} onChange={e => {
                   this.updateProfile(i, "baseLocation", e.target.value);
                 }}/></td>
-                <td><button type="button" onClick={() => this.removeProfile(i)}>Remove</button></td>
+                <td><button type="button" className="form-control" onClick={() => this.removeProfile(i)}>Remove</button></td>
               </tr>);
             })}
           </tbody>

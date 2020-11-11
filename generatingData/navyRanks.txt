@@ -1,0 +1,26 @@
+Seaman Recruit
+Seaman Apprentice
+Seaman
+Petty Officer Third Class
+Petty Officer Second Class
+Petty Officer First Class
+Chief Petty Officer
+Senior Chief Petty Officer
+Master Chief Petty Officer
+Command Master Chief Petty Officer
+Master Chief Petty Officer of the Navy
+Chief Warrant Officer 2
+Chief Warrant Officer 3
+Cheif Warrant Officer 4
+Cheif Warrant Officer 5
+Ensign
+Lieutenant Junior Grade
+Lieutenant
+Lieutenant Commander
+Commander
+Captain
+Rear Admiral Lower Half
+Rear Admiral
+Vice Admiral
+Admiral
+Fleet Admiral

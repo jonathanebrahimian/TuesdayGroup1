@@ -15,8 +15,8 @@ def processBases(filename, branch):
       currentState = line
       continue
 
-    if branch == "Coast Guard": line = "Coase Guard Station " + line
-    retVal.append(branch + "," + line + "," + currentState)
+    if branch == "Coast Guard": line = "Coast Guard Station " + line
+    retVal.append({"branch": branch, "name": line, "state": currentState})
   
   return retVal
     
@@ -31,9 +31,9 @@ def randomMilitaryBranch():
   return 0
 
 def main(numPeople, outputFileName):
-  firstNames = open("firstNames.txt", "r").readlines()
+  boyNames = open("boyNames.txt", "r").readlines()
+  girlNames = open("girlNames.txt", "r").readlines()
   lastNames = open("lastNames.txt", "r").readlines()
-  locations = open("locations.txt", "r").readlines()
 
   armyBases = processBases("armyBases.txt", "Army")
   marineBases = processBases("marineBases.txt", "Marines")
@@ -41,27 +41,48 @@ def main(numPeople, outputFileName):
   airForceBases = processBases("airForceBases.txt", "Air Force")
   coastGuardBases = processBases("coastGuardBases.txt", "Coast Guard")
 
-  militaryBases = [armyBases, marineBases, navyBases, airForceBases, coastGuardBases]
+  militaryBases = armyBases + marineBases + navyBases + airForceBases + coastGuardBases
+
+  armyRanks = open("armyRanks.txt", "r").readlines()
+  marineRanks = open("marineRanks.txt", "r").readlines()
+  navyRanks = open("navyRanks.txt", "r").readlines()
+  airForceRanks = open("airForceRanks.txt", "r").readlines()
+  coastGuardRanks = open("coastGuardRanks.txt", "r").readlines()
+
 
   # Remove extra whitespace
-  for i in range(len(firstNames)):
-    firstNames[i] = firstNames[i].strip()
-  for i in range(len(lastNames)):
-    lastNames[i] = lastNames[i].strip()
-  for i in range(len(locations)):
-    locations[i] = locations[i].strip()
+  for listToTrim in [boyNames, girlNames, lastNames, armyRanks, marineRanks, navyRanks, airForceRanks, coastGuardRanks]:
+    for i in range(len(listToTrim)):
+      listToTrim[i] = listToTrim[i].strip().title()
   
+  ranks = {
+    "Army": armyRanks,
+    "Marines": marineRanks,
+    "Navy": navyRanks,
+    "Air Force": airForceRanks,
+    "Coast Guard": coastGuardRanks
+  }
+
   minAge = 22
   maxAge = 45
 
-  outputFile = open(outputFileName, "w+")
-  outputFile.write("Last Name,First Name,Gender,Age,Location,Branch,Base Name,Base Location")
+  outputFileCSV = open(outputFileName+".csv", "w+")
+  outputFileCSV.write("Name,Gender,Age,Branch,Base Name,Base Location\n")
+
+  outputFileSQL = open(outputFileName+".sqlData", "w+")
   for i in range(numPeople):
-    outputFile.write(lastNames[int(rand() * len(lastNames))] + "," + firstNames[int(rand() * len(firstNames))]+ ",")
-    outputFile.write(str(int(rand() * (maxAge - minAge) + minAge)) + ",")
-    outputFile.write(locations[int(rand() * len(locations))] + ",")
-    branch = militaryBases[randomMilitaryBranch()]
-    outputFile.write(branch[int(rand() * len(branch))] + "\n")
+    gender = 'Male' if rand() > .5 else 'Female'
+    firstName = boyNames[int(rand() * len(boyNames))] if gender == "Male" else girlNames[int(rand() * len(girlNames))]
+    lastName = lastNames[int(rand() * len(lastNames))]
+    age = str(int(rand() * (maxAge - minAge) + minAge))
+    baseInfo = militaryBases[int(rand() * len(militaryBases))]
+    rank = ranks[baseInfo["branch"]][int(rand() * len(ranks[baseInfo["branch"]]))]
+
+    outputFileCSV.write(f"{firstName} {lastName},{gender},{age},{baseInfo['branch']},{rank},{baseInfo['name']},{baseInfo['state']}")
+    outputFileSQL.write(f"(\"{firstName} {lastName}\",\"{gender}\",{age},\"{baseInfo['branch']}\",\"{rank}\",\"{baseInfo['name']}\",\"{baseInfo['state']}\")")
+    if i != numPeople - 1:
+      outputFileCSV.write("\n")
+      outputFileSQL.write("\n")    
 
 if __name__ == "__main__":
   if len(argv) > 1:

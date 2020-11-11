@@ -24,7 +24,6 @@ export class ResultsFilter extends React.Component {
                 <th><label htmlFor="filter_rank">Rank</label></th>
                 <th><label htmlFor="filter_location">Location</label></th>
                 <th><label htmlFor="filter_baseName">Base Name</label></th>
-                <th><label htmlFor="filter_baseLocation">Base Location</label></th>
               </tr>
             </thead>
             <tbody className>
@@ -176,91 +175,9 @@ export class ResultsFilter extends React.Component {
                       this.props.onFilterChange(newFilter);
                     }}/>
                 </td>
-                <td>
-                  <input
-                    type="text"
-                    id="filter_baseLocation"
-                    name="filter_baseLocation"
-                    className="form-control"
-                    value={this.props.filter.baseLocation}
-                    onChange={event => {
-                      let newBaseLocation = event.target.value;
-                      let newFilter = this.props.filter;
-                      newFilter.baseLocation = newBaseLocation;
-
-                      this.props.onFilterChange(newFilter);
-                    }}/>
-                </td>
               </tr>
             </tbody>
           </table>
-
-{/*
-          <input type="checkbox"
-            id="filter_army"
-            name="filter_army"
-            checked={this.props.filter.branch.Army}
-            onChange={event => {
-              let newArmy = event.target.checked;
-              let newFilter = this.props.filter;
-              newFilter.branch.Army = newArmy;
-
-              this.props.onFilterChange(newFilter);
-            }}/>
-
-          <label htmlFor="filter_marines">Marines: </label>
-          <input type="checkbox"
-            id="filter_marines"
-            name="filter_marines"
-            checked={this.props.filter.branch.Marines}
-            onChange={event => {
-              let newMarines = event.target.checked;
-              let newFilter = this.props.filter;
-              newFilter.branch.Marines = newMarines;
-
-              this.props.onFilterChange(newFilter);
-            }}/>
-
-          <label htmlFor="filter_navy">Navy: </label>
-          <input type="checkbox"
-            id="filter_navy"
-            name="filter_navy"
-            checked={this.props.filter.branch.Navy}
-            onChange={event => {
-              let newNavy = event.target.checked;
-              let newFilter = this.props.filter;
-              newFilter.branch.Navy = newNavy;
-
-              this.props.onFilterChange(newFilter);
-            }}/>
-
-          <label htmlFor="filter_airforce">Air Force: </label>
-          <input type="checkbox"
-            id="filter_airforce"
-            name="filter_airforce"
-            checked={this.props.filter.branch["Air Force"]}
-            onChange={event => {
-              let newAirForce = event.target.checked;
-              let newFilter = this.props.filter;
-              newFilter.branch["Air Force"] = newAirForce;
-
-              this.props.onFilterChange(newFilter);
-            }}/>
-
-          <label htmlFor="filter_coastguard">Coast Guard: </label>
-          <input type="checkbox"
-            id="filter_coastguard"
-            name="filter_coastguard"
-            checked={this.props.filter.branch["Coast Guard"]}
-            onChange={event => {
-              let newCoastGuard = event.target.checked;
-              let newFilter = this.props.filter;
-              newFilter.branch["Coast Guard"] = newCoastGuard;
-
-              this.props.onFilterChange(newFilter);
-            }}/>
-          <br/>
-          */}
         </form>
       </>
     );

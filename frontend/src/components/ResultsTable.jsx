@@ -19,7 +19,7 @@ export class ResultsTable extends React.Component {
   }
 
   componentDidMount(){
-    function dummyData(name, gender, age, branch, rank, location, baseName, baseLocation) {
+    function dummyData(name, gender, age, branch, rank, location, baseName) {
       this.name = name;
       this.gender = gender;
       this.age = age;
@@ -27,17 +27,16 @@ export class ResultsTable extends React.Component {
       this.rank = rank;
       this.location = location;
       this.baseName = baseName;
-      this.baseLocation = baseLocation;
     }
 
     this.setState({
       results: [
-        new dummyData("John Smith", "Male", 27, "Army", "Private", "Florida", "Florida Base", "Florida"),
-        new dummyData("Samantha Jones", "Female", 25, "Army", "Corporal", "Florida", "Florida Base", "Florida"),
-        new dummyData("Franklin O'Riley", "Male", 34, "Army", "Sergeant", "Florida", "Florida Base", "Florida"),
-        new dummyData("George Baker", "Male", 35, "Navy", "Ensign", "California", "California Base", "California"),
-        new dummyData("Juliet Terry", "Female", 22, "Navy", "Seaman", "California", "California Base", "California"),
-        new dummyData("Amy Rose", "Female", 29, "Navy", "Chief Petty Officer", "California", "California Base", "California")
+        new dummyData("John Smith", "Male", 27, "Army", "Private", "Florida", "Florida Base"),
+        new dummyData("Samantha Jones", "Female", 25, "Army", "Corporal", "Florida", "Florida Base"),
+        new dummyData("Franklin O'Riley", "Male", 34, "Army", "Sergeant", "Florida", "Florida Base"),
+        new dummyData("George Baker", "Male", 35, "Navy", "Ensign", "California", "California Base"),
+        new dummyData("Juliet Terry", "Female", 22, "Navy", "Seaman", "California", "California Base"),
+        new dummyData("Amy Rose", "Female", 29, "Navy", "Chief Petty Officer", "California", "California Base")
       ]
     })
   }
@@ -87,8 +86,7 @@ export class ResultsTable extends React.Component {
       (filter.branch === 0 || filter.branch === branches.indexOf(person.branch)) &&
       (filter.rank === "" || filter.rank === person.rank) &&
       person.location.match(filter.location) &&
-      person.baseName.match(filter.baseName) &&
-      person.baseLocation.match(filter.baseLocation))
+      person.baseName.match(filter.baseName))
   }
 
   render() {
@@ -108,7 +106,6 @@ export class ResultsTable extends React.Component {
               <th onClick={() => this.sortBy("rank")}>Rank</th>
               <th onClick={() => this.sortBy("location")}>Location</th>
               <th onClick={() => this.sortBy("baseName")}>Base Name</th>
-              <th onClick={() => this.sortBy("baseLocation")}>Base Location</th>
               </tr>
           </thead>
           <tbody>
@@ -124,7 +121,6 @@ export class ResultsTable extends React.Component {
                   <td>{person.rank}</td>
                   <td>{person.location}</td>
                   <td>{person.baseName}</td>
-                  <td>{person.baseLocation}</td>
                 </tr>
               );
             })}

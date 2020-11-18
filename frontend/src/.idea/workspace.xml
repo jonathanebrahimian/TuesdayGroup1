@@ -20,11 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2090b5e3-1a6d-401b-9622-2f93bccabb5e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/components/Home.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/LoginPage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/Signup.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/militaryBackground.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/style/Home.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/Profile.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/SoldierProfile.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/style/Profile.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/style/SoldierProfile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +68,7 @@
       <option name="presentableId" value="Default" />
       <updated>1605723693884</updated>
       <workItem from="1605723694929" duration="281000" />
+      <workItem from="1605736091446" duration="179000" />
     </task>
     <servers />
   </component>
@@ -84,5 +85,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

@@ -75,7 +75,6 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-
         <Router>
           <Switch>
             { ROUTES.map((route, index) => <Route exact key={ index } { ...route }></Route>) }

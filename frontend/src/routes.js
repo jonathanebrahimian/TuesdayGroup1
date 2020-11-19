@@ -21,12 +21,12 @@ export const ROUTES = [
     { path: '/login', component: LoginPage },
     { path: '/signup', component: Signup },
     { path: '/dashboard', component: Dashboard },
-    
+    { path: '/soldiers/:soldierId', component: SoldierProfile },
     { path: '/soldiers', component: Soldiers },
     { path: '/notifications', component: NotificationPage},
     { path: '/personelManagement', component: PersonnelManagement},
     
-    { path: '/soldier/:soldierId', component: SoldierProfile },
+    
     { path: '/identityCheck', component: DocumentSubmission},
     { path: '/profile', component: Profile},
 

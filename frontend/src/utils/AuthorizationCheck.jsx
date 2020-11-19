@@ -31,6 +31,26 @@ export class AuthorizationCheck {
             return false;
         }
     }
+
+    checkIdentity(){
+        try {
+            return sessionStorage.getItem('identity') == true;
+        }catch(err){
+            return false;
+        }
+    }
+
+    checkRelatives(relativeIn){
+        try {
+            if(sessionStorage.getItem('relatives').indexOf(relativeIn) >= 0){
+                return true;
+            }else{
+                return false;
+            }
+        }catch(err){
+            return false;
+        }
+    }
     
 }
 

@@ -42,10 +42,24 @@ export class Dashboard extends React.Component {
                 </li>
             )
         }
+        let identity = <></>;
+        if(!this.authorizationCheck.checkIdentity()){
+            identity = (
+                <li key='identityCheck' className="list-group-item border-0 col-4 float-left">
+                    <Link to='/identityCheck'>
+                        <div className="card bg-light block">
+                            <div className="card-body bg-light">
+                            <p className="bold">Identity Check</p>
+                            </div>
+                        </div>
+                    </Link>
+                </li>
+            )
+        }
         return  <>
             {this.authorizationCheck.redirectToLogin()}
             <Header />
-            <ul>
+            <ul className="float-left">
                 <li key='soldiers' className="list-group-item border-0 col-4 float-left">
                     <Link to='/soldiers'>
                         <div className="card bg-light block">
@@ -73,6 +87,7 @@ export class Dashboard extends React.Component {
                         </div>
                     </Link>
                 </li>
+                {identity}
                 {extraTab}
                 <li key='Profile' className="list-group-item border-0 col-4 float-left">
                     <Link to='/profile'>

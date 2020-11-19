@@ -1,26 +1,31 @@
 import React from "react"
-import {BrowserRouter as Router} from "react-router-dom"
-import {Link} from "react-router-dom"
-import "/style/Home.css"
+import "../style/Home.css"
 import military from "./militaryBackground.jpg"
-export class Home extends React.Component{
-    render(){
-        return <div>
-            <h1>Military Organization </h1>
+import { Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
+
+export const Home = props => {
+    let redirect = <></>
+    debugger;
+    if(sessionStorage.getItem('loggedIn') == "true") {
+        redirect = <Redirect to='/dashboard' />;
+    }
+
+    return <div>
+            {redirect}
+            <h1>Military Organization </h1>
             <img src={military} width="1200em"></img>
             <br></br>
-            <div className="jumbotron">
+            <div className="jumbotron">                
                 <h2>Welcome to</h2>
-                <p className="organizationName"> <strong>Military Organization</strong></p>
+                <p className="orgaizationName"> <strong>Military Organization</strong></p>
                 <p className="description">As a growing military organization</p>
                 <p className="description">We need your help</p>
                 <p className="description">Login to our page and we can make a difference</p>
-                <button className="login" type="button" width="3em">Sign up</button>
-                <button className="login" type="button" width="3em">Log in</button>
+                <Link className="login" to="/signup">Sign Up</Link>
+                <Link className="login" to="/login">Log In</Link>
                 <button type="button" id="activePersona">Active Persona</button>
             </div>
-
         </div>
-    }
 }

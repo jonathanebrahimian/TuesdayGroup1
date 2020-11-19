@@ -1,18 +1,12 @@
 import React from 'react';
 import axios from 'axios';
-import { ResultsTable } from './components/ResultsTable';
-import { ResultsFilter } from './components/ResultsFilter';
-import { PersonnelManagement } from './components/PersonnelManagement';
-import { NotificationPage } from './components/NotificationPage';
-import { DocumentSubmission } from './components/DocumentSubmission';
-import { InformationRequest } from './components/InformationRequest';
-
 import './style/general.css';
 import './style/App.css';
-
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { ROUTES } from './routes';
 import 'bootstrap';
 
-//import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
   constructor(props){
@@ -81,21 +75,12 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {
-        <ResultsTable
-          onFilterChange={this.onFilterChange}
-          filter={this.state.filter}/>
-        }
-        {/*
-        <PersonnelManagement />
-        */}
-        {/*
-        <NotificationPage />
-        */}
-        {/*
-        <DocumentSubmission/>
-        <InformationRequest soldierName="John Smith"></InformationRequest>
-        */}
+
+        <Router>
+          <Switch>
+            { ROUTES.map((route, index) => <Route exact key={ index } { ...route }></Route>) }
+          </Switch>
+        </Router>
       </div>
     );
   }

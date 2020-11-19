@@ -1,5 +1,5 @@
 import React from "react"
-import './Profile.css';
+import '../style/Profile.css';
 export class Profile extends React.Component{
     state= {
         name: "Parker Smith",

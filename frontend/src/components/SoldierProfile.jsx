@@ -1,5 +1,5 @@
 import React from "react"
-import "/style/SoldierProfile.css"
+import "../style/SoldierProfile.css";
 
 export class SoldierProfile extends React.Component{
     state = {
@@ -14,8 +14,7 @@ export class SoldierProfile extends React.Component{
     render(){
         return <div> <h1>{this.state.name}</h1>
             <h2>Basic informations</h2>
-            <img src="https://via.placeholder.com/250
-C/O https://placeholder.com/"></img>
+            <img src="https://via.placeholder.com/250C/O https://placeholder.com/"></img>
 
             <p>Gender: {this.state.gender}</p>
             <p>Rank: {this.state.rank}</p>

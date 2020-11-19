@@ -16,6 +16,7 @@ export class ResultsTable extends React.Component {
       lastSort: "",
       reversed: false
     };
+    console.log(props);
   }
 
   componentDidMount(){

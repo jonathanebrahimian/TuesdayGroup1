@@ -22,8 +22,10 @@ export class ResultsFilter extends React.Component {
                 <th><label htmlFor="filter_female">Female</label></th>
                 <th><label htmlFor="filter_branch">Branch</label></th>
                 <th><label htmlFor="filter_rank">Rank</label></th>
+                {/*
                 <th><label htmlFor="filter_location">Location</label></th>
                 <th><label htmlFor="filter_baseName">Base Name</label></th>
+                */}
               </tr>
             </thead>
             <tbody>
@@ -145,6 +147,7 @@ export class ResultsFilter extends React.Component {
                     <option value="Sergeant">Sergeant</option>
                   </select>
                 </td>
+                {/*
                 <td>
                   <input
                     type="text"
@@ -175,6 +178,7 @@ export class ResultsFilter extends React.Component {
                       this.props.onFilterChange(newFilter);
                     }}/>
                 </td>
+                  */}
               </tr>
             </tbody>
           </table>

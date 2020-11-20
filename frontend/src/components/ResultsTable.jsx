@@ -66,8 +66,10 @@ export class ResultsTable extends React.Component {
               <th onClick={() => this.sortBy("gender")}>Gender</th>
               <th onClick={() => this.sortBy("branch")}>Branch</th>
               <th onClick={() => this.sortBy("rank")}>Rank</th>
+              {/*
               <th onClick={() => this.sortBy("location")}>Location</th>
               <th onClick={() => this.sortBy("baseName")}>Base Name</th>
+              */}
               </tr>
           </thead>
           <tbody>
@@ -83,8 +85,10 @@ export class ResultsTable extends React.Component {
                   <td>{person.gender}</td>
                   <td>{person.branch}</td>
                   <td>{person.rank}</td>
+                  {/*
                   <td>{person.location}</td>
                   <td>{person.baseName}</td>
+                  */}
                 </tr>
               );
             })}

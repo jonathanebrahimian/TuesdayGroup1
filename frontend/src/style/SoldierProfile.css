@@ -1,0 +1,26 @@
+*{
+    box-sizing: border-box;
+}
+
+img{
+    right:5em;
+    top:3em;
+    position:absolute;
+
+}
+#download{
+    background-color: #214559;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 1em;
+}
+#cancel{
+    background-color: #112222;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 1em;
+}

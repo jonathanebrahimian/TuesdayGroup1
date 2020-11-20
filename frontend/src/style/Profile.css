@@ -1,0 +1,23 @@
+*{
+    box-sizing: border-box;
+}
+img{
+    right:5em;
+    top:3em;
+    position:absolute;
+
+}
+h1, p,b{
+    position:relative;
+    border: 2em;
+    margin: 1em;
+}
+button{
+    background-color: #214559;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 1em;
+    margin:2em;
+}

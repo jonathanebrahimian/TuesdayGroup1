@@ -7,7 +7,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './../style/general.css';
 import './../style/ResultsTable.css';
 import { ResultsFilter } from './ResultsFilter';
+<<<<<<< HEAD
 import tempData from './../data.csv';
+=======
+import { Link } from 'react-router-dom';
+
+>>>>>>> 25e26b231f7ea1aa907dde141fbc96107341d3c2
 
 export class ResultsTable extends React.Component {
   constructor(props) {
@@ -18,9 +23,11 @@ export class ResultsTable extends React.Component {
       lastSort: "",
       reversed: false
     };
+    console.log(props);
   }
 
   componentDidMount(){
+<<<<<<< HEAD
     function dummyData(string) {
       let parts = string.split(",");
       this.name = parts[0];
@@ -30,16 +37,27 @@ export class ResultsTable extends React.Component {
       this.rank = parts[4];
       this.location = parts[5];
       this.baseName = parts[6];
+=======
+    function dummyData(id, name, gender, age, branch, rank, location, baseName) {
+      this.id = id
+      this.name = name;
+      this.gender = gender;
+      this.age = age;
+      this.branch = branch;
+      this.rank = rank;
+      this.location = location;
+      this.baseName = baseName;
+>>>>>>> 25e26b231f7ea1aa907dde141fbc96107341d3c2
     }
 
     this.setState({
       results: [
-        new dummyData("John Smith", "Male", 27, "Army", "Private", "Florida", "Florida Base"),
-        new dummyData("Samantha Jones", "Female", 25, "Army", "Corporal", "Florida", "Florida Base"),
-        new dummyData("Franklin O'Riley", "Male", 34, "Army", "Sergeant", "Florida", "Florida Base"),
-        new dummyData("George Baker", "Male", 35, "Navy", "Ensign", "California", "California Base"),
-        new dummyData("Juliet Terry", "Female", 22, "Navy", "Seaman", "California", "California Base"),
-        new dummyData("Amy Rose", "Female", 29, "Navy", "Chief Petty Officer", "California", "California Base")
+        new dummyData(1,"John Smith", "Male", 27, "Army", "Private", "Florida", "Florida Base"),
+        new dummyData(2,"Samantha Jones", "Female", 25, "Army", "Corporal", "Florida", "Florida Base"),
+        new dummyData(3,"Franklin O'Riley", "Male", 34, "Army", "Sergeant", "Florida", "Florida Base"),
+        new dummyData(4,"George Baker", "Male", 35, "Navy", "Ensign", "California", "California Base"),
+        new dummyData(5,"Juliet Terry", "Female", 22, "Navy", "Seaman", "California", "California Base"),
+        new dummyData(6,"Amy Rose", "Female", 29, "Navy", "Chief Petty Officer", "California", "California Base")
       ]
     })
 
@@ -78,10 +96,6 @@ export class ResultsTable extends React.Component {
     });
   }
 
-  showDetails(index) {
-    console.log("TODO: Show details for:")
-    console.log(this.state.results[index]);
-  }
 
   personMatchesFilter(person, filter) {
     /*
@@ -126,7 +140,9 @@ export class ResultsTable extends React.Component {
                 return <></>
               return (
                 <tr key={i}>
-                  <td onClick={() => this.showDetails(i)}>{person.name}</td>
+                  <Link to={"/soldiers/" + person.id}>
+                    <td>{person.name}</td>
+                  </Link>
                   <td>{person.age}</td>
                   <td>{person.gender}</td>
                   <td>{person.branch}</td>

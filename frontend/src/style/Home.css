@@ -1,0 +1,41 @@
+*{
+    box-sizing: border-box;
+}
+h1{
+    background-color: black;
+    color: white;
+    top: 0em;
+    position:relative;
+    text-align: center;
+}
+h2{
+    color: black;
+    font-size: 2em;
+}
+img{
+    position: absolute;
+    top: 5em;
+    opacity: 0.3;
+    z-index: -1;
+}
+.organizationName{
+    font-size: 4em;
+}
+.description{
+    color: midnightblue;
+    font-size: 2em;
+}
+.login{
+    margin:1em;
+    border-radius: 3em;
+    background-color:midnightblue;
+    font-size: 1.5em;
+}
+#activePersona{
+    border-radius: 3em;
+    position: absolute;
+    right: 4em;
+    top: 5em;
+    width: 10em;
+    height: 3em;
+}

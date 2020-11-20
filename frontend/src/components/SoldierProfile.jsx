@@ -26,6 +26,7 @@ export class SoldierProfile extends React.Component{
             <p>Military branch: {this.state.branch}</p>
             {(sessionStorage.getItem("authLevel") > 1 || this.authorizationCheck.checkRelatives(this.state.name)) &&
               (<><p>Military Base: {this.state.baseName}</p><p>Location: {this.state.location}</p></>)}
+            <p>Bio: Hello! I am {this.state.name}, a {this.state.rank} in the {this.state.branch}</p>
 
             <button id="download" type= "button" onClick={() => this.downloadTxtFile()}>Download</button>
             <Link to="/soldiers" id="cancel">Cancel</Link>

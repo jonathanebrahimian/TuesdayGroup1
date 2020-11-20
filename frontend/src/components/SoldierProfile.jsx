@@ -1,5 +1,6 @@
 import React from "react"
 import "../style/SoldierProfile.css";
+import {AuthorizationCheck} from '../utils/AuthorizationCheck';
 
 export class SoldierProfile extends React.Component{
     state = {
@@ -9,8 +10,16 @@ export class SoldierProfile extends React.Component{
         branch: "Dallas",
         rank: "colonel",
         location: "Dallas",
-        baseName: "Dallas"
+        baseName: "Dallas",
+        extraInfo: false,
     };
+    authorizationCheck = new AuthorizationCheck();
+
+    componentDidMount(){
+        const soldierId = +this.props.match.params.soldierId;
+        this.setState({extraInfo: this.authorizationCheck.checkRelatives(this.state.name)});
+    }
+
     render(){
         return <div> <h1>{this.state.name}</h1>
             <h2>Basic informations</h2>
@@ -26,6 +35,7 @@ export class SoldierProfile extends React.Component{
             <button id="cancel">Cancel</button>
         </div>
     }
+    
     downloadTxtFile = () => {
         const element = document.createElement("a");
         const file = new Blob([this.state.name, "\n",this.state.gender

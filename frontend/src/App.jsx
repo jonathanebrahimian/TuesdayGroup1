@@ -19,8 +19,7 @@ class App extends React.Component {
         branch: 0,
         rank: "",
         location: "",
-        baseName: "",
-        baseLocation: ""
+        baseName: ""
       }
     };
     // this.handleChange = this.handleChange.bind(this);

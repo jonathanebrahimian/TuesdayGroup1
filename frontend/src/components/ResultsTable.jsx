@@ -7,112 +7,48 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './../style/general.css';
 import './../style/ResultsTable.css';
 import { ResultsFilter } from './ResultsFilter';
-<<<<<<< HEAD
-import tempData from './../data.csv';
-=======
 import { Link } from 'react-router-dom';
 
->>>>>>> 25e26b231f7ea1aa907dde141fbc96107341d3c2
+const PEOPLE_PER_PAGE = 8;
 
 export class ResultsTable extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      results: [],
-      lastSort: "",
-      reversed: false
-    };
-    console.log(props);
-  }
-
-  componentDidMount(){
-<<<<<<< HEAD
-    function dummyData(string) {
-      let parts = string.split(",");
-      this.name = parts[0];
-      this.gender = parts[1];
-      this.age = parseInt(parts[2]);
-      this.branch = parts[3];
-      this.rank = parts[4];
-      this.location = parts[5];
-      this.baseName = parts[6];
-=======
-    function dummyData(id, name, gender, age, branch, rank, location, baseName) {
-      this.id = id
-      this.name = name;
-      this.gender = gender;
-      this.age = age;
-      this.branch = branch;
-      this.rank = rank;
-      this.location = location;
-      this.baseName = baseName;
->>>>>>> 25e26b231f7ea1aa907dde141fbc96107341d3c2
-    }
-
-    this.setState({
-      results: [
-        new dummyData(1,"John Smith", "Male", 27, "Army", "Private", "Florida", "Florida Base"),
-        new dummyData(2,"Samantha Jones", "Female", 25, "Army", "Corporal", "Florida", "Florida Base"),
-        new dummyData(3,"Franklin O'Riley", "Male", 34, "Army", "Sergeant", "Florida", "Florida Base"),
-        new dummyData(4,"George Baker", "Male", 35, "Navy", "Ensign", "California", "California Base"),
-        new dummyData(5,"Juliet Terry", "Female", 22, "Navy", "Seaman", "California", "California Base"),
-        new dummyData(6,"Amy Rose", "Female", 29, "Navy", "Chief Petty Officer", "California", "California Base")
-      ]
-    })
-
-    axios.get(`${tempData}`).then(e => {
-      let soldiers = e.data.split("\n");
-      soldiers.splice(0, 1); // Remove header column of CSV
-      console.log(soldiers);
-      this.setState({
-        results: soldiers.map(x => new dummyData(x))
-      })
-    })
-  }
+  state = {
+    lastSort: "",
+    reversed: false,
+    page: 0
+  };
 
   sortBy(field) {
+    console.log("Clicked!");
     let reversed = this.state.reversed;
     if (field === this.state.lastSort) reversed = !reversed;
     else reversed = false;
 
-    this.setState(prevState => {
-      prevState.results.sort((a, b) => {
-        if (typeof a[field] === "number") {
-          if (!reversed) return a[field] - b[field];
-          else return b[field] - a[field];
-        } else if (typeof a[field] === "string") {
-          if (!reversed) return a[field].localeCompare(b[field]);
-          else return b[field].localeCompare(a[field]);
-        }
-        return prevState;
-      });
+    let previousResults = this.props.results;
 
-
-      prevState.lastSort = field;
-      prevState.reversed = reversed;
-
-      return prevState;
+    previousResults = previousResults.sort((a, b) => {
+      if (typeof a[field] === "number") {
+        if (!reversed) return a[field] - b[field];
+        else return b[field] - a[field];
+      } else if (typeof a[field] === "string") {
+        if (!reversed) return a[field].localeCompare(b[field]);
+        else return b[field].localeCompare(a[field]);
+      }
     });
+
+    this.props.updateResults(previousResults);
+
+    this.setState({lastSort: field, reversed: reversed});
   }
 
 
-  personMatchesFilter(person, filter) {
-    /*
-    let nameMatch = person.name.match(filter.name).length > 0;
-    let ageMatch = person.age >= filter.age.min && person.age <= filter.age.max;
-    let branchMatch = filter.branch[person.branch];
-    let locationMatch = person.location.match(filter)
-    */
-    let branches = ["", "Army", "Marines", "Navy", "Air Force", "Coast Guard"];
-
-    return (person.name.match(filter.name) &&
-      filter.gender[person.gender] &&
-      (person.age >= (parseInt(filter.age.min) || -Infinity) && person.age <= (parseInt(filter.age.max) || Infinity)) &&
-      (filter.branch === 0 || filter.branch === branches.indexOf(person.branch)) &&
-      (filter.rank === "" || filter.rank === person.rank) &&
-      person.location.match(filter.location) &&
-      person.baseName.match(filter.baseName))
+  static getDerivedStateFromProps(props, prevState) {
+    if (prevState.page * PEOPLE_PER_PAGE >= props.displayedResults.length) {
+      prevState.page = Math.max(0, Math.floor((props.displayedResults.length-1)/PEOPLE_PER_PAGE))
+      console.log("Setting to: " + prevState.page);
+      return prevState;
+    }
+    return null;
   }
 
   render() {
@@ -135,8 +71,8 @@ export class ResultsTable extends React.Component {
               </tr>
           </thead>
           <tbody>
-            { this.state.results.map((person, i) => {
-              if (!this.personMatchesFilter(person, this.props.filter))
+            { this.props.displayedResults.map((person, i) => {
+              if (i < this.state.page * PEOPLE_PER_PAGE || i >= (this.state.page+1) * PEOPLE_PER_PAGE)
                 return <></>
               return (
                 <tr key={i}>
@@ -154,6 +90,16 @@ export class ResultsTable extends React.Component {
             })}
           </tbody>
         </table>
+        <div className="btn-group" role="group">
+          {this.state.page > 0 ?
+            <button onClick={() => this.setState({page: this.state.page - 1})} className="btn btn-primary m-0" type="button">&larr;</button> :
+            <button className="btn btn-secondary m-0" type="button">&larr;</button>}
+          {/* Using a button for formatting reasons */}
+          <button type="button" className="btn btn-primary m-0" type="button">Page {this.state.page + 1}/{Math.max(1, Math.ceil(this.props.displayedResults.length/PEOPLE_PER_PAGE))}</button>
+          {this.state.page < Math.ceil((this.props.displayedResults.length)/PEOPLE_PER_PAGE) - 1 ?
+            <button onClick={() => this.setState({page: this.state.page + 1})} className="btn btn-primary m-0" type="button">&rarr;</button> :
+            <button className="btn btn-secondary m-0" type="button">&rarr;</button>}
+        </div>
       </>
     )
   }

@@ -24,6 +24,7 @@ export class LoginPage extends React.Component{
             sessionStorage.setItem("loggedIn",true);
             sessionStorage.setItem("userID",1);
             sessionStorage.setItem("authLevel",1);
+            sessionStorage.setItem("relatives",["Aaron Cuevas", "Tom Madden"])
             
         }else{
             this.setState({error: "Your username or password is wrong"});

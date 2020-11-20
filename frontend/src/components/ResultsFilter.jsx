@@ -26,7 +26,7 @@ export class ResultsFilter extends React.Component {
                 <th><label htmlFor="filter_baseName">Base Name</label></th>
               </tr>
             </thead>
-            <tbody className>
+            <tbody>
               <tr>
                 <td>
                   <input

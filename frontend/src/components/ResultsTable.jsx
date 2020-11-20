@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -6,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './../style/general.css';
 import './../style/ResultsTable.css';
 import { ResultsFilter } from './ResultsFilter';
+import tempData from './../data.csv';
 
 export class ResultsTable extends React.Component {
   constructor(props) {
@@ -19,14 +21,15 @@ export class ResultsTable extends React.Component {
   }
 
   componentDidMount(){
-    function dummyData(name, gender, age, branch, rank, location, baseName) {
-      this.name = name;
-      this.gender = gender;
-      this.age = age;
-      this.branch = branch;
-      this.rank = rank;
-      this.location = location;
-      this.baseName = baseName;
+    function dummyData(string) {
+      let parts = string.split(",");
+      this.name = parts[0];
+      this.gender = parts[1];
+      this.age = parseInt(parts[2]);
+      this.branch = parts[3];
+      this.rank = parts[4];
+      this.location = parts[5];
+      this.baseName = parts[6];
     }
 
     this.setState({
@@ -38,6 +41,15 @@ export class ResultsTable extends React.Component {
         new dummyData("Juliet Terry", "Female", 22, "Navy", "Seaman", "California", "California Base"),
         new dummyData("Amy Rose", "Female", 29, "Navy", "Chief Petty Officer", "California", "California Base")
       ]
+    })
+
+    axios.get(`${tempData}`).then(e => {
+      let soldiers = e.data.split("\n");
+      soldiers.splice(0, 1); // Remove header column of CSV
+      console.log(soldiers);
+      this.setState({
+        results: soldiers.map(x => new dummyData(x))
+      })
     })
   }
 

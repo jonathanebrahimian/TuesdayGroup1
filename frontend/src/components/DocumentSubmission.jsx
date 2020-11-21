@@ -24,6 +24,9 @@ export class DocumentSubmission extends React.Component {
                 submitted:true
             })
         }
+        let message = "Name: " + this.state.name + "  SSN: " + this.state.ssn + " Address: " + this.state.address;
+        let notification = new Notification(-1,"Identity Check from " + localStorage.getItem('userName'),message,"identityCheck",false);
+        console.log(notification);
     }
 
     filechanged(event){

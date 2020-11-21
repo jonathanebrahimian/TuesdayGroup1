@@ -8,17 +8,15 @@ export class InformationRequest extends React.Component {
     super(props);
 
     this.state = {
-      location:false,
-      notifications:false,
+      militaryBase:false,
+      messages:false,
+      extraInfoMessage:""
     };
   }
 
-  submit() {
-    console.log("Processed Data:")
-    console.log("Soldier being requested: " + this.props.soldierName);
-    console.log("Location: " + this.state.location);
-    console.log("Notifications: " + this.state.notifications);
-    alert("Your request has been sent!");
+  submit = () =>  {
+    console.log(this.state.messages);
+    this.props.submitInfoRequest(this.state.messages,this.state.militaryBase,this.state.extraInfoMessage);
   }
 
 
@@ -27,31 +25,36 @@ export class InformationRequest extends React.Component {
   render() {
     return (
       <>
-      <h1>You are requesting information from {this.props.soldierName}</h1>
-      <form>    
-          <label htmlFor="add_location">Location: </label>
-          <input type="checkbox"
-            id="add_location"
-            name="add_location"
-            checked={this.state.location}
-            onChange={event => {
-              this.setState({
-                location: event.target.checked
-              })
-            }}/>
-            
-          <label htmlFor="add_notifications">Notifications: </label>
-          <input type="checkbox"
+      <h3>You are requesting information from {this.props.soldierName}</h3>
+      <form>        
+          <label htmlFor="add_notifications mr-1">Messages</label>
+          <input className="ml-1 mr-3" type="checkbox"
             id="add_notifications"
             name="add_notifications"
-            checked={this.state.notifications}
+            checked={this.state.messages}
             onChange={event => {
                 this.setState({
-                    notifications: event.target.checked
+                    messages: event.target.checked
                 })
             }}/>
+
+          <label htmlFor="add_militaryBase">Military Base &amp; Location</label>
+            <input className="ml-1 mr-3" type="checkbox"
+              id="add_militaryBase"
+              name="add_militaryBase"
+              checked={this.state.militaryBase}
+              onChange={event => {
+                  this.setState({
+                    militaryBase: event.target.checked
+                  })
+            }}/> 
           <br/>
-          <button type="button" onClick={event => this.submit()}>Submit</button>
+          <label htmlFor="message">Attach Message</label>
+          <br/>
+          <textarea id="message" placeholder="Optional" name="message" rows="5" cols="50" value={this.state.extraInfoMessage} onChange={event => this.setState({ extraInfoMessage: event.target.value })}></textarea> 
+          <br/>
+          <button type="button" className="btn bg-secondary" onClick={this.submit}>Submit</button>
+          <button type="button" className="btn bg-secondary" onClick={this.props.closeInfoRequest}>Close</button>
         </form>
       </>
     );

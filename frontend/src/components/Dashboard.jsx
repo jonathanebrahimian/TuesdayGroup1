@@ -69,15 +69,6 @@ export class Dashboard extends React.Component {
                         </div>
                     </Link>
                 </li>
-                <li key='infromationRequest' className="list-group-item border-0 col-4 float-left">
-                    <Link to='/infromationRequest'>
-                        <div className="card bg-light block">
-                            <div className="card-body bg-light">
-                            <p className="bold">Information Request</p>
-                            </div>
-                        </div>
-                    </Link>
-                </li>
                 <li key='notifications' className="list-group-item border-0 col-4 float-left">
                     <Link to='/notifications'>
                         <div className="card bg-light block">

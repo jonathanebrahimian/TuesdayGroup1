@@ -1,6 +1,6 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
-
+import {CSVLink} from "react-csv";
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -48,6 +48,16 @@ export class PersonnelManagement extends React.Component {
     })
   }
 
+  headers = [
+    {label:"Name", key:"name"},
+    {label:"Gender", key:"gender"},
+    {label:"Age", key: "age"},
+    {label:"Branch", key:"branch"},
+    {label:"Rank", key:"rank"},
+    {label:"Location", key:"location"},
+    {label:"Base Name", key:"baseName"}
+  ];
+
   render() {
     return (<>
       {!this.props.authentication.loggedIn && <Redirect to="/"/>}
@@ -94,6 +104,7 @@ export class PersonnelManagement extends React.Component {
           </tbody>
         </table>
       </form>
+      <CSVLink className="btn btn-primary" data={this.state.results} headers={this.headers} filename={"soldiersInfo.csv" }>Export Table</CSVLink>
     </>);
   }
 }

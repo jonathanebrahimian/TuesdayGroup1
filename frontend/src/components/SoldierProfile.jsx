@@ -5,6 +5,7 @@ import AuthorizationCheck from "../utils/AuthorizationCheck";
 import { InformationRequest } from "./InformationRequest";
 import { SendMessage } from './SendMessage';
 import { Notification } from '../models/Notification';
+import { Redirect } from 'react-router-dom';
 
 export class SoldierProfile extends React.Component{
     state = {
@@ -16,6 +17,7 @@ export class SoldierProfile extends React.Component{
         rank: "First Sergeant",
         location: "Georgia",
         baseName: "Fort Stewart",
+        email: "tmadden@army.gov",
         bio: "Hello! I am Tom Madden, a First Sergeant in the Army",
         requestInfo: false,
         sendMessage: false,
@@ -85,6 +87,7 @@ export class SoldierProfile extends React.Component{
 
     render(){
         return <>
+          {!this.props.authentication.loggedIn && <Redirect to="/"/>}
           <div> <h1>{this.state.name}</h1>
             <h2>Basic informations</h2>
             <img src="https://via.placeholder.com/250C/O https://placeholder.com/"></img>
@@ -96,7 +99,7 @@ export class SoldierProfile extends React.Component{
             <p>Bio: {this.state.bio}</p>
 
             {(sessionStorage.getItem("authLevel") > 1 || this.authorizationCheck.checkRelatives(this.state.name)) ?
-                (<><p>Military Base: {this.state.baseName}</p><p>Location: {this.state.location}</p></>)
+                (<><p>Military Base: {this.state.baseName}</p><p>Location: {this.state.location}</p><p>Email: {this.state.email}</p></>)
             :
                 (<></>)
               }

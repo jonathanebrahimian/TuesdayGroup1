@@ -45,8 +45,6 @@ export class DocumentSubmission extends React.Component {
             <h1>Confirm Identification</h1>
             <p>Please supply your name, social security, and address for a government official to confirm your identity.</p>
             <form className="fileLoad">
-                {/* <label htmlFor="fileLoad">Select a file:</label>
-                <input type="file" id="fileLoad" name="fileLoad" accept="image/png, image/jpeg, application/pdf" onChange={event =>this.filechanged(event)}/><br/><br/> */}
                 <label htmlFor="name_in">Your Name</label>
                 <input
                     type="text"
@@ -74,6 +72,8 @@ export class DocumentSubmission extends React.Component {
                     value={this.state.address}
                     onChange={event => this.setState({ address: event.target.value })}>
                 </input>
+                <label htmlFor="fileLoad">Select a file:</label>
+                <input type="file" id="fileLoad" name="fileLoad" accept="image/png, image/jpeg, application/pdf" onChange={event =>this.filechanged(event)}/><br/><br/>
                 <button type="button" onClick={event => this.submit()}>Submit</button>
                 {this.state.submitted ? (
                     <p>Your file has been submitted!</p>

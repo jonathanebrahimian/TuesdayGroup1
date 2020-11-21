@@ -20,9 +20,5 @@ export const ROUTES = [
     
     { path: '/identityCheck', component: DocumentSubmission},
     { path: '/profile', component: Profile},
-<<<<<<< HEAD
-=======
-
->>>>>>> 1a60039010bca8dc0f92b1b3a53a660179bc9f01
     { path: '/', component: Home }
 ]

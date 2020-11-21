@@ -1,10 +1,7 @@
 import React from 'react';
-<<<<<<< HEAD
 import {Notification} from '../models/Notification';
-=======
 import { Redirect } from 'react-router-dom';
 
->>>>>>> 1a60039010bca8dc0f92b1b3a53a660179bc9f01
 export class NotificationPage extends React.Component {
   constructor(props) {
     super(props);

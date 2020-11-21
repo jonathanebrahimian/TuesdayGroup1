@@ -20,11 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2090b5e3-1a6d-401b-9622-2f93bccabb5e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/components/Profile.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/SoldierProfile.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/style/Profile.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/style/SoldierProfile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/style/flag.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/LoginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/LoginPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Signup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Signup.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/style/Home.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,12 +50,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/components" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/style" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\18502\Desktop\tempfile\TuesdayGroup1\frontend\src\style" />
       <recent name="C:\Users\18502\Downloads\TuesdayGroup1\frontend\src\components" />
     </key>
   </component>
@@ -69,6 +70,7 @@
       <updated>1605723693884</updated>
       <workItem from="1605723694929" duration="281000" />
       <workItem from="1605736091446" duration="179000" />
+      <workItem from="1605918479600" duration="100000" />
     </task>
     <servers />
   </component>

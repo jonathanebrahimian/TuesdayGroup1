@@ -13,7 +13,7 @@ export const Header = props => <>
         </li>
           {props.authentication.authLevel > 1 && 
             <li className="nav-item">
-              <NavLink className="nav-link" activeClassName="text-white font-weight-bold" to="/personnelManagement">Manage Personel</NavLink>
+              <NavLink className="nav-link" activeClassName="text-white font-weight-bold" to="/personnelManagement">Manage Personnel</NavLink>
             </li>}
         <li className="nav-item">
           <NavLink className="nav-link" activeClassName="text-white font-weight-bold" to="/profile">Profile</NavLink>

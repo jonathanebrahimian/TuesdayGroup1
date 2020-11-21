@@ -51,6 +51,22 @@ export class Soldiers extends React.Component{
     this.setState({filter: newFilter, displayedResults: newDisplayedResults});
   };
 
+  clearFilter = () => {
+    let clean = {
+      name: "",
+      gender: {Male: true, Female: true},
+      age: {min: "0", max: "100"},
+      branch: 0, 
+      rank: "", 
+      location: "",
+      baseName: "", 
+      baseLocation: ""  
+    };
+    this.setState({filter: clean});
+    this.onFilterChange(clean);
+    console.log("In clear filter");
+  }
+
 
   personMatchesFilter(person, filter) {
     let branches = ["", "Army", "Marines", "Navy", "Air Force", "Coast Guard"];
@@ -77,7 +93,8 @@ export class Soldiers extends React.Component{
         updateResults={this.updateResults}
         results={this.state.results}
         displayedResults={this.state.displayedResults}
-        filter={this.state.filter}/>
+        filter={this.state.filter}
+        clearFilter={this.clearFilter}/>
     </>
   }
 }

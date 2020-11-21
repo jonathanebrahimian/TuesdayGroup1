@@ -24,15 +24,6 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      filter: {
-        name: "",
-        gender: {Male: true, Female: true},
-        age: {min: "0", max: "100"},
-        branch: 0,
-        rank: "",
-        location: "",
-        baseName: ""
-      },
       authentication: {
         userID: -1,
         loggedIn: false,
@@ -83,10 +74,6 @@ class App extends React.Component {
     });
   }
   */
-
-  onFilterChange = newFilter => {
-    this.setState({filter: newFilter});
-  };
 
   onAuthChange = newAuth => {
     this.setState({authentication: newAuth});

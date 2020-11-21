@@ -45,7 +45,6 @@ export class LoginPage extends React.Component{
     }
 
     render(){
-        debugger;
         let redirect = <></>;
         if (this.state.confirmedLoggedIn || this.props.authentication.loggedIn) {
             redirect = <Redirect to='/soldiers' />;

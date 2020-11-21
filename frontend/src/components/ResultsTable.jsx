@@ -19,7 +19,6 @@ export class ResultsTable extends React.Component {
   };
 
   sortBy(field) {
-    console.log("Clicked!");
     let reversed = this.state.reversed;
     if (field === this.state.lastSort) reversed = !reversed;
     else reversed = false;
@@ -41,11 +40,9 @@ export class ResultsTable extends React.Component {
     this.setState({lastSort: field, reversed: reversed});
   }
 
-
   static getDerivedStateFromProps(props, prevState) {
     if (prevState.page * PEOPLE_PER_PAGE >= props.displayedResults.length) {
       prevState.page = Math.max(0, Math.floor((props.displayedResults.length-1)/PEOPLE_PER_PAGE))
-      console.log("Setting to: " + prevState.page);
       return prevState;
     }
     return null;
@@ -57,7 +54,8 @@ export class ResultsTable extends React.Component {
         <h1>Click a name to view details</h1>
         <ResultsFilter
           onFilterChange={this.props.onFilterChange}
-          filter={this.props.filter} />
+          filter={this.props.filter}
+          clearFilter={this.props.clearFilter}/>
         <table className="table table-striped table-hover">
           <thead className="thead-dark">
             <tr>

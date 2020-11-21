@@ -67,7 +67,7 @@ export class LoginPage extends React.Component{
                 <br></br>
                 <button type="button" className="btn btn-primary" onClick={() => this.onLoginClick()}>Login</button>
                 <p>New to us? Create an Account Here</p>
-                <Link to="/signin" className="btn btn-primary" >Create</Link>
+                <Link to="/signup" className="btn btn-primary" >Create</Link>
             </div>
         </>
     }

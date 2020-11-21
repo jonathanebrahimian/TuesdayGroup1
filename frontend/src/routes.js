@@ -20,6 +20,5 @@ export const ROUTES = [
     
     { path: '/identityCheck', component: DocumentSubmission},
     { path: '/profile', component: Profile},
-
     { path: '/', component: Home }
 ]

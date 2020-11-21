@@ -87,7 +87,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/login" render={props => <LoginPage authentication={this.state.authentication} onAuthChange={this.onAuthChange}/>}/>
             <Route exact path="/signup" render={props => <Signup authentication={this.state.authentication} onAuthChange={this.onAuthChange}/>}/>
-            <Route exact path="/soldiers/:soldierId" render={props => <SoldierProfile authentication={this.state.authentication} onAuthChange={this.onAuthChange}/>}/>
+            <Route exact path="/soldiers/:soldierId"  render={props => <SoldierProfile {...props} authentication={this.state.authentication} onAuthChange={this.onAuthChange}/>}/>
             <Route exact path="/soldiers" render={props => <Soldiers authentication={this.state.authentication} onAuthChange={this.onAuthChange}/>}/>
             <Route exact path="/notifications" render={props => <NotificationPage authentication={this.state.authentication} onAuthChange={this.onAuthChange}/>}/>
             <Route exact path="/personnelManagement" render={props => <PersonnelManagement authentication={this.state.authentication} onAuthChange={this.onAuthChange}/>}/>

@@ -52,8 +52,10 @@ export class LoginPage extends React.Component{
         }
         return <>
             {redirect}
-            <div style={{textAlign:"center"}} className="jumbotron">
-                <h2>Login</h2>
+            <div style={{textAlign:"center"}} className="jumbotron p-0">
+                <div className="display-4 text-light bg-dark w-100 text-center" >Military Organization</div>
+                <h2>Login To Organization</h2>
+                <p>Using your Military Account</p>
                 <label htmlFor="userName">Username</label>
                 <br></br>
                 <input type="text" id="userName" name="userName" value={this.state.username} onChange={event => this.setState({ username: event.target.value })}></input>

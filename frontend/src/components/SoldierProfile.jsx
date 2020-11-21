@@ -7,7 +7,6 @@ import { SendMessage } from './SendMessage';
 import { Notification } from '../models/Notification';
 
 export class SoldierProfile extends React.Component{
-    authorizationCheck = new AuthorizationCheck();
     state = {
         name:"Tom Madden",
         id:"0",

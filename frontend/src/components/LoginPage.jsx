@@ -21,10 +21,12 @@ export class LoginPage extends React.Component{
 
         if(this.state.username == "jonyzizou" && this.state.password == "welcome1"){
             this.setState({confirmedLoggedIn: true});
-            sessionStorage.setItem("loggedIn",true);
-            sessionStorage.setItem("userID",1);
-            sessionStorage.setItem("authLevel",1);
-            sessionStorage.setItem("relatives",["Aaron Cuevas", "Tom Madden"])
+            let newAuth = this.props.authentication;
+            newAuth.loggedIn = true;
+            newAuth.userID = 1;
+            newAuth.authLevel = 1;
+            newAuth.relatives = ["Aaron Cuevas", "Tom Madden"];
+            this.props.onAuthChange(newAuth);
             
         }else{
             this.setState({error: "Your username or password is wrong"});
@@ -32,9 +34,11 @@ export class LoginPage extends React.Component{
 
         if(this.state.username == "andrew" && this.state.password == "welcome1"){
             this.setState({confirmedLoggedIn: true});
-            sessionStorage.setItem("loggedIn",true);
-            sessionStorage.setItem("userID",2);
-            sessionStorage.setItem("authLevel",2);
+            let newAuth = this.props.authentication;
+            newAuth.loggedIn = true;
+            newAuth.userID = 2;
+            newAuth.authLevel = 2;
+            this.props.onAuthChange(newAuth);
         }else{
             this.setState({error: "Your username or password is wrong"});
         }
@@ -43,13 +47,15 @@ export class LoginPage extends React.Component{
     render(){
         debugger;
         let redirect = <></>;
-        if (this.state.confirmedLoggedIn || sessionStorage.getItem('loggedIn') == true) {
-            redirect = <Redirect to='/dashboard' />;
+        if (this.state.confirmedLoggedIn || this.props.authentication.loggedIn) {
+            redirect = <Redirect to='/soldiers' />;
         }
         return <>
             {redirect}
-            <div style={{textAlign:"center"}} className="jumbotron">
-                <h2>Login</h2>
+            <div style={{textAlign:"center"}} className="jumbotron p-0">
+                <div className="display-4 text-light bg-dark w-100 text-center" >Military Organization</div>
+                <h2>Login To Organization</h2>
+                <p>Using your Military Account</p>
                 <label htmlFor="userName">Username</label>
                 <br></br>
                 <input type="text" id="userName" name="userName" value={this.state.username} onChange={event => this.setState({ username: event.target.value })}></input>

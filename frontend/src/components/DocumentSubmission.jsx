@@ -1,4 +1,6 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
+
 
 import './../style/general.css';
 import './../style/DocumentSubmission.css';
@@ -39,6 +41,7 @@ export class DocumentSubmission extends React.Component {
 
     render()  {
         return <>
+            {!this.props.authentication.loggedIn && <Redirect to="/"/>}
             <h1>Confirm Identification</h1>
             <p>Please supply your name, social security, and address for a government official to confirm your identity.</p>
             <form className="fileLoad">

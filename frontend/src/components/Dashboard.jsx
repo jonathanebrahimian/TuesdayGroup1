@@ -25,7 +25,8 @@ export class Dashboard extends React.Component {
     // }
 
     render() {
-        
+      return <>
+        {/*
         let extraTab = <></>;
         if(this.authorizationCheck.checkAuthLevel()){
             debugger;
@@ -58,7 +59,6 @@ export class Dashboard extends React.Component {
         }
         return  <>
             {this.authorizationCheck.redirectToLogin()}
-            <Header />
             <ul className="float-left">
                 <li key='soldiers' className="list-group-item border-0 col-4 float-left">
                     <Link to='/soldiers'>
@@ -91,7 +91,7 @@ export class Dashboard extends React.Component {
                 </li>
             </ul>
             <div className="clear-fix"></div>
-            
+      */} 
         </>
     }
 }

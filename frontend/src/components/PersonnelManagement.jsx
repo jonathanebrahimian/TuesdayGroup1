@@ -1,4 +1,5 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
 
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -49,6 +50,7 @@ export class PersonnelManagement extends React.Component {
 
   render() {
     return (<>
+      {!this.props.authentication.loggedIn && <Redirect to="/"/>}
       <h1>Personnel Management</h1>
       <form>
         <table className="table table-striped">
@@ -86,7 +88,7 @@ export class PersonnelManagement extends React.Component {
                 <td><input type="text" className="form-control" value={person.baseName} onChange={e => {
                   this.updateProfile(i, "baseName", e.target.value);
                 }}/></td>
-                <td><button type="button" className="form-control" onClick={() => this.removeProfile(i)}>Remove</button></td>
+                <td><button type="button" className="form-control m-0" onClick={() => this.removeProfile(i)}>Remove</button></td>
               </tr>);
             })}
           </tbody>

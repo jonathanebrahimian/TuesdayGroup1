@@ -1,4 +1,5 @@
 import React from "react"
+import { Redirect } from "react-router-dom";
 import '../style/Profile.css';
 export class Profile extends React.Component{
     state= {
@@ -26,6 +27,7 @@ export class Profile extends React.Component{
         if(this.state.editing){
 
             return <div>
+                {!this.props.authentication.loggedIn && <Redirect to="/"/>}
             <form>
                 <img src="https://via.placeholder.com/250C/O https://placeholder.com/"></img>
                 <p>Name</p>
@@ -69,6 +71,7 @@ export class Profile extends React.Component{
         }else{
 
             return <div>
+                {!this.props.authentication.loggedIn && <Redirect to="/"/>}
             <img src="https://via.placeholder.com/250C/O https://placeholder.com/"></img>
             <h3>Name</h3>
             <p>{this.state.name}</p>

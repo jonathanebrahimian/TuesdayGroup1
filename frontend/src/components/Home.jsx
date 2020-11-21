@@ -7,25 +7,49 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 
 export const Home = props => {
     let redirect = <></>
-    debugger;
-    if(sessionStorage.getItem('loggedIn') == "true") {
-        redirect = <Redirect to='/dashboard' />;
+    if(props.authentication.loggedIn) {
+        redirect = <Redirect to='/soldiers' />;
     }
 
     return <div>
-            {redirect}
-            <h1>Military Organization </h1>
-            <img src={military} width="1200em"></img>
-            <br></br>
-            <div className="jumbotron">                
-                <h2>Welcome to</h2>
-                <p className="orgaizationName"> <strong>Military Organization</strong></p>
-                <p className="description">As a growing military organization</p>
-                <p className="description">We need your help</p>
-                <p className="description">Login to our page and we can make a difference</p>
-                <Link className="login" to="/signup">Sign Up</Link>
-                <Link className="login" to="/login">Log In</Link>
-                <button type="button" id="activePersona">Active Persona</button>
+        {redirect}
+        <div className="display-4 text-light bg-dark w-100 text-center" >Military Organization</div>
+        <div className="d-inline-block float-right">
+            <Link className="btn btn-primary btn-lg m-1" to="/signup">Sign Up</Link>
+            <Link className="btn btn-secondary btn-lg m-1" to="/login">Log In</Link>
+        </div>
+
+        <div className="container py-5 ">
+            <div className="jumbotron shadow jumboImage">
+                <strong className="mb-3 display-2 text-danger font-weight-bold">Welcome </strong>
+                <strong className="mb-3 display-2 textColor font-weight-bold">to</strong>
+                <br></br>
+                <strong className="display-4 text-danger font-weight-bold" >The Military </strong>
+                <strong className="display-4 textColor font-weight-bold" >Organization</strong>
+                <br></br>
+                <strong className="display-4 text-danger font-weight-bold">Login</strong>
+                <br></br>
+                <strong className="display-4 textColor font-weight-bold">and We can make a</strong>
+                <br></br>
+                <strong className="display-4 textColor font-weight-bold">Difference</strong>
+
+
+                {/*<button type="button" id="activePersona">Active Persona</button>*/}
             </div>
         </div>
+        <div className="jumbotron d-inline-block w-50">
+            <h2 className="text-primary text-center">Credibility</h2>
+            <p className="text-info d-lg-inline-block">GUI Side</p>
+            <p>Jonathan Ebrahimian: </p>
+            <p>Andrew Havard: </p>
+            <p>Edward Jiang: </p>
+        </div>
+        <div className="jumbotron d-inline-block w-50">
+            <h2 className="text-warning text-center">Credibility</h2>
+            <p className="text-info d-lg-inline-block">DB Side</p>
+            <p>Jack Babcock: </p>
+            <p>Dylan Caro: </p>
+            <p>Trevor Knotts:</p>
+        </div>
+    </div>
 }

@@ -2,6 +2,10 @@ import { Redirect } from "react-router-dom";
 import React from 'react';
 
 export class AuthorizationCheck {
+    constructor() {
+        console.trace("AUTHENTICATION CHECK IS OUTDATED! USE \"props.authentication\" INSTEAD!");
+    }
+
     checkLogin(){
         
         try {

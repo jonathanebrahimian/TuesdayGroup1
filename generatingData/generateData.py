@@ -78,8 +78,9 @@ def main(numPeople, outputFileName):
     baseInfo = militaryBases[int(rand() * len(militaryBases))]
     rank = ranks[baseInfo["branch"]][int(rand() * len(ranks[baseInfo["branch"]]))]
 
-    outputFileCSV.write(f"{firstName} {lastName},{gender},{age},{baseInfo['branch']},{rank},{baseInfo['name']},{baseInfo['state']}")
-    outputFileSQL.write(f"(\"{firstName} {lastName}\",\"{gender}\",{age},\"{baseInfo['branch']}\",\"{rank}\",\"{baseInfo['name']}\",\"{baseInfo['state']}\")")
+    article = "an" if rank[0] in ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"] else "a"
+    outputFileCSV.write(f"{firstName} {lastName},{gender},{age},{baseInfo['branch']},{rank},{baseInfo['name']},{baseInfo['state']},Hello! I am {firstName} {lastName}! I am {article} {rank} for the {baseInfo['branch']}!")
+    outputFileSQL.write(f"(\"{firstName} {lastName}\",\"{gender}\",{age},\"{baseInfo['branch']}\",\"{rank}\",\"{baseInfo['name']}\",\"{baseInfo['state']}\",\"Hello! I am {firstName} {lastName}! I am {article} {rank} for the {baseInfo['branch']}!\")")
     if i != numPeople - 1:
       outputFileCSV.write("\n")
       outputFileSQL.write("\n")    

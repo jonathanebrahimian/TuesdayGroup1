@@ -7,9 +7,8 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 
 export const Home = props => {
     let redirect = <></>
-    debugger;
-    if(sessionStorage.getItem('loggedIn') == "true") {
-        redirect = <Redirect to='/dashboard' />;
+    if(props.authentication.loggedIn) {
+        redirect = <Redirect to='/soldiers' />;
     }
 
     return <div>

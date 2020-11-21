@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 export class NotificationPage extends React.Component {
   constructor(props) {
@@ -27,7 +28,8 @@ export class NotificationPage extends React.Component {
   }
 
   render() {
-    return (
+    return <>
+      {!this.props.authentication.loggedIn && <Redirect to="/"/>}
       <div className="container">
         <h1>Notifications</h1>
         {this.state.messages.map((x, i) => (
@@ -43,6 +45,6 @@ export class NotificationPage extends React.Component {
           </div>
         ))}
       </div>
-    )    
+    </>    
   }
 }

@@ -19,6 +19,6 @@ Lieutenant Commander
 Commander
 Captain
 Rear Admiral Lower Half
-Read Admiral
+Rear Admiral
 Vice Admiral
 Admiral

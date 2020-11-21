@@ -2,6 +2,7 @@ import { ResultsTable } from "./ResultsTable";
 import React from "react";
 import axios from "axios";
 import tempData from './../data.csv';
+import { Redirect } from "react-router-dom";
 
 export class Soldiers extends React.Component{
   state = {
@@ -70,6 +71,7 @@ export class Soldiers extends React.Component{
 
   render (){
     return <>
+      {!this.props.authentication.loggedIn && <Redirect to="/"/>}
       <ResultsTable
         onFilterChange={this.onFilterChange}
         updateResults={this.updateResults}

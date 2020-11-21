@@ -1,10 +1,8 @@
 import React from "react"
 import { Link } from "react-router-dom";
 import "../style/SoldierProfile.css";
-import AuthorizationCheck from "../utils/AuthorizationCheck";
 
 export class SoldierProfile extends React.Component{
-    authorizationCheck = new AuthorizationCheck();
     state = {
         name:"Tom Madden",
         gender: "Male",
@@ -24,7 +22,7 @@ export class SoldierProfile extends React.Component{
             <p>Rank: {this.state.rank}</p>
             <p>Age: {this.state.age}</p>
             <p>Military branch: {this.state.branch}</p>
-            {(sessionStorage.getItem("authLevel") > 1 || this.authorizationCheck.checkRelatives(this.state.name)) &&
+            {(this.props.authentication.authLevel > 1 || this.props.authentication.relatives.indexOf(this.state.name) !== -1) &&
               (<><p>Military Base: {this.state.baseName}</p><p>Location: {this.state.location}</p></>)}
             <p>Bio: Hello! I am {this.state.name}, a {this.state.rank} in the {this.state.branch}</p>
 

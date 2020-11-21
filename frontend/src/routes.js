@@ -10,26 +10,16 @@ import { NotificationPage } from './components/NotificationPage';
 import { SoldierProfile } from './components/SoldierProfile';
 import { PersonnelManagement } from './components/PersonnelManagement';
 
-
-
-
-
-
-
-
 export const ROUTES = [
-    { path: '/login', component: LoginPage },
+    { path: '/login', component: LoginPage},
     { path: '/signup', component: Signup },
-    { path: '/dashboard', component: Dashboard },
     { path: '/soldiers/:soldierId', component: SoldierProfile },
     { path: '/soldiers', component: Soldiers },
     { path: '/notifications', component: NotificationPage},
-    { path: '/personelManagement', component: PersonnelManagement},
-    
+    { path: '/personnelManagement', component: PersonnelManagement},
     
     { path: '/identityCheck', component: DocumentSubmission},
     { path: '/profile', component: Profile},
 
-    { path: '/infromationRequest', component: InformationRequest},
     { path: '/', component: Home }
 ]

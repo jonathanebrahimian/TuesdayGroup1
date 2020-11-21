@@ -21,10 +21,12 @@ export class LoginPage extends React.Component{
 
         if(this.state.username == "jonyzizou" && this.state.password == "welcome1"){
             this.setState({confirmedLoggedIn: true});
-            sessionStorage.setItem("loggedIn",true);
-            sessionStorage.setItem("userID",1);
-            sessionStorage.setItem("authLevel",1);
-            sessionStorage.setItem("relatives",["Aaron Cuevas", "Tom Madden"])
+            let newAuth = this.props.authentication;
+            newAuth.loggedIn = true;
+            newAuth.userID = 1;
+            newAuth.authLevel = 1;
+            newAuth.relatives = ["Aaron Cuevas", "Tom Madden"];
+            this.props.onAuthChange(newAuth);
             
         }else{
             this.setState({error: "Your username or password is wrong"});
@@ -32,9 +34,11 @@ export class LoginPage extends React.Component{
 
         if(this.state.username == "andrew" && this.state.password == "welcome1"){
             this.setState({confirmedLoggedIn: true});
-            sessionStorage.setItem("loggedIn",true);
-            sessionStorage.setItem("userID",2);
-            sessionStorage.setItem("authLevel",2);
+            let newAuth = this.props.authentication;
+            newAuth.loggedIn = true;
+            newAuth.userID = 2;
+            newAuth.authLevel = 2;
+            this.props.onAuthChange(newAuth);
         }else{
             this.setState({error: "Your username or password is wrong"});
         }
@@ -43,8 +47,8 @@ export class LoginPage extends React.Component{
     render(){
         debugger;
         let redirect = <></>;
-        if (this.state.confirmedLoggedIn || sessionStorage.getItem('loggedIn') == true) {
-            redirect = <Redirect to='/dashboard' />;
+        if (this.state.confirmedLoggedIn || this.props.authentication.loggedIn) {
+            redirect = <Redirect to='/soldiers' />;
         }
         return <>
             {redirect}

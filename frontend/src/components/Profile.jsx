@@ -1,4 +1,5 @@
 import React from "react"
+import { Redirect } from "react-router-dom";
 import '../style/Profile.css';
 export class Profile extends React.Component{
     state= {
@@ -9,7 +10,9 @@ export class Profile extends React.Component{
         description: "Hello, I am Colonel John Smith's brother"
     }
     render(){
-        return <div>
+        return <> 
+            {!this.props.authentication.loggedIn && <Redirect to="/"/>}
+            <div>
             <img src="https://via.placeholder.com/250C/O https://placeholder.com/"></img>
             <p>Name</p>
             <label htmlFor="name"></label>
@@ -29,6 +32,6 @@ export class Profile extends React.Component{
             <textarea id="bio" name="bio" rows="5" cols="50" value={this.state.bio} onChange={ev5 => this.setState({ bio: ev5.target.value })}></textarea>
             <button>Cancel</button>
         </div>
-
+        </>
     }
 }

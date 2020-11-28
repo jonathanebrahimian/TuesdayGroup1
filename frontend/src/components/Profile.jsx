@@ -29,7 +29,7 @@ export class Profile extends React.Component{
             return <div>
                 {!this.props.authentication.loggedIn && <Redirect to="/"/>}
                 <form>
-                    <img src="https://via.placeholder.com/250C/O https://placeholder.com/" className="img-fluid float-right"></img>
+                    <img src="https://via.placeholder.com/250C/O https://placeholder.com/" className="img-fluid float-right m-4"></img>
                     <p className="py-2 my-2 display-4">{this.state.name}</p>
 
                     <div>

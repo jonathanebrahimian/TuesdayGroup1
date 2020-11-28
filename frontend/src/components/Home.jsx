@@ -16,8 +16,8 @@ export const Home = props => {
 
         <div className="display-4 text-light bg-dark w-100 text-center" >Military Organization</div>
         <div className="d-inline-block float-right">
-            <button className="btn btn-primary btn-lg m-2" to="/signup">Sign Up</button>
-            <button className="btn btn-secondary btn-lg m-2" to="/login">Log In</button>
+            <Link className="btn btn-primary btn-lg m-2" to="/signup">Sign Up</Link>
+            <Link className="btn btn-secondary btn-lg m-2" to="/login">Log In</Link>
         </div>
 
         <div className="container">

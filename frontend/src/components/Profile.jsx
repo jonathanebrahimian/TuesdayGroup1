@@ -29,12 +29,17 @@ export class Profile extends React.Component{
             return <div>
                 {!this.props.authentication.loggedIn && <Redirect to="/"/>}
                 <form>
-                    <img src="https://via.placeholder.com/250C/O https://placeholder.com/"></img>
+                    <img src="https://via.placeholder.com/250C/O https://placeholder.com/" className="img-fluid float-right"></img>
                     <p className="py-2 my-2 display-4">{this.state.name}</p>
 
                     <div>
                         <h3 className="d-inline py-2 my-2 ">Age: </h3>
                         <p className="d-inline py-2 my-2 text">{this.state.age}</p>
+                    </div>
+
+                    <div>
+                        <h3 className="d-inline py-2 my-2 ">Gender: </h3>
+                        <p className="d-inline py-2 my-2 text">{this.state.gender}</p>
                     </div>
 
                     <h3 className="py-2 my-2" >Relatives: </h3>

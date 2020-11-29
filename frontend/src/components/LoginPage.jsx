@@ -53,6 +53,7 @@ export class LoginPage extends React.Component{
             {redirect}
             <div style={{textAlign:"center"}} className="jumbotron p-0">
                 <div className="display-4 text-light bg-dark w-100 text-center" >Military Organization</div>
+                <Link to="/" className="btn btn-info">Back</Link>
                 <h2>Login To Organization</h2>
                 <p>Using your Military Account</p>
                 <label htmlFor="userName">Username</label>

@@ -47,7 +47,7 @@ export class SoldierProfile extends React.Component{
         if(message !== ""){
             message += " " + localStorage.getItem('userName') + " says: " + requestMessage;
         }
-        let notification = new Notification(this.state.id,"Extra Information Request from " + localStorage.getItem('userName'),message,"infoRequest",true);
+        let notification = new Notification(this.props.authentication.id,this.state.id,"Extra Information Request from " + localStorage.getItem('userName'),message,"infoRequest",true);
         console.log(notification);
         this.setState({requestInfo:false});
     }
@@ -55,7 +55,7 @@ export class SoldierProfile extends React.Component{
     submitMessage = (message) => {
         alert("Your message has been sent!");
         console.log(message);
-        let notification = new Notification(this.state.id,"Message from " + localStorage.getItem('userName'),message,"message",false);
+        let notification = new Notification(this.props.authentication.id,this.state.id,"Message from " + localStorage.getItem('userName'),message,"message",false);
         console.log(notification);
 
         this.setState({sendMessage:false});
@@ -98,7 +98,7 @@ export class SoldierProfile extends React.Component{
             <p>Military branch: {this.state.branch}</p>
             <p>Bio: {this.state.bio}</p>
 
-            {(sessionStorage.getItem("authLevel") > 1 || this.authorizationCheck.checkRelatives(this.state.name)) ?
+            {(this.props.authentication.authLevel > 1 || this.props.authentication.relatives.indexOf(this.state.name) !== -1) ?
                 (<><p>Military Base: {this.state.baseName}</p><p>Location: {this.state.location}</p><p>Email: {this.state.email}</p></>)
             :
                 (<></>)
@@ -106,9 +106,9 @@ export class SoldierProfile extends React.Component{
             
             <button id="download" type= "button" className="btn" onClick={() => this.downloadTxtFile()}>Download</button>
             <Link to="/soldiers" id="cancel" className="btn">Back</Link>
-            {this.state.requestInfo === false ? <></> :<InformationRequest soldierName={this.state.name} submitInfoRequest={this.submitInfoRequest} closeInfoRequest={this.closeInfoRequest}/>}
+            {this.state.requestInfo === false ? <></> :<InformationRequest soldierName={this.state.name} authentication={this.props.authentication} submitInfoRequest={this.submitInfoRequest} closeInfoRequest={this.closeInfoRequest}/>}
             {this.state.sendMessage === false ? <></> :<SendMessage soldierName={this.state.name} submitMessage={this.submitMessage} closeMessage={this.closeMessage}/>}
-            {(sessionStorage.getItem("authLevel") > 1 || this.authorizationCheck.checkRelatives(this.state.name)) ?
+            {(this.props.authentication.authLevel > 1 || this.props.authentication.relatives.indexOf(this.state.name) !== -1) ?
                 (<><br/><button id="SendMessage" type= "button" className="btn bg-primary" onClick={() => this.sendMessage()}>Message</button></>)
             
             :

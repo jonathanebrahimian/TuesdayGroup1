@@ -13,22 +13,22 @@ export class DocumentSubmission extends React.Component {
           name:"",
           ssn:"",
           address:"",
-          submitted: false
+          submitted: false,
+          error:""
         };
     }
 
     submit(){
-        console.log('pressed')
-        if(this.state.fileName == ""){
-            alert("Please select a file before submitting.")
+        if(this.state.fileName === "" || this.state.name === "" || this.state.ssn === "" || this.state.address === ""){
+            this.setState({error:"Please fill all forms before submitting"});
         }else{
             this.setState({
                 submitted:true
             })
+            let message = "Name: " + this.state.name + "  SSN: " + this.state.ssn + " Address: " + this.state.address;
+            let notification = new Notification(this.props.authentication.id,-1,"Identity Check from " + this.props.authentication.userName,message,"identityCheck",false);
+            console.log(notification);
         }
-        let message = "Name: " + this.state.name + "  SSN: " + this.state.ssn + " Address: " + this.state.address;
-        let notification = new Notification(-1,"Identity Check from " + localStorage.getItem('userName'),message,"identityCheck",false);
-        console.log(notification);
     }
 
     filechanged(event){
@@ -40,49 +40,56 @@ export class DocumentSubmission extends React.Component {
     }
 
     render()  {
-        return <>
+        return <div className="jumbotron d-flex flex-column p-4">
             {!this.props.authentication.loggedIn && <Redirect to="/"/>}
-            <h1>Confirm Identification</h1>
+            <h1 className="m-0 pt-0">Confirm Identification</h1>
             <p>Please supply your name, social security, and address for a government official to confirm your identity.</p>
             <form className="fileLoad">
-                <label htmlFor="name_in">Your Name</label>
+                <label htmlFor="name_in" className="mb-0"><h3>Name</h3></label>
                 <input
                     type="text"
                     name="name_in"
                     id="name_in"
-                    className="form-control"
+                    className="form-control mx-auto w-25 mb-4"
+                    placeholder="Your name..."
                     value={this.state.name}
                     onChange={event => this.setState({ name: event.target.value })}>
                 </input>
-                <label htmlFor="ssn_in">Social Security Number</label>
+                <label htmlFor="ssn_in" className="mb-0"><h3>Social Security Number</h3></label>
                 <input
                     type="text"
                     name="ssn_in"
+                    placeholder="Your social security number..."
                     id="ssn_in"
-                    className="form-control"
+                    className="form-control mx-auto w-25 mb-4"
                     value={this.state.ssn}
                     onChange={event => this.setState({ ssn: event.target.value })}>
                 </input>
-                <label htmlFor="address_in">Address</label>
-                <input
+                <label htmlFor="address_in" className="mb-0"><h3>Address</h3></label>
+                <textarea
                     type="text"
                     name="address_in"
+                    placeholder="Your home address..."
                     id="address_in"
-                    className="form-control"
+                    className="form-control mx-auto w-50 mb-2"
                     value={this.state.address}
                     onChange={event => this.setState({ address: event.target.value })}>
-                </input>
-                <label htmlFor="fileLoad">Select a file:</label>
-                <input type="file" id="fileLoad" name="fileLoad" accept="image/png, image/jpeg, application/pdf" onChange={event =>this.filechanged(event)}/><br/><br/>
-                <button type="button" onClick={event => this.submit()}>Submit</button>
+                </textarea>
+                <br/>
+                <div className="mr-auto">
+                    <label htmlFor="fileLoad"></label>
+                    <input type="file" id="fileLoad" name="fileLoad" accept="image/png, image/jpeg, application/pdf" onChange={event =>this.filechanged(event)}/>
+                </div>
+                <br/>
+                <button type="button" className="btn bg-primary text-white" onClick={event => this.submit()}>Submit</button>
                 {this.state.submitted ? (
                     <p>Your file has been submitted!</p>
                 ) : (
-                    <></>
+                    <p className="text-danger">{this.state.error}</p>
                 )}
                 
             </form>
-            </>;
+            </div>;
     }
 
 }

@@ -76,9 +76,9 @@ export class ResultsTable extends React.Component {
                 return <></>
               return (
                 <tr key={i}>
-                  <Link to={"/soldiers/" + person.id}>
-                    <td>{person.name}</td>
-                  </Link>
+                  
+                  <td><Link to={"/soldiers/" + person.id}>{person.name}</Link></td>
+                  
                   <td>{person.age}</td>
                   <td>{person.gender}</td>
                   <td>{person.branch}</td>

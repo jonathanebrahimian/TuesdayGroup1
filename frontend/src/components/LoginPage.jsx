@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Redirect } from 'react-router-dom';
 
 
 
@@ -13,31 +13,33 @@ export class LoginPage extends React.Component{
     };
 
     onLoginClick () {
-        if(this.state.username == ""){
+        if(this.state.username === ""){
             this.setState({error: "Please enter a username."});
-        }else if(this.state.password == ""){
+        }else if(this.state.password === ""){
             this.setState({error: "Please enter a password."});
         }
 
-        if(this.state.username == "jonyzizou" && this.state.password == "welcome1"){
+        if(this.state.username === "jonathan" && this.state.password === "welcome1"){
             this.setState({confirmedLoggedIn: true});
             let newAuth = this.props.authentication;
             newAuth.loggedIn = true;
             newAuth.userID = 1;
             newAuth.authLevel = 1;
-            newAuth.relatives = ["Aaron Cuevas", "Tom Madden"];
+            newAuth.relatives = ["Aaron Cuevas", ""];
+            newAuth.userName = "jonathan";
             this.props.onAuthChange(newAuth);
             
         }else{
             this.setState({error: "Your username or password is wrong"});
         }
 
-        if(this.state.username == "andrew" && this.state.password == "welcome1"){
+        if(this.state.username === "andrew" && this.state.password === "welcome1"){
             this.setState({confirmedLoggedIn: true});
             let newAuth = this.props.authentication;
             newAuth.loggedIn = true;
             newAuth.userID = 2;
             newAuth.authLevel = 2;
+            newAuth.userName = "andrew";
             this.props.onAuthChange(newAuth);
         }else{
             this.setState({error: "Your username or password is wrong"});

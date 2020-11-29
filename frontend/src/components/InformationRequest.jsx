@@ -10,13 +10,18 @@ export class InformationRequest extends React.Component {
     this.state = {
       militaryBase:false,
       messages:false,
-      extraInfoMessage:""
+      extraInfoMessage:"",
+      error:""
     };
   }
 
   submit = () =>  {
     console.log(this.state.messages);
-    this.props.submitInfoRequest(this.state.messages,this.state.militaryBase,this.state.extraInfoMessage);
+    if(this.props.authentication.identity === true){
+      this.props.submitInfoRequest(this.state.messages,this.state.militaryBase,this.state.extraInfoMessage);
+    }else{
+      this.setState({error:"Please confirm your identity before requesting extra information."});
+    }
   }
 
 
@@ -53,6 +58,7 @@ export class InformationRequest extends React.Component {
           <br/>
           <textarea id="message" placeholder="Optional" name="message" rows="5" cols="50" value={this.state.extraInfoMessage} onChange={event => this.setState({ extraInfoMessage: event.target.value })}></textarea> 
           <br/>
+          <p className="text-danger">{this.state.error}</p>
           <button type="button" className="btn bg-secondary" onClick={this.submit}>Submit</button>
           <button type="button" className="btn bg-secondary" onClick={this.props.closeInfoRequest}>Close</button>
         </form>

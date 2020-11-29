@@ -101,9 +101,9 @@ export class ResultsTable extends React.Component {
                   <td><button type="button" className="form-control btn btn-danger m-0" onClick={() => this.props.removeProfile(i)}>Remove</button></td>
                 </tr> :
                 <tr key={i}>
-                  <Link to={"/soldiers/" + person.id}>
-                    <td>{person.name}</td>
-                  </Link>
+                  
+                  <td><Link to={"/soldiers/" + person.id}>{person.name}</Link></td>
+                  
                   <td>{person.age}</td>
                   <td>{person.gender}</td>
                   <td>{person.branch}</td>

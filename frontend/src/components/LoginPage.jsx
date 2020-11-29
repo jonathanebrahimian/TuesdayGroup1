@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 
 
@@ -13,31 +13,27 @@ export class LoginPage extends React.Component{
     };
 
     onLoginClick () {
-        if(this.state.username == ""){
+        if(this.state.username === ""){
             this.setState({error: "Please enter a username."});
-        }else if(this.state.password == ""){
+        }else if(this.state.password === ""){
             this.setState({error: "Please enter a password."});
-        }
-
-        if(this.state.username == "jonyzizou" && this.state.password == "welcome1"){
+        } else if(this.state.username === "jonathan" && this.state.password === "welcome1"){
             this.setState({confirmedLoggedIn: true});
             let newAuth = this.props.authentication;
+            newAuth.username = this.state.username;
             newAuth.loggedIn = true;
             newAuth.userID = 1;
             newAuth.authLevel = 1;
-            newAuth.relatives = ["Aaron Cuevas", "Tom Madden"];
+            newAuth.relatives = ["Aaron Cuevas", ""];
             this.props.onAuthChange(newAuth);
-            
-        }else{
-            this.setState({error: "Your username or password is wrong"});
-        }
-
-        if(this.state.username == "andrew" && this.state.password == "welcome1"){
+        } else if(this.state.username === "andrew" && this.state.password === "welcome1"){
             this.setState({confirmedLoggedIn: true});
             let newAuth = this.props.authentication;
+            newAuth.username = this.state.username;
             newAuth.loggedIn = true;
             newAuth.userID = 2;
             newAuth.authLevel = 2;
+            newAuth.identity = true;
             this.props.onAuthChange(newAuth);
         }else{
             this.setState({error: "Your username or password is wrong"});
@@ -45,12 +41,8 @@ export class LoginPage extends React.Component{
     }
 
     render(){
-        let redirect = <></>;
-        if (this.state.confirmedLoggedIn || this.props.authentication.loggedIn) {
-            redirect = <Redirect to='/soldiers' />;
-        }
         return <>
-            {redirect}
+            {(this.state.confirmedLoggedIn || this.props.authentication.loggedIn) && <Redirect to="/soldiers"/>}
             <div style={{textAlign:"center"}} className="jumbotron p-0">
                 <div className="display-4 text-light bg-dark w-100 text-center" >Military Organization</div>
                 <Link to="/" className="btn btn-info">Back</Link>

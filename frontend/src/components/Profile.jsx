@@ -43,11 +43,7 @@ export class Profile extends React.Component{
                     </div>
 
                     <h3 className="py-2 my-2" >Relatives: </h3>
-                    <table className="container ">
-                        <thead>
-                        <th></th>
-                        <th></th>
-                        </thead>
+                    <table className="ml-2">
                         <tbody>
                         {   this.state.relatives.map((person, i) => {
                             return (
@@ -103,7 +99,7 @@ export class Profile extends React.Component{
                     <tbody>
                     {   this.state.relatives.map((person, i) => {
                         return (
-                            <tr>
+                            <tr key={i}>
                                 <td className="text">{person}</td>
                             </tr>
                         )

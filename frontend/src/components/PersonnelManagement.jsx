@@ -8,6 +8,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import axios from 'axios';
 import { ResultsFilter } from './ResultsFilter';
+import { ResultsTable } from './ResultsTable';
+
+const PEOPLE_PER_PAGE = 5;
 
 export class PersonnelManagement extends React.Component {
   state = {
@@ -91,18 +94,24 @@ export class PersonnelManagement extends React.Component {
     this.onFilterChange(this.state.filter);
   }
 
-  removeProfile(index) {
+  removeProfile = (index) => {
     this.setState(prevState => {
       prevState.results.splice(index, 1);
       return prevState;
     })
   }
 
-  updateProfile(index, field, value) {
+  updateProfile = (index, field, value) => {
     this.setState(prevState => {
       prevState.results[index][field] = value;
       return prevState;
     })
+  }
+
+  resetSort = () => {
+    console.log("Would pull from API here to get new soldier");
+    this.sortBy("name");
+    this.setState({reversed: false});
   }
 
   sortBy(field) {
@@ -126,7 +135,7 @@ export class PersonnelManagement extends React.Component {
     this.onFilterChange(this.state.filter);
   }
 
-  addBlankUser() {
+  addBlankUser = () => {
     function dummyData(string) {
       let parts = string.split(",");
       this.id = parts[0];
@@ -141,9 +150,10 @@ export class PersonnelManagement extends React.Component {
     let newUser = new dummyData("112,,,30,,,");
     let users = this.state.results;
     users.push(newUser);
-    this.setState(users);
+    this.setState({results: users});
     this.onFilterChange(this.state.filter);
   }
+
   headers = [
     {label:"Name", key:"name"},
     {label:"Gender", key:"gender"},
@@ -159,54 +169,21 @@ export class PersonnelManagement extends React.Component {
       {!this.props.authentication.loggedIn && <Redirect to="/"/>}
       <h1>Personnel Management</h1>
       <form>
-        <ResultsFilter
+        <ResultsTable
           onFilterChange={this.onFilterChange}
+          updateResults={this.updateResults}
+          updateProfile={this.updateProfile}
+          removeProfile={this.removeProfile}
+          addBlankUser={this.addBlankUser}
+          resetSort={this.resetSort}
+          results={this.state.results}
+          displayedResults={this.state.displayedResults}
           filter={this.state.filter}
-          clearFilter={this.clearFilter}
-          showAll/>
-        <table className="table table-striped">
-          <thead className="thead-dark">
-            <th onClick={() => this.sortBy("name")}>Name</th>
-            <th onClick={() => this.sortBy("age")}>Age</th>
-            <th onClick={() => this.sortBy("gender")}>Gender</th>
-            <th onClick={() => this.sortBy("branch")}>Branch</th>
-            <th onClick={() => this.sortBy("rank")}>Rank</th>
-            <th onClick={() => this.sortBy("baseName")}>Base Name</th>
-            <th onClick={() => this.sortBy("location")}>Location</th>
-            <th>Remove</th>
-          </thead>
-          <tbody>
-            {
-              this.state.displayedResults.map((person, i) => {
-              return (<tr>
-                <td><input type="text" className="form-control" value={person.name} onChange={e => {
-                  this.updateProfile(i, "name", e.target.value);
-                }}/></td>
-                <td><input type="text" className="form-control" value={person.age} onChange={e => {
-                  this.updateProfile(i, "age", e.target.value);
-                }}/></td>
-                <td><input type="text" className="form-control" value={person.gender} onChange={e => {
-                  this.updateProfile(i, "gender", e.target.value);
-                }}/></td>
-                <td><input type="text" className="form-control" value={person.branch} onChange={e => {
-                  this.updateProfile(i, "branch", e.target.value);
-                }}/></td>
-                <td><input type="text" className="form-control" value={person.rank} onChange={e => {
-                  this.updateProfile(i, "rank", e.target.value);
-                }}/></td>
-                <td><input type="text" className="form-control" value={person.baseName} onChange={e => {
-                  this.updateProfile(i, "baseName", e.target.value);
-                }}/></td>
-                <td><input type="text" className="form-control" value={person.location} onChange={e => {
-                  this.updateProfile(i, "location", e.target.value);
-                }}/></td>
-                <td><button type="button" className="form-control btn btn-danger m-0" onClick={() => this.removeProfile(i)}>Remove</button></td>
-              </tr>);
-            })}
-          </tbody>
-        </table>
+          clearFilter={this.state.clearFilter}
+          PEOPLE_PER_PAGE={PEOPLE_PER_PAGE}
+          editableContent
+          showClassifiedInfo/>
       </form>
-      <button className="btn btn-info mx-auto" onClick={() => {this.addBlankUser()}}>Add Soldier</button>
       <CSVLink className="btn btn-primary" data={this.state.results} headers={this.headers} filename={"soldiersInfo.csv" }>Export Table</CSVLink>
     </>);
   }

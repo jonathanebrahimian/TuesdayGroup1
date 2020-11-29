@@ -8,12 +8,13 @@ export class NotificationPage extends React.Component {
 
     this.state = {
       notifications: [
-        new Notification(1,"Message", "Hello there! You can now see this message here. It has some text and even a line break soon. Hopefully we can do some sort of collapsing thing with the text.","message",true),
-        new Notification(2,"Extra Info Request", "Ah, you wanted to check out the second message huh? There isn't much more content to this message though.","infoRequest",false),
-        new Notification(3,"Identity Check", "Name: Jonathan Ebrahimian SSN: 111-11-1111 Address: 123 Happy Road, Dallas TX","identityCheck",false),
-        new Notification(4,"Other", "Thank you for joining!","other",false)
+        new Notification(0,1,"Message", "Hello there! You can now see this message here. It has some text and even a line break soon. Hopefully we can do some sort of collapsing thing with the text.","message",true),
+        new Notification(0,2,"Extra Info Request", "Ah, you wanted to check out the second message huh? There isn't much more content to this message though.","infoRequest",false),
+        new Notification(0,3,"Identity Check", "Name: Jonathan Ebrahimian SSN: 111-11-1111 Address: 123 Happy Road, Dallas TX","identityCheck",false),
+        new Notification(0,4,"Other", "Thank you for joining!","other",false)
       ],
-      "details": -1
+      "details": -1,
+      "comments":""
     }
   }
 
@@ -45,11 +46,11 @@ export class NotificationPage extends React.Component {
   render() {
     return <>
       {!this.props.authentication.loggedIn && <Redirect to="/"/>}
-      <div className="container">
-        <h1>Notifications - ({this.state.notifications.length})</h1>
+      <h1>Notifications - ({this.state.notifications.length})</h1>
+      <div className="accordion" id="notificationAccordion">
         {this.state.notifications.length != 0 ? "" : <h3>You have no notifications at this time!</h3>}
         {this.state.notifications.map((x, i) => (
-          <div className="card text-left mb-2" onClick={() => this.setState({details: this.state.details === i ? -1 : i})}>
+          <div className="card text-left mb-2" onClick={() => this.setState({details: this.state.details === i ? -1 : i, comments:""})}>
             {x.important === false ? <div className="card-header font-weight-bold">{x.title}</div> :
                 <div className="card-header font-weight-bold text-danger">{x.title}</div> 
             }
@@ -57,8 +58,8 @@ export class NotificationPage extends React.Component {
               i !== this.state.details || x.type !== "infoRequest" ? "" : 
                 <div class="card-body">
                   <div className="card-text">{x.message}</div>
-                  <button className="btn bg-success" onClick={() => this.accepted(x)}>Accept</button>
-                  <button className="btn bg-danger" onClick={() => this.denied(x)}>Deny</button>
+                  <button className="btn bg-success text-white" onClick={() => this.accepted(x)}>Accept</button>
+                  <button className="btn bg-danger text-white" onClick={() => this.denied(x)}>Deny</button>
                 </div>
             }
             {
@@ -73,9 +74,14 @@ export class NotificationPage extends React.Component {
               i !== this.state.details || x.type !== "identityCheck" ? "" : 
                 <div class="card-body">
                   <div className="card-text">{x.message}</div>
-                  
-                  <button className="btn bg-success" onClick={() => this.accepted(x)}>Accept</button>
-                  <button className="btn bg-danger" onClick={() => this.denied(x)}>Deny</button>
+                  <form>
+                    <label htmlFor="comments"></label>
+                    <textarea name="comments" id="comments" placeholder="Comment on your decision..." className="w-75" value={this.state.comments}
+                    onChange={event => this.setState({ comments: event.target.value })}/>
+                    <br/>
+                    <button className="btn bg-success text-white m-3" onClick={() => this.accepted(x)}>Accept</button>
+                    <button className="btn bg-danger text-white m-3" onClick={() => this.denied(x)}>Deny</button>
+                  </form>
                   
                 </div>
             } 

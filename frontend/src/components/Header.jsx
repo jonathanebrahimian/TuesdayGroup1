@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 export const Header = props => <>
-  <nav className="navbar navbar-dark navbar-expand-md bg-dark collapse navbar-collapse">
+  <nav className="navbar navbar-dark navbar-expand-md bg-dark">
     <div className="collapse navbar-collapse">
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">

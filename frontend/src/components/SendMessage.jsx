@@ -28,8 +28,8 @@ export class SendMessage extends React.Component {
         <br/>
         <textarea id="message" placeholder="Optional" name="message" rows="5" cols="50" value={this.state.message} onChange={event => this.setState({ message: event.target.value })}></textarea> 
         <br/>
-        <button type="button" className="btn bg-secondary" onClick={this.submit}>Submit</button>
-        <button type="button" className="btn bg-secondary" onClick={this.props.closeMessage}>Close</button>
+        <button type="button" className="btn bg-secondary py-2 m-2" onClick={this.submit}>Submit</button>
+        <button type="button" className="btn bg-secondary py-2 m-2" onClick={this.props.closeMessage}>Close</button>
         </form>
       </>
     );

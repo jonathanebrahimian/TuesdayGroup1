@@ -26,6 +26,7 @@ class App extends React.Component {
     this.state = {
       authentication: {
         userID: -1,
+        username: "",
         loggedIn: false,
         authLevel: 0,
         identity: false,

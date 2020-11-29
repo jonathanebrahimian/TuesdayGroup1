@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,8 +7,6 @@ import './../style/general.css';
 import './../style/ResultsTable.css';
 import { ResultsFilter } from './ResultsFilter';
 import { Link } from 'react-router-dom';
-
-const PEOPLE_PER_PAGE = 8;
 
 export class ResultsTable extends React.Component {
   state = {
@@ -33,6 +30,7 @@ export class ResultsTable extends React.Component {
         if (!reversed) return a[field].localeCompare(b[field]);
         else return b[field].localeCompare(a[field]);
       }
+      return 0;
     });
 
     this.props.updateResults(previousResults);
@@ -41,8 +39,8 @@ export class ResultsTable extends React.Component {
   }
 
   static getDerivedStateFromProps(props, prevState) {
-    if (prevState.page * PEOPLE_PER_PAGE >= props.displayedResults.length) {
-      prevState.page = Math.max(0, Math.floor((props.displayedResults.length-1)/PEOPLE_PER_PAGE))
+    if (prevState.page * props.PEOPLE_PER_PAGE >= props.displayedResults.length) {
+      prevState.page = Math.max(0, Math.floor((props.displayedResults.length-1)/props.PEOPLE_PER_PAGE))
       return prevState;
     }
     return null;
@@ -51,7 +49,6 @@ export class ResultsTable extends React.Component {
   render() {
     return (
       <>
-        <h1>Click a name to view details</h1>
         <ResultsFilter
           onFilterChange={this.props.onFilterChange}
           filter={this.props.filter}
@@ -64,17 +61,45 @@ export class ResultsTable extends React.Component {
               <th onClick={() => this.sortBy("gender")}>Gender</th>
               <th onClick={() => this.sortBy("branch")}>Branch</th>
               <th onClick={() => this.sortBy("rank")}>Rank</th>
-              {/*
+              { this.props.showClassifiedInfo && <>
               <th onClick={() => this.sortBy("location")}>Location</th>
               <th onClick={() => this.sortBy("baseName")}>Base Name</th>
-              */}
+              </>}
+              { this.props.editableContent && <>
+              <th>Remove</th>
+              </>}
               </tr>
           </thead>
           <tbody>
             { this.props.displayedResults.map((person, i) => {
-              if (i < this.state.page * PEOPLE_PER_PAGE || i >= (this.state.page+1) * PEOPLE_PER_PAGE)
+              if (i < this.state.page * this.props.PEOPLE_PER_PAGE || i >= (this.state.page+1) * this.props.PEOPLE_PER_PAGE)
                 return <></>
               return (
+                this.props.editableContent ?
+                <tr key={i}>
+                  <td><input type="text" className="form-control" value={person.name} onChange={e => {
+                    this.props.updateProfile(i, "name", e.target.value);
+                  }}/></td>
+                  <td><input type="text" className="form-control" value={person.age} onChange={e => {
+                    this.props.updateProfile(i, "age", e.target.value);
+                  }}/></td>
+                  <td><input type="text" className="form-control" value={person.gender} onChange={e => {
+                    this.props.updateProfile(i, "gender", e.target.value);
+                  }}/></td>
+                  <td><input type="text" className="form-control" value={person.branch} onChange={e => {
+                    this.props.updateProfile(i, "branch", e.target.value);
+                  }}/></td>
+                  <td><input type="text" className="form-control" value={person.rank} onChange={e => {
+                    this.props.updateProfile(i, "rank", e.target.value);
+                  }}/></td>
+                  <td><input type="text" className="form-control" value={person.baseName} onChange={e => {
+                    this.props.updateProfile(i, "baseName", e.target.value);
+                  }}/></td>
+                  <td><input type="text" className="form-control" value={person.location} onChange={e => {
+                    this.props.updateProfile(i, "location", e.target.value);
+                  }}/></td>
+                  <td><button type="button" className="form-control btn btn-danger m-0" onClick={() => this.props.removeProfile(i)}>Remove</button></td>
+                </tr> :
                 <tr key={i}>
                   <Link to={"/soldiers/" + person.id}>
                     <td>{person.name}</td>
@@ -83,10 +108,6 @@ export class ResultsTable extends React.Component {
                   <td>{person.gender}</td>
                   <td>{person.branch}</td>
                   <td>{person.rank}</td>
-                  {/*
-                  <td>{person.location}</td>
-                  <td>{person.baseName}</td>
-                  */}
                 </tr>
               );
             })}
@@ -97,11 +118,12 @@ export class ResultsTable extends React.Component {
             <button onClick={() => this.setState({page: this.state.page - 1})} className="btn btn-primary m-0" type="button">&larr;</button> :
             <button className="btn btn-secondary m-0" type="button">&larr;</button>}
           {/* Using a button for formatting reasons */}
-          <button type="button" className="btn btn-primary m-0" type="button">Page {this.state.page + 1}/{Math.max(1, Math.ceil(this.props.displayedResults.length/PEOPLE_PER_PAGE))}</button>
-          {this.state.page < Math.ceil((this.props.displayedResults.length)/PEOPLE_PER_PAGE) - 1 ?
+          <button type="button" className="btn btn-primary m-0 border-left border-right" type="button">Page {this.state.page + 1}/{Math.max(1, Math.ceil(this.props.displayedResults.length/this.props.PEOPLE_PER_PAGE))}</button>
+          {this.state.page < Math.ceil((this.props.displayedResults.length)/this.props.PEOPLE_PER_PAGE) - 1 ?
             <button onClick={() => this.setState({page: this.state.page + 1})} className="btn btn-primary m-0" type="button">&rarr;</button> :
             <button className="btn btn-secondary m-0" type="button">&rarr;</button>}
-        </div>
+        </div><br/>
+        {this.props.editableContent && <button type="button" className="btn btn-info mx-auto" onClick={() => {this.setState({page: 0}); this.props.resetSort();}}>Add Soldier</button>}
       </>
     )
   }

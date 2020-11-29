@@ -22,6 +22,7 @@ export class LoginPage extends React.Component{
         if(this.state.username == "jonyzizou" && this.state.password == "welcome1"){
             this.setState({confirmedLoggedIn: true});
             let newAuth = this.props.authentication;
+            newAuth.username = this.state.username;
             newAuth.loggedIn = true;
             newAuth.userID = 1;
             newAuth.authLevel = 1;
@@ -35,9 +36,11 @@ export class LoginPage extends React.Component{
         if(this.state.username == "andrew" && this.state.password == "welcome1"){
             this.setState({confirmedLoggedIn: true});
             let newAuth = this.props.authentication;
+            newAuth.username = this.state.username;
             newAuth.loggedIn = true;
             newAuth.userID = 2;
             newAuth.authLevel = 2;
+            newAuth.identity = true;
             this.props.onAuthChange(newAuth);
         }else{
             this.setState({error: "Your username or password is wrong"});

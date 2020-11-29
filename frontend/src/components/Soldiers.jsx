@@ -4,6 +4,8 @@ import axios from "axios";
 import tempData from './../data.csv';
 import { Redirect } from "react-router-dom";
 
+const PEOPLE_PER_PAGE = 8;
+
 export class Soldiers extends React.Component{
   state = {
     filter: {
@@ -88,13 +90,15 @@ export class Soldiers extends React.Component{
   render (){
     return <>
       {!this.props.authentication.loggedIn && <Redirect to="/"/>}
+      <h1>Soldiers</h1>
       <ResultsTable
         onFilterChange={this.onFilterChange}
         updateResults={this.updateResults}
         results={this.state.results}
         displayedResults={this.state.displayedResults}
         filter={this.state.filter}
-        clearFilter={this.clearFilter}/>
+        clearFilter={this.clearFilter}
+        PEOPLE_PER_PAGE={PEOPLE_PER_PAGE}/>
     </>
   }
 }

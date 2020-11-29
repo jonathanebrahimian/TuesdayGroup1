@@ -109,7 +109,7 @@ export class PersonnelManagement extends React.Component {
   }
 
   resetSort = () => {
-    // Would pull from API here to get new soldier
+    console.log("Would pull from API here to get new soldier");
     this.sortBy("name");
     this.setState({reversed: false});
   }

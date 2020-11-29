@@ -68,7 +68,7 @@ export class ResultsTable extends React.Component {
               { this.props.editableContent && <>
               <th>Remove</th>
               </>}
-              </tr>
+            </tr>
           </thead>
           <tbody>
             { this.props.displayedResults.map((person, i) => {

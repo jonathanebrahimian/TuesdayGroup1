@@ -37,7 +37,7 @@ export class Signup extends React.Component{
             <br></br>
             <input type="password" id="password" name="password" value={this.state.password} onChange={event => this.setState({ password: event.target.value })}></input>
             <br></br>
-            <label for="rank">Choose a rank</label>
+            <label htmlFor="rank">Choose a rank</label>
             <br></br>
             <select name="rank" id="rank" value={this.state.rank} onChange={ event => this.setState({ rank: event.target.value }) }>
                 <option value=""></option>

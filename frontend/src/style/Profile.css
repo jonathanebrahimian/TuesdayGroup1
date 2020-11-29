@@ -1,23 +1,10 @@
 *{
     box-sizing: border-box;
 }
+.text{
+    font-size: 1.5em;
+    font-weight: normal
+}
 img{
-    right:5em;
-    top:3em;
-    position:absolute;
-
-}
-h1, p,b{
-    position:relative;
-    border: 2em;
-    margin: 1em;
-}
-button{
-    background-color: #214559;
-    border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    padding: 1em;
-    margin:2em;
+    top:5em;
 }

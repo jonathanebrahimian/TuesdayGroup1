@@ -8,12 +8,13 @@ export class NotificationPage extends React.Component {
 
     this.state = {
       notifications: [
-        new Notification(0,1,"Message", "Hello there! You can now see this message here. It has some text and even a line break soon. Hopefully we can do some sort of collapsing thing with the text.","message",true),
-        new Notification(0,2,"Extra Info Request", "Ah, you wanted to check out the second message huh? There isn't much more content to this message though.","infoRequest",false),
-        new Notification(0,3,"Identity Check", "Name: Jonathan Ebrahimian SSN: 111-11-1111 Address: 123 Happy Road, Dallas TX","identityCheck",false),
+        new Notification(0,1,"Message", "Hello there! You can now see this message here. It has some text and even a line break soon. Hopefully we can do some sort of collapsing thing with the text.","message"),
+        new Notification(0,2,"Extra Info Request", "Ah, you wanted to check out the second message huh? There isn't much more content to this message though.","infoRequest"),
+        new Notification(0,3,"Identity Check", "Name: Jonathan Ebrahimian SSN: 111-11-1111 Address: 123 Happy Road, Dallas TX","identityCheck"),
+        new Notification(0,5,"Identity Check", "Name: Jonathan Ebrahimian SSN: 111-11-1111 Address: 123 Happy Road, Dallas TX","identityCheck"),
+        
         new Notification(0,4,"Other", "Thank you for joining!","other",false)
       ],
-      "details": -1,
       "comments":""
     }
   }
@@ -23,7 +24,7 @@ export class NotificationPage extends React.Component {
     newNotifications = newNotifications.filter(function(ele){
       return ele != notification;
     })
-    this.setState({notifications:newNotifications});
+    this.setState({notifications:newNotifications,comments:""});
   }
 
   remove(notification){
@@ -31,7 +32,11 @@ export class NotificationPage extends React.Component {
     newNotifications = newNotifications.filter(function(ele){
       return ele != notification;
     })
-    this.setState({notifications:newNotifications});
+    this.setState({notifications:newNotifications,comments:""});
+  }
+
+  clearMessage = () => {
+    this.setState({comments:""});
   }
 
   denied(notification){
@@ -40,59 +45,66 @@ export class NotificationPage extends React.Component {
         return ele != notification;
     })
     
-    this.setState({notifications:newNotifications});
+    this.setState({notifications:newNotifications,comments:""});
   }
 
   render() {
     return <>
       {!this.props.authentication.loggedIn && <Redirect to="/"/>}
       <h1>Notifications - ({this.state.notifications.length})</h1>
+      {this.state.notifications.length != 0 ? "" : <h3>You have no notifications at this time!</h3>}
       <div className="accordion" id="notificationAccordion">
-        {this.state.notifications.length != 0 ? "" : <h3>You have no notifications at this time!</h3>}
         {this.state.notifications.map((x, i) => (
-          <div className="card text-left mb-2" onClick={() => this.setState({details: this.state.details === i ? -1 : i, comments:""})}>
-            {x.important === false ? <div className="card-header font-weight-bold">{x.title}</div> :
-                <div className="card-header font-weight-bold text-danger">{x.title}</div> 
-            }
+          <div className="card">
+            <div className="card-header font-weight-bold" id={`heading${i}`} >
+              <h2 className="mb-0">
+                <button className="btn btn-block text-left" type="button" data-toggle="collapse" data-target={`#collapse${i}`} aria-expanded="false" aria-controls={`collapse${i}`} onClick={this.clearMessage}>
+                  {x.title}
+                  </button>
+                </h2>
+            </div>
+            <div id={`collapse${i}`} className="collapse" aria-labelledby={`heading${i}`}  data-parent="#notificationAccordion">
+            
             {
-              i !== this.state.details || x.type !== "infoRequest" ? "" : 
-                <div class="card-body">
+              x.type !== "infoRequest" ? "" : 
+                <div className="card-body">
                   <div className="card-text">{x.message}</div>
-                  <button className="btn bg-success text-white" onClick={() => this.accepted(x)}>Accept</button>
-                  <button className="btn bg-danger text-white" onClick={() => this.denied(x)}>Deny</button>
+                  <button className="btn bg-success text-white m-3" type="button" onClick={() => this.accepted(x)}>Accept</button>
+                  <button className="btn bg-danger text-white m-3" type="button" onClick={() => this.denied(x)}>Deny</button>
                 </div>
             }
             {
-              i !== this.state.details || x.type !== "message" ? "" : 
-                <div class="card-body">
+              x.type !== "message" ? "" : 
+                <div className="card-body">
                   <div className="card-text">{x.message}</div>
-                  <button className="btn bg-dark text-white float-right" onClick={() => this.remove(x)}>Remove</button>
+                  <button className="btn bg-dark text-white float-right mb-3" type="button" onClick={() => this.remove(x)}>Remove</button>
                   <div className="clear-fix"></div>
                 </div>
             } 
             {
-              i !== this.state.details || x.type !== "identityCheck" ? "" : 
-                <div class="card-body">
+              x.type !== "identityCheck" ? "" : 
+                <div className="card-body">
                   <div className="card-text">{x.message}</div>
                   <form>
                     <label htmlFor="comments"></label>
                     <textarea name="comments" id="comments" placeholder="Comment on your decision..." className="w-75" value={this.state.comments}
                     onChange={event => this.setState({ comments: event.target.value })}/>
                     <br/>
-                    <button className="btn bg-success text-white m-3" onClick={() => this.accepted(x)}>Accept</button>
-                    <button className="btn bg-danger text-white m-3" onClick={() => this.denied(x)}>Deny</button>
+                    <button className="btn bg-success text-white m-3" type="button" onClick={() => this.accepted(x)}>Accept</button>
+                    <button className="btn bg-danger text-white m-3" type="button" onClick={() => this.denied(x)}>Deny</button>
                   </form>
                   
                 </div>
             } 
             {
-              i !== this.state.details || x.type !== "other" ? "" : 
-                <div class="card-body">
+              x.type !== "other" ? "" : 
+                <div className="card-body">
                   <div className="card-text">{x.message}</div>
-                  <button className="btn bg-dark text-white float-right" onClick={() => this.remove(x)}>Remove</button>
+                  <button className="btn bg-dark text-white float-right mb-3" type="button" onClick={() => this.remove(x)}>Remove</button>
                   <div className="clear-fix"></div>
                 </div>
             } 
+            </div>
               
           </div>
         ))}

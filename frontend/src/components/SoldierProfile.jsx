@@ -88,7 +88,8 @@ export class SoldierProfile extends React.Component{
     render(){
         return <>
           {!this.props.authentication.loggedIn && <Redirect to="/"/>}
-          <div> <h1 className="py-2 my-2 display-4">{this.state.name}</h1>
+          <div className="jumbotron">
+              <h1 className="py-2 my-2 display-4">{this.state.name}</h1>
             <h2>Basic Information</h2>
             <img src="https://via.placeholder.com/250C/O https://placeholder.com/" className="img-fluid float-right m-4"></img>
 
@@ -117,7 +118,8 @@ export class SoldierProfile extends React.Component{
                 (<><div className="py-2 my-2">
                     <h3 className="d-inline py-2 my-2 ">Military Base: </h3>
                     <p className="d-inline py-2 my-2 text">{this.state.baseName}</p>
-                </div><div className="py-2 my-2">
+                </div>
+                    <div className="py-2 my-2">
                     <h3 className="d-inline py-2 my-2 ">Location: </h3>
                     <p className="d-inline py-2 my-2 text">{this.state.location}</p>
                 </div>
@@ -134,10 +136,10 @@ export class SoldierProfile extends React.Component{
             {this.state.requestInfo === false ? <></> :<InformationRequest soldierName={this.state.name} authentication={this.props.authentication} submitInfoRequest={this.submitInfoRequest} closeInfoRequest={this.closeInfoRequest}/>}
             {this.state.sendMessage === false ? <></> :<SendMessage soldierName={this.state.name} submitMessage={this.submitMessage} closeMessage={this.closeMessage}/>}
             {(this.props.authentication.authLevel > 1 || this.props.authentication.relatives.indexOf(this.state.name) !== -1) ?
-                (<><br/><button id="SendMessage" type= "button" className="btn bg-primary" onClick={() => this.sendMessage()}>Message</button></>)
+                (<><br/><button id="SendMessage" type= "button" className="btn bg-primary py-2 m-2" onClick={() => this.sendMessage()}>Message</button></>)
             
             :
-                (<><br/><button id="ExtraInfo" type= "button" className="btn bg-primary py-2 my-2" onClick={() => this.requestExtraInfo()}>Request Extra Information</button></>)
+                (<><br/><button id="ExtraInfo" type= "button" className="btn bg-primary py-2 m-2" onClick={() => this.requestExtraInfo()}>Request Extra Information</button></>)
 
             }
             

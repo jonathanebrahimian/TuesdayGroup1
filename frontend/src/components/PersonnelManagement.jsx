@@ -184,7 +184,7 @@ export class PersonnelManagement extends React.Component {
           editableContent
           showClassifiedInfo/>
       </form>
-      <CSVLink className="btn btn-primary" data={this.state.results} headers={this.headers} filename={"soldiersInfo.csv" }>Export Table</CSVLink>
+      <CSVLink className="btn btn-primary m-2" data={this.state.results} headers={this.headers} filename={"soldiersInfo.csv" }>Export Table</CSVLink>
     </>);
   }
 }

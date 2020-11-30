@@ -125,7 +125,8 @@ export class ResultsTable extends React.Component {
               <button className="btn btn-secondary m-0" type="button">&rarr;</button>}
           </div><br/>
         </div>
-        {this.props.editableContent && <button type="button" className="btn btn-info mx-auto" onClick={() => {this.setState({page: 0}); this.props.resetSort();}}>Add Soldier</button>}
+        {this.props.editableContent && <button type="button" className="btn btn-info float-right" onClick={() => {this.setState({page: 0}); this.props.resetSort();}}>Add Soldier</button>}
+        <div className="clear-fix"></div>
       </>
     )
   }

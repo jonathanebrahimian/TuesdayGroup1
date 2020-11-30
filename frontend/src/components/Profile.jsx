@@ -8,6 +8,7 @@ export class Profile extends React.Component{
         age: 30,
         relatives: ["John Smith", "Paul Smith"],
         description: "Hello, I am Colonel John Smith's brother",
+        account:"public",
         editing: false,
     }
 
@@ -18,15 +19,19 @@ export class Profile extends React.Component{
         this.setState({editing:true});
     }
     removeRealtive(indexIn){
-        let newRelatives = this.state.relatives;
-        newRelatives.splice(indexIn, 1);
-        this.setState({relatives:newRelatives});
+        let shouldDelete=confirm("Do you want to delete this relatives");
+        if(shouldDelete){
+            let newRelatives = this.state.relatives;
+            newRelatives.splice(indexIn, 1);
+            this.setState({relatives:newRelatives});
+        }
+
     }
 
     render(){
         if(this.state.editing){
 
-            return <div>
+            return <div className="jumbotron">
                 {!this.props.authentication.loggedIn && <Redirect to="/"/>}
                 <form>
                     <img src="https://via.placeholder.com/250C/O https://placeholder.com/" className="img-fluid float-right m-4"></img>
@@ -40,6 +45,10 @@ export class Profile extends React.Component{
                     <div>
                         <h3 className="d-inline py-2 my-2 ">Gender: </h3>
                         <p className="d-inline py-2 my-2 text">{this.state.gender}</p>
+                    </div>
+                    <div>
+                        <h3 className="d-inline py-2 my-2 ">Account Type: </h3>
+                        <p className="d-inline py-2 my-2 text">{this.state.account}</p>
                     </div>
 
                     <h3 className="py-2 my-2" >Relatives: </h3>
@@ -69,7 +78,7 @@ export class Profile extends React.Component{
 
         }else{
 
-            return <div>
+            return <div className="jumbotron">
                 {!this.props.authentication.loggedIn && <Redirect to="/"/>}
 
                 <img src="https://via.placeholder.com/250C/O https://placeholder.com/"
@@ -89,8 +98,10 @@ export class Profile extends React.Component{
                 </div>
 
                 <div>
-
+                    <h3 className="d-inline py-2 my-2 ">Account Type: </h3>
+                    <p className="d-inline py-2 my-2 text">{this.state.account}</p>
                 </div>
+
                 <h3 className="py-2 my-2" >Relatives: </h3>
                 <table className="container py-2 my-2">
                     <thead>
@@ -109,7 +120,8 @@ export class Profile extends React.Component{
                     </tbody>
                 </table>
                 <h3 className="py-2 my-2">Biography</h3>
-                <p>{this.state.bio}</p>
+                <p>{this.state.bio}
+                </p>
                 <br/>
                 <button className="btn btn-primary" onClick={() => this.editClick()}>Edit</button>
             </div>

@@ -59,8 +59,8 @@ export class InformationRequest extends React.Component {
           <textarea id="message" placeholder="Optional" name="message" rows="5" cols="50" value={this.state.extraInfoMessage} onChange={event => this.setState({ extraInfoMessage: event.target.value })}></textarea> 
           <br/>
           <p className="text-danger">{this.state.error}</p>
-          <button type="button" className="btn bg-secondary" onClick={this.submit}>Submit</button>
-          <button type="button" className="btn bg-secondary" onClick={this.props.closeInfoRequest}>Close</button>
+          <button type="button" className="btn bg-secondary py-2 my-2" onClick={this.submit}>Submit</button>
+          <button type="button" className="btn bg-secondary py-2 my-2" onClick={this.props.closeInfoRequest}>Close</button>
         </form>
       </>
     );

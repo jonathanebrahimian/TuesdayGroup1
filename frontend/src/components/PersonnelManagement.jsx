@@ -26,6 +26,7 @@ export class PersonnelManagement extends React.Component {
     },
     results: [],
     displayedResults: [],
+    editedSoldierIDs: [],
     lastSort: "",
     reversed: false
   };
@@ -51,6 +52,11 @@ export class PersonnelManagement extends React.Component {
       });
       this.onFilterChange(this.state.filter);
     });
+  }
+
+  componentWillUnmount() {
+    // Push new changes to database and then...
+    this.setState({editedSoldierIDs: []});
   }
 
   onFilterChange = newFilter => {
@@ -102,6 +108,8 @@ export class PersonnelManagement extends React.Component {
   }
 
   updateProfile = (index, field, value) => {
+    if (this.state.editedSoldierIDs.indexOf(this.state.displayedResults[index].id) == -1)
+      this.state.editedSoldierIDs.push(this.state.displayedResults[index].id);
     this.setState(prevState => {
       prevState.results[index][field] = value;
       return prevState;
@@ -109,9 +117,13 @@ export class PersonnelManagement extends React.Component {
   }
 
   resetSort = () => {
+    // 2 API calls
+    // 1. Adds blank user to database
+    // 2. Queries database
     console.log("Would pull from API here to get new soldier");
+    this.setState({reversed: false, lastSort: ""});
     this.sortBy("name");
-    this.setState({reversed: false});
+    this.clearFilter();
   }
 
   sortBy(field) {
@@ -171,6 +183,7 @@ export class PersonnelManagement extends React.Component {
       <form>
         <ResultsTable
           onFilterChange={this.onFilterChange}
+          clearFilter={this.clearFilter}
           updateResults={this.updateResults}
           updateProfile={this.updateProfile}
           removeProfile={this.removeProfile}
@@ -179,7 +192,6 @@ export class PersonnelManagement extends React.Component {
           results={this.state.results}
           displayedResults={this.state.displayedResults}
           filter={this.state.filter}
-          clearFilter={this.state.clearFilter}
           PEOPLE_PER_PAGE={PEOPLE_PER_PAGE}
           editableContent
           showClassifiedInfo/>

@@ -3,7 +3,16 @@ import { NavLink } from 'react-router-dom';
 
 export const Header = props => <>
   <nav className="navbar navbar-dark navbar-expand-md bg-dark">
-    <div className="collapse navbar-collapse">
+    <button className="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbar-supported-content"
+      aria-controls="navbar-supported-content"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
+    </button>
+    <div className="collapse navbar-collapse" id="navbar-supported-content">
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
           <NavLink className="nav-link" activeClassName="text-white font-weight-bold" to="/soldiers">Soldiers</NavLink>

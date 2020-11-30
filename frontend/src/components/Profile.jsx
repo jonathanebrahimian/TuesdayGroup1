@@ -109,7 +109,7 @@ export class Profile extends React.Component{
                     </tbody>
                 </table>
                 <h3 className="py-2 my-2">Biography</h3>
-                <p>{this.state.bio}</p>
+                <p>{this.state.bio !== "" ? this.state.bio : <i>Edit your profile to add a bio!</i>}</p>
                 <br/>
                 <button className="btn btn-primary" onClick={() => this.editClick()}>Edit</button>
             </div>

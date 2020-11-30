@@ -19,7 +19,7 @@ export class Profile extends React.Component{
         this.setState({editing:true});
     }
     removeRealtive(indexIn){
-        let shouldDelete=confirm("Do you want to delete this relatives");
+        let shouldDelete=window.confirm("Do you want to delete this relatives");
         if(shouldDelete){
             let newRelatives = this.state.relatives;
             newRelatives.splice(indexIn, 1);
@@ -58,7 +58,7 @@ export class Profile extends React.Component{
                             return (
                                 <tr>
                                     <td >{person}</td>
-                                    <td className="m-2 p-2"><button type="button" className="btn btn-warning" onClick={() => this.removeRealtive(i)}>Remove</button></td>
+                                    <td className="m-2 p-2"><button type="button" className="btn btn-warning" onClick={() => this.removeRealtive({i})}>Remove</button></td>
                                 </tr>
                             )
 

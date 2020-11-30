@@ -12,18 +12,18 @@ export const ResultsFilter = props => {
       <table className="table table-bordered table-sm">
         <thead className="thead-dark">
           <tr>
-            <th><label htmlFor="filter_name" placeholder="Name">Name</label></th>
-            <th><label htmlFor="filter_age_min">Age Min</label></th>
-            <th><label htmlFor="filter_age_max">Age Max</label></th>
-            <th><label htmlFor="filter_male">Male</label></th>
-            <th><label htmlFor="filter_female">Female</label></th>
-            <th><label htmlFor="filter_branch">Branch</label></th>
-            <th><label htmlFor="filter_rank">Rank</label></th>
+            <th><label className="m-auto" htmlFor="filter_name" placeholder="Name">Name</label></th>
+            <th><label className="m-auto" htmlFor="filter_age_min">Age Min</label></th>
+            <th><label className="m-auto" htmlFor="filter_age_max">Age Max</label></th>
+            <th><label className="m-auto" htmlFor="filter_male">Male</label></th>
+            <th><label className="m-auto" htmlFor="filter_female">Female</label></th>
+            <th><label className="m-auto" htmlFor="filter_branch">Branch</label></th>
+            <th><label className="m-auto" htmlFor="filter_rank">Rank</label></th>
             {props.showAll && <>
-            <th><label htmlFor="filter_baseName">Base Name</label></th>
-            <th><label htmlFor="filter_location">Location</label></th>
+            <th><label className="m-auto" htmlFor="filter_baseName">Base Name</label></th>
+            <th><label className="m-auto" htmlFor="filter_location">Location</label></th>
             </>}
-            <th>Clear Filter</th>
+            <th className="m-auto">Clear Filter</th>
           </tr>
         </thead>
         <tbody>

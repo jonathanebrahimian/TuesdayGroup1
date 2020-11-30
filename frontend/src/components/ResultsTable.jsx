@@ -113,16 +113,18 @@ export class ResultsTable extends React.Component {
             })}
           </tbody>
         </table>
-        <div className="btn-group" role="group">
-          {this.state.page > 0 ?
-            <button onClick={() => this.setState({page: this.state.page - 1})} className="btn btn-primary m-0" type="button">&larr;</button> :
-            <button className="btn btn-secondary m-0" type="button">&larr;</button>}
-          {/* Using a button for formatting reasons */}
-          <button type="button" className="btn btn-primary m-0 border-left border-right" type="button">Page {this.state.page + 1}/{Math.max(1, Math.ceil(this.props.displayedResults.length/this.props.PEOPLE_PER_PAGE))}</button>
-          {this.state.page < Math.ceil((this.props.displayedResults.length)/this.props.PEOPLE_PER_PAGE) - 1 ?
-            <button onClick={() => this.setState({page: this.state.page + 1})} className="btn btn-primary m-0" type="button">&rarr;</button> :
-            <button className="btn btn-secondary m-0" type="button">&rarr;</button>}
-        </div><br/>
+        <div className="d-flex">
+          <div className="btn-group mx-auto" role="group">
+            {this.state.page > 0 ?
+              <button onClick={() => this.setState({page: this.state.page - 1})} className="btn btn-primary m-0" type="button">&larr;</button> :
+              <button className="btn btn-secondary m-0" type="button">&larr;</button>}
+            {/* Using a button for formatting reasons */}
+            <button type="button" className="btn btn-primary m-0 border-left border-right" type="button">Page {this.state.page + 1}/{Math.max(1, Math.ceil(this.props.displayedResults.length/this.props.PEOPLE_PER_PAGE))}</button>
+            {this.state.page < Math.ceil((this.props.displayedResults.length)/this.props.PEOPLE_PER_PAGE) - 1 ?
+              <button onClick={() => this.setState({page: this.state.page + 1})} className="btn btn-primary m-0" type="button">&rarr;</button> :
+              <button className="btn btn-secondary m-0" type="button">&rarr;</button>}
+          </div><br/>
+        </div>
         {this.props.editableContent && <button type="button" className="btn btn-info mx-auto" onClick={() => {this.setState({page: 0}); this.props.resetSort();}}>Add Soldier</button>}
       </>
     )

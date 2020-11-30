@@ -1,6 +1,7 @@
 import React from "react"
 import { Redirect } from "react-router-dom";
 import '../style/Profile.css';
+import '../style/ResponsiveDesign.css';
 export class Profile extends React.Component{
     state= {
         name: "Parker Smith",
@@ -10,6 +11,7 @@ export class Profile extends React.Component{
         description: "Hello, I am Colonel John Smith's brother",
         account:"public",
         editing: false,
+        bio: ""
     }
 
     doneClick(){
@@ -34,7 +36,7 @@ export class Profile extends React.Component{
             return <div className="jumbotron">
                 {!this.props.authentication.loggedIn && <Redirect to="/"/>}
                 <form>
-                    <img src="https://via.placeholder.com/250C/O https://placeholder.com/" className="img-fluid float-right m-4"></img>
+                    <img src="https://via.placeholder.com/250C/O https://placeholder.com/" className="float-right mt-4 no-show-small"></img>
                     <p className="py-2 my-2 display-4">{this.state.name}</p>
 
                     <div>
@@ -82,7 +84,7 @@ export class Profile extends React.Component{
                 {!this.props.authentication.loggedIn && <Redirect to="/"/>}
 
                 <img src="https://via.placeholder.com/250C/O https://placeholder.com/"
-                     className="img-fluid" alt="..."></img>
+                     className="float-right mt-4 no-show-small" alt="..."></img>
 
 
                 <p className="py-2 my-2 display-4">{this.state.name}</p>

@@ -12,7 +12,8 @@ export class ResultsTable extends React.Component {
   state = {
     lastSort: "",
     reversed: false,
-    page: 0
+    page: 0,
+    editedSoldierIDs: []
   };
 
   sortBy(field) {
@@ -58,9 +59,9 @@ export class ResultsTable extends React.Component {
             <tr>
               <th onClick={() => this.sortBy("name")}>Name</th>
               <th onClick={() => this.sortBy("age")}>Age</th>
-              <th onClick={() => this.sortBy("gender")}>Gender</th>
+              <th className="no-show-mobile" onClick={() => this.sortBy("gender")}>Gender</th>
               <th onClick={() => this.sortBy("branch")}>Branch</th>
-              <th onClick={() => this.sortBy("rank")}>Rank</th>
+              <th className="no-show-mobile" onClick={() => this.sortBy("rank")}>Rank</th>
               { this.props.showClassifiedInfo && <>
               <th onClick={() => this.sortBy("location")}>Location</th>
               <th onClick={() => this.sortBy("baseName")}>Base Name</th>
@@ -105,9 +106,9 @@ export class ResultsTable extends React.Component {
                   <td><Link to={"/soldiers/" + person.id}>{person.name}</Link></td>
                   
                   <td>{person.age}</td>
-                  <td>{person.gender}</td>
+                  <td className="no-show-mobile">{person.gender}</td>
                   <td>{person.branch}</td>
-                  <td>{person.rank}</td>
+                  <td className="no-show-mobile">{person.rank}</td>
                 </tr>
               );
             })}

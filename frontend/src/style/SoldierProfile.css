@@ -2,12 +2,12 @@
     box-sizing: border-box;
 }
 
-img{
+/* img{
     right:5em;
     top:3em;
     position:absolute;
 
-}
+} */
 #download{
     background-color: #214559;
     border: none;

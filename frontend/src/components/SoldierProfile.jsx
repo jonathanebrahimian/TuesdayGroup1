@@ -89,9 +89,9 @@ export class SoldierProfile extends React.Component{
         return <>
           {!this.props.authentication.loggedIn && <Redirect to="/"/>}
           <div className="jumbotron">
-              <h1 className="py-2 my-2 display-4">{this.state.name}</h1>
+            <img src="https://via.placeholder.com/250C/O https://placeholder.com/" className="img-fluid float-right m-4 no-show-small"></img>
+            <h1 className="py-2 my-2 display-4">{this.state.name}</h1>
             <h2>Basic Information</h2>
-            <img src="https://via.placeholder.com/250C/O https://placeholder.com/" className="img-fluid float-right m-4"></img>
 
               <div className="py-2 my-2">
                   <h3 className="d-inline py-2 my-2 ">Gender: </h3>

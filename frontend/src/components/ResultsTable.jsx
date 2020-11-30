@@ -123,7 +123,8 @@ export class ResultsTable extends React.Component {
             <button onClick={() => this.setState({page: this.state.page + 1})} className="btn btn-primary m-0" type="button">&rarr;</button> :
             <button className="btn btn-secondary m-0" type="button">&rarr;</button>}
         </div><br/>
-        {this.props.editableContent && <button type="button" className="btn btn-info mx-auto m-2" onClick={() => {this.setState({page: 0}); this.props.resetSort();}}>Add Soldier</button>}
+        {this.props.editableContent && <button type="button" className="btn btn-info float-right" onClick={() => {this.setState({page: 0}); this.props.resetSort();}}>Add Soldier</button>}
+        <div className="clear-fix"></div>
       </>
     )
   }

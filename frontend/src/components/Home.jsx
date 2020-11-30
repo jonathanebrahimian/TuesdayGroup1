@@ -30,16 +30,16 @@ export const Home = props => {
         <div className="jumbotron d-inline-block w-50">
             <h2 className="text-primary text-center">Developer</h2>
             <p className="text-info d-lg-inline-block">GUI Side</p>
-            <p>Jonathan Ebrahimian</p>
-            <p>Andrew Havard</p>
-            <p>Edward Jiang</p>
+            <p>J. Ebrahimian</p>
+            <p>A. Havard</p>
+            <p>E. Jiang</p>
         </div>
         <div className="jumbotron d-inline-block w-50">
             <h2 className="text-warning text-center">Developer</h2>
             <p className="text-info d-lg-inline-block">DB Side</p>
-            <p>Jack Babcock</p>
-            <p>Dylan Caro</p>
-            <p>Trevor Knotts</p>
+            <p>J. Babcock</p>
+            <p>D. Caro</p><br/>
+            <p></p>
         </div>
     </div>
 }

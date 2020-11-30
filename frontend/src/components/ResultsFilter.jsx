@@ -12,18 +12,18 @@ export const ResultsFilter = props => {
       <table className="table table-bordered table-sm">
         <thead className="thead-dark">
           <tr>
-            <th><label htmlFor="filter_name" placeholder="Name">Name</label></th>
-            <th><label htmlFor="filter_age_min">Age Min</label></th>
-            <th><label htmlFor="filter_age_max">Age Max</label></th>
-            <th><label htmlFor="filter_male">Male</label></th>
-            <th><label htmlFor="filter_female">Female</label></th>
-            <th><label htmlFor="filter_branch">Branch</label></th>
-            <th><label htmlFor="filter_rank">Rank</label></th>
+            <th><label className="m-auto" htmlFor="filter_name" placeholder="Name">Name</label></th>
+            <th className="no-show-mobile"><label className="m-auto" htmlFor="filter_age_min">Age Min</label></th>
+            <th className="no-show-mobile"><label className="m-auto" htmlFor="filter_age_max">Age Max</label></th>
+            <th className="no-show-mobile"><label className="m-auto" htmlFor="filter_male">Male</label></th>
+            <th className="no-show-mobile"><label className="m-auto" htmlFor="filter_female">Female</label></th>
+            <th className="no-show-mobile"><label className="m-auto" htmlFor="filter_branch">Branch</label></th>
+            <th className="no-show-mobile"><label className="m-auto" htmlFor="filter_rank">Rank</label></th>
             {props.showAll && <>
-            <th><label htmlFor="filter_baseName">Base Name</label></th>
-            <th><label htmlFor="filter_location">Location</label></th>
+            <th className="no-show-mobile"><label className="m-auto" htmlFor="filter_baseName">Base Name</label></th>
+            <th className="no-show-mobile"><label className="m-auto" htmlFor="filter_location">Location</label></th>
             </>}
-            <th>Clear Filter</th>
+            <th className="m-auto no-show-mobile">Clear Filter</th>
           </tr>
         </thead>
         <tbody>
@@ -43,7 +43,7 @@ export const ResultsFilter = props => {
                   props.onFilterChange(newFilter);
                 }}/>
             </td>
-            <td>
+            <td className="no-show-mobile">
               <input
                 type="number"
                 id="filter_age_min"
@@ -60,7 +60,7 @@ export const ResultsFilter = props => {
                   props.onFilterChange(newFilter);
                 }}/>
             </td>
-            <td>
+            <td className="no-show-mobile">
               <input
                 type="number"
                 id="filter_age_max"
@@ -76,8 +76,8 @@ export const ResultsFilter = props => {
 
                   props.onFilterChange(newFilter);
                 }}/>
-            </td>
-            <td>
+          </td>
+          <td className="no-show-mobile">
             <input type="checkbox"
               id="filter_male"
               name="filter_male"
@@ -91,7 +91,7 @@ export const ResultsFilter = props => {
                 props.onFilterChange(newFilter);
               }}/>
             </td>
-            <td>
+            <td className="no-show-mobile">
               <input type="checkbox"
                 id="filter_female"
                 name="filter_female"
@@ -105,7 +105,7 @@ export const ResultsFilter = props => {
                   props.onFilterChange(newFilter);
                 }}/>
             </td>
-            <td>
+            <td className="no-show-mobile">
               <select
                 id="filter_branch"
                 name="branch"
@@ -126,7 +126,7 @@ export const ResultsFilter = props => {
                 <option value="5">Coast Guard</option>
               </select>
             </td>
-            <td>
+            <td className="no-show-mobile">
               <select
                 id="filter_rank"
                 name="rank"
@@ -146,7 +146,7 @@ export const ResultsFilter = props => {
               </select>
             </td>
             {props.showAll && <>
-            <td>
+            <td className="no-show-mobile">
               <input
                 type="text"
                 id="filter_baseName"
@@ -161,7 +161,7 @@ export const ResultsFilter = props => {
                   props.onFilterChange(newFilter);
                 }}/>
             </td>
-            <td>
+            <td className="no-show-mobile">
               <input
                 type="text"
                 id="filter_location"
@@ -177,7 +177,7 @@ export const ResultsFilter = props => {
                 }}/>
             </td>
             </>}
-            <td>
+            <td className="no-show-mobile">
               <button type="button" className="btn btn-warning form-inline m-0" onClick={props.clearFilter}>Clear</button>
             </td>
           </tr>

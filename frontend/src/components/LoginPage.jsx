@@ -24,6 +24,8 @@ export class LoginPage extends React.Component{
             newAuth.loggedIn = true;
             newAuth.userID = 10;
             newAuth.authLevel = 1;
+            newAuth.identity = true;
+
             newAuth.relatives = [1, 2];
             this.props.onAuthChange(newAuth);
         } else if(this.state.username === "andrew" && this.state.password === "welcome1"){

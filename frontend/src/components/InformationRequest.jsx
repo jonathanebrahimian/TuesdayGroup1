@@ -17,10 +17,13 @@ export class InformationRequest extends React.Component {
 
   submit = () =>  {
     console.log(this.state.messages);
-    if(this.props.authentication.identity === true){
-      this.props.submitInfoRequest(this.state.messages,this.state.militaryBase,this.state.extraInfoMessage);
-    }else{
+    if(this.state.extraInfoMessage === ""){
+      this.setState({error:"Message field cannot be blank."});
+    }else if(this.props.authentication.identity !== true){
       this.setState({error:"Please confirm your identity before requesting extra information."});
+    }else{
+      this.props.submitInfoRequest(this.state.messages,this.state.militaryBase,this.state.extraInfoMessage);
+      this.setState({error:""});
     }
   }
 

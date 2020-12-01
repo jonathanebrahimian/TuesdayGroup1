@@ -1,6 +1,8 @@
 import React from "react"
 import { Link } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 export class Signup extends React.Component{
+
     state ={
         username:"",
         name:"",
@@ -40,6 +42,8 @@ export class Signup extends React.Component{
             console.log(this.state.rank);
             console.log(this.state.gender);
             this.setState({error: ""});
+            // const history = useHistory();
+            // history.push('/soldiers');
         }
     }
     render(){
@@ -86,6 +90,8 @@ export class Signup extends React.Component{
             <p> Data policy, and Cookies policy</p>
             <p className="text-danger">{this.state.error}</p>
             <button type="button" className="btn btn-primary" onClick={()=>this.onCreateClick()}>Create</button>
+            <br></br>
+            <Link to="/login" className="text-primary m-2">Login in instead</Link>
         </div>
     }
 }

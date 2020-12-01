@@ -106,7 +106,7 @@ export class SoldierProfile extends React.Component{
                   <p className="d-inline py-2 my-2 text">{this.state.age}</p>
               </div>
               <div className="py-2 my-2">
-                  <h3 className="d-inline py-2 my-2 ">Branch </h3>
+                  <h3 className="d-inline py-2 my-2 ">Branch: </h3>
                   <p className="d-inline py-2 my-2 text">{this.state.branch}</p>
               </div>
 
@@ -124,7 +124,7 @@ export class SoldierProfile extends React.Component{
                     <p className="d-inline py-2 my-2 text">{this.state.location}</p>
                 </div>
                     <div className="py-2 my-2">
-                    <h3 className="d-inline py-2 my-2 ">Email </h3>
+                    <h3 className="d-inline py-2 my-2 ">Email: </h3>
                     <p className="d-inline py-2 my-2 text">{this.state.email}</p>
                 </div></>)
             :
@@ -149,14 +149,27 @@ export class SoldierProfile extends React.Component{
 
     downloadTxtFile = () => {
         const element = document.createElement("a");
-        const file = new Blob([this.state.name, "\n",this.state.gender
-                ,"\n", this.state.rank, "\n", this.state.age,
-                "\n", this.state.location, "\n",this.state.baseName,
-                "\n", this.state.branch, "\n"],
-            {type: 'text/plain;charset=utf-8'});
+        let file;
+        if(this.props.authentication.authLevel > 1 || this.props.authentication.relatives.indexOf(this.state.name) !== -1){
+            file=new Blob([this.state.name, "\n",this.state.gender
+                    ,"\n", this.state.rank, "\n", this.state.age,
+                    "\n", this.state.location, "\n",this.state.baseName,
+                    "\n", this.state.branch, "\n", this.state.email,
+                    "\n", this.state.bio, "\n"],
+                {type: 'text/plain;charset=utf-8'});
+        }
+        else{
+            file=new Blob([this.state.name, "\n",this.state.gender
+                    ,"\n", this.state.rank, "\n", this.state.age,
+                    "\n", this.state.branch,
+                    "\n", this.state.bio, "\n"],
+                {type: 'text/plain;charset=utf-8'});
+        }
         element.href = URL.createObjectURL(file);
         element.download = "Soldier.txt";
         document.body.appendChild(element);
         element.click();
+
+
     }
 }

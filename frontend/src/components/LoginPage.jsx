@@ -55,7 +55,7 @@ export class LoginPage extends React.Component{
                 <br></br>
                 <label htmlFor="password">Password</label>
                 <br></br>
-                <input type="password" id="password" name="password" value={this.state.userName} onChange={event => this.setState({ password: event.target.value })}></input>
+                <input type="password" id="password" name="password" value={this.state.password} onChange={event => this.setState({ password: event.target.value })}></input>
                 <p className="text-danger">{this.state.error}</p>
                 <br></br>
                 <br></br>

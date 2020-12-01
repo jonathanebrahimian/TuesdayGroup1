@@ -35,19 +35,19 @@ export class SoldierProfile extends React.Component{
         // console.log(militaryBase);
         // console.log(location);
         // console.log(requestMessage);
-        let message = localStorage.getItem('userName'); 
+        let message = this.props.authentication.username + " is requesting extra information about you."; 
         
-        if(messages && locations){
-            message += " would like to view your military base and location as well as get messages about your status. ";
-        }else if(message === true && locations === false) {
-            message += " would like to recieve messages about your status.";
-        }else{
-            message += " would like to view your military base and location.";
-        }
+        // if(messages && locations){
+        //     message += " would like to view your military base and location as well as get messages about your status. ";
+        // }else if(message === true && locations === false) {
+        //     message += " would like to recieve messages about your status.";
+        // }else{
+        //     message += " would like to view your military base and location.";
+        // }
         if(message !== ""){
-            message += " " + localStorage.getItem('userName') + " says: " + requestMessage;
+            message += " Message: " + requestMessage;
         }
-        let notification = new Notification(this.props.authentication.id,this.state.id,"Extra Information Request from " + localStorage.getItem('userName'),message,"infoRequest",true);
+        let notification = new Notification(this.props.authentication.userID,this.state.id,"Extra Information Request from " + this.props.authentication.username,message,"infoRequest");
         console.log(notification);
         this.setState({requestInfo:false});
     }
@@ -55,7 +55,7 @@ export class SoldierProfile extends React.Component{
     submitMessage = (message) => {
         alert("Your message has been sent!");
         console.log(message);
-        let notification = new Notification(this.props.authentication.id,this.state.id,"Message from " + localStorage.getItem('userName'),message,"message",false);
+        let notification = new Notification(this.props.authentication.userID,this.state.id,"Message from " + this.props.authentication.username,message,"message");
         console.log(notification);
 
         this.setState({sendMessage:false});

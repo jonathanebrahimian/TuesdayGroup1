@@ -12,8 +12,7 @@ export class ResultsTable extends React.Component {
   state = {
     lastSort: "",
     reversed: false,
-    page: 0,
-    editedSoldierIDs: []
+    page: 0
   };
 
   sortBy(field) {

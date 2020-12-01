@@ -70,7 +70,7 @@ export class Profile extends React.Component{
                     </table>
                     <h3 className="py-2 my-2">Biography</h3>
                     <label htmlFor="bio"></label>
-                    <textarea id="bio" name="bio" rows="5" cols="50" value={this.state.bio} onChange={ev5 => this.setState({ bio: ev5.target.value })}></textarea>
+                    <textarea id="bio" name="bio" rows="5" className="col-10" value={this.state.bio} onChange={ev5 => this.setState({ bio: ev5.target.value })}></textarea>
                     <br/>
                 </form>
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
+import {Notification} from "./../models/Notification";
 
 
 import './../style/general.css';
@@ -26,7 +27,7 @@ export class DocumentSubmission extends React.Component {
                 submitted:true
             })
             let message = "Name: " + this.state.name + "  SSN: " + this.state.ssn + " Address: " + this.state.address;
-            let notification = new Notification(this.props.authentication.id,-1,"Identity Check from " + this.props.authentication.userName,message,"identityCheck",false);
+            let notification = new Notification(this.props.authentication.userID,-1,"Identity Check from " + this.props.authentication.username,message,"identityCheck");
             console.log(notification);
         }
     }
@@ -50,7 +51,7 @@ export class DocumentSubmission extends React.Component {
                     type="text"
                     name="name_in"
                     id="name_in"
-                    className="form-control mx-auto w-25 mb-4"
+                    className="form-control mb-4 full-width-mobile"
                     placeholder="Your name..."
                     value={this.state.name}
                     onChange={event => this.setState({ name: event.target.value })}>
@@ -61,7 +62,7 @@ export class DocumentSubmission extends React.Component {
                     name="ssn_in"
                     placeholder="Your social security number..."
                     id="ssn_in"
-                    className="form-control mx-auto w-25 mb-4"
+                    className="form-control full-width-mobile mb-4"
                     value={this.state.ssn}
                     onChange={event => this.setState({ ssn: event.target.value })}>
                 </input>
@@ -71,7 +72,7 @@ export class DocumentSubmission extends React.Component {
                     name="address_in"
                     placeholder="Your home address..."
                     id="address_in"
-                    className="form-control mx-auto w-50 mb-2"
+                    className="form-control mb-2 full-width-mobile"
                     value={this.state.address}
                     onChange={event => this.setState({ address: event.target.value })}>
                 </textarea>

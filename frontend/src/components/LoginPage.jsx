@@ -22,16 +22,16 @@ export class LoginPage extends React.Component{
             let newAuth = this.props.authentication;
             newAuth.username = this.state.username;
             newAuth.loggedIn = true;
-            newAuth.userID = 1;
+            newAuth.userID = 10;
             newAuth.authLevel = 1;
-            newAuth.relatives = ["Aaron Cuevas", ""];
+            newAuth.relatives = [1, 2];
             this.props.onAuthChange(newAuth);
         } else if(this.state.username === "andrew" && this.state.password === "welcome1"){
             this.setState({confirmedLoggedIn: true});
             let newAuth = this.props.authentication;
             newAuth.username = this.state.username;
             newAuth.loggedIn = true;
-            newAuth.userID = 2;
+            newAuth.userID = 20;
             newAuth.authLevel = 2;
             newAuth.identity = true;
             this.props.onAuthChange(newAuth);

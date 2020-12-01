@@ -55,7 +55,7 @@ export class NotificationPage extends React.Component {
       {this.state.notifications.length != 0 ? "" : <h3>You have no notifications at this time!</h3>}
       <div className="accordion" id="notificationAccordion">
         {this.state.notifications.map((x, i) => (
-          <div className="card">
+          <div key={i} className="card">
             <div className="card-header font-weight-bold" id={`heading${i}`} >
               <h2 className="mb-0">
                 <button className="btn btn-block text-left" type="button" data-toggle="collapse" data-target={`#collapse${i}`} aria-expanded="false" aria-controls={`collapse${i}`} onClick={this.clearMessage}>

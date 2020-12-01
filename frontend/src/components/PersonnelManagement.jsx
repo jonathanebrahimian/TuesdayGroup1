@@ -18,7 +18,7 @@ export class PersonnelManagement extends React.Component {
       name: "",
       gender: {Male: true, Female: true},
       age: {min: "0", max: "100"},
-      branch: 0,
+      branch: "0",
       rank: "",
       location: "",
       baseName: "",
@@ -101,10 +101,10 @@ export class PersonnelManagement extends React.Component {
   }
 
   removeProfile = (index) => {
-    this.setState(prevState => {
-      prevState.results.splice(index, 1);
-      return prevState;
-    })
+    let results = this.state.results;
+    this.state.results.splice(index, 1);
+    this.setState({results});
+    this.onFilterChange(this.state.filter);
   }
 
   updateProfile = (index, field, value) => {

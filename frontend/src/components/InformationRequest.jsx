@@ -32,7 +32,7 @@ export class InformationRequest extends React.Component {
       <>
       <h3>You are requesting information from {this.props.soldierName}</h3>
       <form>        
-          <label htmlFor="add_notifications mr-1">Messages</label>
+          {/* <label htmlFor="add_notifications mr-1">Messages</label>
           <input className="ml-1 mr-3" type="checkbox"
             id="add_notifications"
             name="add_notifications"
@@ -52,7 +52,7 @@ export class InformationRequest extends React.Component {
                   this.setState({
                     militaryBase: event.target.checked
                   })
-            }}/> 
+            }}/>  */}
           <br/>
           <label htmlFor="message">Attach Message</label>
           <br/>

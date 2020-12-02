@@ -23,10 +23,14 @@ export const Header = props => <>
         <li className="nav-item mx-auto">
           <NavLink className="nav-link" activeClassName="text-white font-weight-bold" to="/notifications">Notifications</NavLink>
         </li>
-          {props.authentication.authLevel > 1 && 
+          {props.authentication.authLevel > 1 && <>
             <li className="nav-item mx-auto no-show-mobile">
               <NavLink className="nav-link" activeClassName="text-white font-weight-bold" to="/personnelManagement">Manage Personnel</NavLink>
-            </li>}
+            </li>
+            <li className="nav-item mx-auto show-mobile">
+              <span className="nav-link" onClick={() => alert("Personnel Management is not available on mobile. Please switch to desktop to view this page!")}>Manage Personnel</span>
+            </li>
+            </>}
         <li className="nav-item mx-auto">
           <NavLink className="nav-link" activeClassName="text-white font-weight-bold" to="/profile">Profile</NavLink>
         </li>

@@ -122,10 +122,7 @@ export class ResultsTable extends React.Component {
               <button className="btn btn-secondary m-0" type="button">&larr;</button>}
             {/* Using a button for formatting reasons */}
             <button type="button" className="btn btn-primary m-0 border-left border-right">
-              Page 
-              {this.state.page + 1}
-              /
-              {Math.max(1, Math.ceil(this.props.displayedResults.length/this.props.PEOPLE_PER_PAGE))}
+              Page {this.state.page + 1}/{Math.max(1, Math.ceil(this.props.displayedResults.length/this.props.PEOPLE_PER_PAGE))}
             </button>
             {this.state.page < Math.ceil((this.props.displayedResults.length)/this.props.PEOPLE_PER_PAGE) - 1 ?
               <button onClick={() => this.setState({page: this.state.page + 1})} className="btn btn-primary m-0" type="button">&rarr;</button> :

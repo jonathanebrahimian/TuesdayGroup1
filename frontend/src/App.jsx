@@ -1,18 +1,15 @@
 import React from 'react';
-import axios from 'axios';
 import './style/general.css';
 import './style/App.css';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import { ROUTES } from './routes';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+//import { ROUTES } from './routes';
 import 'bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Header } from './components/Header';
 import { LoginPage } from './components/LoginPage';
 import { Signup } from './components/Signup';
-import { InformationRequest } from './components/InformationRequest';
 import { Home } from './components/Home';
-import { Dashboard } from './components/Dashboard';
 import { Profile } from './components/Profile';
 import { DocumentSubmission } from './components/DocumentSubmission';
 import { Soldiers } from './components/Soldiers';

@@ -60,6 +60,8 @@ export class PersonnelManagement extends React.Component {
   }
 
   onFilterChange = newFilter => {
+    console.log("In onFilterChange");
+    console.log(newFilter);
     let newDisplayedResults = [];
     this.state.results.forEach(element => {
       if (this.personMatchesFilter(element, newFilter)) newDisplayedResults.push(element);
@@ -72,7 +74,7 @@ export class PersonnelManagement extends React.Component {
       name: "",
       gender: {Male: true, Female: true},
       age: {min: "0", max: "100"},
-      branch: 0, 
+      branch: "0", 
       rank: "", 
       location: "",
       baseName: "", 
@@ -89,7 +91,7 @@ export class PersonnelManagement extends React.Component {
     return (person.name.match(filter.name) &&
     filter.gender[person.gender] &&
     (person.age >= (parseInt(filter.age.min) || -Infinity) && person.age <= (parseInt(filter.age.max) || Infinity)) &&
-    (filter.branch === 0 || filter.branch === branches.indexOf(person.branch)) &&
+    (filter.branch === "0" || filter.branch === branches.indexOf(person.branch)) &&
     (filter.rank === "" || filter.rank === person.rank) &&
     person.location.match(filter.location) &&
     person.baseName.match(filter.baseName))

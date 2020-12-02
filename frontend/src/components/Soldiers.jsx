@@ -12,7 +12,7 @@ export class Soldiers extends React.Component{
       name: "",
       gender: {Male: true, Female: true},
       age: {min: "0", max: "100"},
-      branch: 0, 
+      branch: "0", 
       rank: "", 
       location: "",
       baseName: "", 
@@ -58,7 +58,7 @@ export class Soldiers extends React.Component{
       name: "",
       gender: {Male: true, Female: true},
       age: {min: "0", max: "100"},
-      branch: 0, 
+      branch: "0", 
       rank: "", 
       location: "",
       baseName: "", 
@@ -76,7 +76,7 @@ export class Soldiers extends React.Component{
     return (person.name.match(filter.name) &&
     filter.gender[person.gender] &&
     (person.age >= (parseInt(filter.age.min) || -Infinity) && person.age <= (parseInt(filter.age.max) || Infinity)) &&
-    (filter.branch === 0 || filter.branch === branches.indexOf(person.branch)) &&
+    (filter.branch === "0" || filter.branch === branches.indexOf(person.branch)) &&
     (filter.rank === "" || filter.rank === person.rank) &&
     person.location.match(filter.location) &&
     person.baseName.match(filter.baseName))

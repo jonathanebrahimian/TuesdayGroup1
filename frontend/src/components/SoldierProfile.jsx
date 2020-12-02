@@ -153,7 +153,7 @@ export class SoldierProfile extends React.Component{
     downloadTxtFile = () => {
         const element = document.createElement("a");
         let file;
-        if(this.props.authentication.authLevel > 1 || this.props.authentication.relatives.indexOf(this.state.name) !== -1){
+        if(this.props.authentication.authLevel > 1 || this.props.authentication.relatives.indexOf(this.state.id) !== -1){
             file=new Blob([this.state.name, "\n",this.state.gender
                     ,"\n", this.state.rank, "\n", this.state.age,
                     "\n", this.state.location, "\n",this.state.baseName,

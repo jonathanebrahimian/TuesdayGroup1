@@ -180,22 +180,20 @@ export class PersonnelManagement extends React.Component {
     return (<>
       {!this.props.authentication.loggedIn && <Redirect to="/"/>}
       <h1>Personnel Management</h1>
-      <form>
-        <ResultsTable
-          onFilterChange={this.onFilterChange}
-          clearFilter={this.clearFilter}
-          updateResults={this.updateResults}
-          updateProfile={this.updateProfile}
-          removeProfile={this.removeProfile}
-          addBlankUser={this.addBlankUser}
-          resetSort={this.resetSort}
-          results={this.state.results}
-          displayedResults={this.state.displayedResults}
-          filter={this.state.filter}
-          PEOPLE_PER_PAGE={PEOPLE_PER_PAGE}
-          editableContent
-          showClassifiedInfo/>
-      </form>
+      <ResultsTable
+        onFilterChange={this.onFilterChange}
+        clearFilter={this.clearFilter}
+        updateResults={this.updateResults}
+        updateProfile={this.updateProfile}
+        removeProfile={this.removeProfile}
+        addBlankUser={this.addBlankUser}
+        resetSort={this.resetSort}
+        results={this.state.results}
+        displayedResults={this.state.displayedResults}
+        filter={this.state.filter}
+        PEOPLE_PER_PAGE={PEOPLE_PER_PAGE}
+        editableContent
+        showClassifiedInfo/>
       <CSVLink className="btn btn-primary m-2" data={this.state.results} headers={this.headers} filename={"soldiersInfo.csv" }>Export Table</CSVLink>
     </>);
   }

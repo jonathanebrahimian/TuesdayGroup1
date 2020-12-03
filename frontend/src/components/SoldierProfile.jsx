@@ -1,16 +1,17 @@
 import React from "react"
 import { Link } from "react-router-dom";
 import "../style/SoldierProfile.css";
-import AuthorizationCheck from "../utils/AuthorizationCheck";
+import imageURL from "../images/face.jpg";
 import { InformationRequest } from "./InformationRequest";
 import { SendMessage } from './SendMessage';
 import { Notification } from '../models/Notification';
 import { Redirect } from 'react-router-dom';
+import { ProfilePicture } from '../api/ProfilePicture';
 
 export class SoldierProfile extends React.Component{
     state = {
         name:"Tom Madden",
-        id:"0",
+        id: 0,
         gender: "Male",
         age: "35",
         branch: "Army",
@@ -21,12 +22,23 @@ export class SoldierProfile extends React.Component{
         bio: "Hello! I am Tom Madden, a First Sergeant in the Army",
         requestInfo: false,
         sendMessage: false,
+        imgURL: ""
     };
-    authorizationCheck = new AuthorizationCheck();
+
+    profilePicService = new ProfilePicture();
 
     componentDidMount(){
         const soldierId = +this.props.match.params.soldierId;
-        this.setState({extraInfo: this.authorizationCheck.checkRelatives(this.state.name)});
+        try {
+          this.setState({id: parseInt(soldierId)});
+        } catch(e) {
+          console.warn("Soldier ID from URL is not an integer!");
+        }
+        
+        //would get soldier data based off id from api
+
+        this.profilePicService.getProfileURL()
+        .then(imgURL => this.setState({imgURL}));
     }
 
     submitInfoRequest = (messages,locations, requestMessage) => {
@@ -89,7 +101,7 @@ export class SoldierProfile extends React.Component{
         return <>
           {!this.props.authentication.loggedIn && <Redirect to="/"/>}
           <div className="jumbotron">
-            <img src="https://via.placeholder.com/250C/O https://placeholder.com/" className="img-fluid float-right m-4 no-show-small"></img>
+            {this.state.imgURL && <img src={this.state.imgURL} className="img-fluid float-right m-4 no-show-small profilePic" alt="The Face of a Soldier"></img>}
             <h1 className="py-2 my-2 display-4">{this.state.name}</h1>
             <h2>Basic Information</h2>
 
@@ -114,7 +126,7 @@ export class SoldierProfile extends React.Component{
               <p>{this.state.bio}</p>
 
             
-            {(this.props.authentication.authLevel > 1 || this.props.authentication.relatives.indexOf(this.state.name) !== -1) ?
+            {(this.props.authentication.authLevel > 1 || this.props.authentication.relatives.indexOf(this.state.id) !== -1) ?
                 (<><div className="py-2 my-2">
                     <h3 className="d-inline py-2 my-2 ">Military Base: </h3>
                     <p className="d-inline py-2 my-2 text">{this.state.baseName}</p>
@@ -135,7 +147,7 @@ export class SoldierProfile extends React.Component{
             <Link to="/soldiers" id="cancel" className="btn py-2 m-2">Back</Link>
             {this.state.requestInfo === false ? <></> :<InformationRequest soldierName={this.state.name} authentication={this.props.authentication} submitInfoRequest={this.submitInfoRequest} closeInfoRequest={this.closeInfoRequest}/>}
             {this.state.sendMessage === false ? <></> :<SendMessage soldierName={this.state.name} submitMessage={this.submitMessage} closeMessage={this.closeMessage}/>}
-            {(this.props.authentication.authLevel > 1 || this.props.authentication.relatives.indexOf(this.state.name) !== -1) ?
+            {(this.props.authentication.authLevel > 1 || this.props.authentication.relatives.indexOf(this.state.id) !== -1) ?
                 (<><br/><button id="SendMessage" type= "button" className="btn bg-primary py-2 m-2" onClick={() => this.sendMessage()}>Message</button></>)
             
             :
@@ -150,7 +162,7 @@ export class SoldierProfile extends React.Component{
     downloadTxtFile = () => {
         const element = document.createElement("a");
         let file;
-        if(this.props.authentication.authLevel > 1 || this.props.authentication.relatives.indexOf(this.state.name) !== -1){
+        if(this.props.authentication.authLevel > 1 || this.props.authentication.relatives.indexOf(this.state.id) !== -1){
             file=new Blob([this.state.name, "\n",this.state.gender
                     ,"\n", this.state.rank, "\n", this.state.age,
                     "\n", this.state.location, "\n",this.state.baseName,

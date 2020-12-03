@@ -4,6 +4,7 @@ import '../style/Profile.css';
 import '../style/ResponsiveDesign.css';
 import { ProfilePicture } from '../api/ProfilePicture';
 
+import imageURL from "../images/face.jpg";
 export class Profile extends React.Component{
     state= {
         name: "Parker Smith",
@@ -13,13 +14,14 @@ export class Profile extends React.Component{
         description: "Hello, I am Colonel John Smith's brother",
         account:"public",
         editing: false,
-        bio: ""
+        bio: "",
+        imgURL:""
     }
     profilePicService = new ProfilePicture();
 
     componentDidMount(){
         this.profilePicService.getProfileURL()
-        .then(x => console.log(x));
+        .then(imgURL => this.setState({imgURL}));
     }
 
     doneClick(){
@@ -44,7 +46,7 @@ export class Profile extends React.Component{
             return <div className="jumbotron">
                 {!this.props.authentication.loggedIn && <Redirect to="/"/>}
                 <form>
-                    <img src="https://via.placeholder.com/250C/O https://placeholder.com/" className="float-right mt-4 no-show-small"></img>
+                    {this.state.imgURL && <img src={this.state.imgURL} alt="The Face of a Soldier" className="float-right mt-4 no-show-small profilePic"></img>}
                     <p className="py-2 my-2 display-4">{this.state.name}</p>
 
                     <div>
@@ -61,12 +63,12 @@ export class Profile extends React.Component{
                         <p className="d-inline py-2 my-2 text">{this.state.account}</p>
                     </div>
 
-                    <h3 className="py-2 my-2" >Relatives: </h3>
+                    <h3 className="py-2 my-2" >Close Contacts: </h3>
                     <table className="ml-2">
                         <tbody>
                         {   this.state.relatives.map((person, i) => {
                             return (
-                                <tr>
+                                <tr key={i}>
                                     <td >{person}</td>
                                     <td className="m-2 p-2"><button type="button" className="btn btn-warning" onClick={() => this.removeRealtive({i})}>Remove</button></td>
                                 </tr>
@@ -91,8 +93,8 @@ export class Profile extends React.Component{
             return <div className="jumbotron">
                 {!this.props.authentication.loggedIn && <Redirect to="/"/>}
 
-                <img src="https://via.placeholder.com/250C/O https://placeholder.com/"
-                     className="float-right mt-4 no-show-small" alt="..."></img>
+                {this.state.imgURL && <img src={this.state.imgURL}
+                     className="float-right mt-4 no-show-small profilePic" alt="The Face of a Soldier"></img>}
 
 
                 <p className="py-2 my-2 display-4">{this.state.name}</p>
@@ -112,11 +114,8 @@ export class Profile extends React.Component{
                     <p className="d-inline py-2 my-2 text">{this.state.account}</p>
                 </div>
 
-                <h3 className="py-2 my-2" >Relatives: </h3>
+                <h3 className="py-2 my-2" >Close Contacts: </h3>
                 <table className="container py-2 my-2">
-                    <thead>
-                    <th></th>
-                    </thead>
                     <tbody>
                     {   this.state.relatives.map((person, i) => {
                         return (

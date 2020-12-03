@@ -53,73 +53,77 @@ export class ResultsTable extends React.Component {
           onFilterChange={this.props.onFilterChange}
           filter={this.props.filter}
           clearFilter={this.props.clearFilter}/>
-        <table className="table table-striped table-hover">
-          <thead className="thead-dark">
-            <tr>
-              <th onClick={() => this.sortBy("name")}>Name</th>
-              <th onClick={() => this.sortBy("age")}>Age</th>
-              <th className="no-show-mobile" onClick={() => this.sortBy("gender")}>Gender</th>
-              <th onClick={() => this.sortBy("branch")}>Branch</th>
-              <th className="no-show-mobile" onClick={() => this.sortBy("rank")}>Rank</th>
-              { this.props.showClassifiedInfo && <>
-              <th onClick={() => this.sortBy("location")}>Location</th>
-              <th onClick={() => this.sortBy("baseName")}>Base Name</th>
-              </>}
-              { this.props.editableContent && <>
-              <th>Remove</th>
-              </>}
-            </tr>
-          </thead>
-          <tbody>
-            { this.props.displayedResults.map((person, i) => {
-              if (i < this.state.page * this.props.PEOPLE_PER_PAGE || i >= (this.state.page+1) * this.props.PEOPLE_PER_PAGE)
-                return <></>
-              return (
-                this.props.editableContent ?
-                <tr key={i}>
-                  <td><input type="text" className="form-control" value={person.name} onChange={e => {
-                    this.props.updateProfile(i, "name", e.target.value);
-                  }}/></td>
-                  <td><input type="text" className="form-control" value={person.age} onChange={e => {
-                    this.props.updateProfile(i, "age", e.target.value);
-                  }}/></td>
-                  <td><input type="text" className="form-control" value={person.gender} onChange={e => {
-                    this.props.updateProfile(i, "gender", e.target.value);
-                  }}/></td>
-                  <td><input type="text" className="form-control" value={person.branch} onChange={e => {
-                    this.props.updateProfile(i, "branch", e.target.value);
-                  }}/></td>
-                  <td><input type="text" className="form-control" value={person.rank} onChange={e => {
-                    this.props.updateProfile(i, "rank", e.target.value);
-                  }}/></td>
-                  <td><input type="text" className="form-control" value={person.baseName} onChange={e => {
-                    this.props.updateProfile(i, "baseName", e.target.value);
-                  }}/></td>
-                  <td><input type="text" className="form-control" value={person.location} onChange={e => {
-                    this.props.updateProfile(i, "location", e.target.value);
-                  }}/></td>
-                  <td><button type="button" className="form-control btn btn-danger m-0" onClick={() => this.props.removeProfile(i)}>Remove</button></td>
-                </tr> :
-                <tr key={i}>
-                  
-                  <td><Link to={"/soldiers/" + person.id}>{person.name}</Link></td>
-                  
-                  <td>{person.age}</td>
-                  <td className="no-show-mobile">{person.gender}</td>
-                  <td>{person.branch}</td>
-                  <td className="no-show-mobile">{person.rank}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        <form>
+          <table className="table table-striped table-hover">
+            <thead className="thead-dark">
+              <tr>
+                <th onClick={() => this.sortBy("name")}>Name</th>
+                <th onClick={() => this.sortBy("age")}>Age</th>
+                <th className="no-show-mobile" onClick={() => this.sortBy("gender")}>Gender</th>
+                <th onClick={() => this.sortBy("branch")}>Branch</th>
+                <th className="no-show-mobile" onClick={() => this.sortBy("rank")}>Rank</th>
+                { this.props.showClassifiedInfo && <>
+                <th onClick={() => this.sortBy("location")}>Location</th>
+                <th onClick={() => this.sortBy("baseName")}>Base Name</th>
+                </>}
+                { this.props.editableContent && <>
+                <th>Remove</th>
+                </>}
+              </tr>
+            </thead>
+            <tbody>
+              { this.props.displayedResults.map((person, i) => {
+                if (i < this.state.page * this.props.PEOPLE_PER_PAGE || i >= (this.state.page+1) * this.props.PEOPLE_PER_PAGE)
+                  return <tr key={i}></tr>;
+                return (
+                  this.props.editableContent ?
+                  <tr key={i}>
+                    <td><input type="text" className="form-control" value={person.name} onChange={e => {
+                      this.props.updateProfile(i, "name", e.target.value);
+                    }}/></td>
+                    <td><input type="text" className="form-control" value={person.age} onChange={e => {
+                      this.props.updateProfile(i, "age", e.target.value);
+                    }}/></td>
+                    <td><input type="text" className="form-control" value={person.gender} onChange={e => {
+                      this.props.updateProfile(i, "gender", e.target.value);
+                    }}/></td>
+                    <td><input type="text" className="form-control" value={person.branch} onChange={e => {
+                      this.props.updateProfile(i, "branch", e.target.value);
+                    }}/></td>
+                    <td><input type="text" className="form-control" value={person.rank} onChange={e => {
+                      this.props.updateProfile(i, "rank", e.target.value);
+                    }}/></td>
+                    <td><input type="text" className="form-control" value={person.baseName} onChange={e => {
+                      this.props.updateProfile(i, "baseName", e.target.value);
+                    }}/></td>
+                    <td><input type="text" className="form-control" value={person.location} onChange={e => {
+                      this.props.updateProfile(i, "location", e.target.value);
+                    }}/></td>
+                    <td><button type="button" className="form-control btn btn-danger m-0" onClick={() => this.props.removeProfile(i)}>Remove</button></td>
+                  </tr> :
+                  <tr key={i}>
+                    
+                    <td><Link to={"/soldiers/" + person.id}>{person.name}</Link></td>
+                    
+                    <td>{person.age}</td>
+                    <td className="no-show-mobile">{person.gender}</td>
+                    <td>{person.branch}</td>
+                    <td className="no-show-mobile">{person.rank}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </form>
         <div className="d-flex">
           <div className="btn-group mx-auto" role="group">
             {this.state.page > 0 ?
               <button onClick={() => this.setState({page: this.state.page - 1})} className="btn btn-primary m-0" type="button">&larr;</button> :
               <button className="btn btn-secondary m-0" type="button">&larr;</button>}
             {/* Using a button for formatting reasons */}
-            <button type="button" className="btn btn-primary m-0 border-left border-right" type="button">Page {this.state.page + 1}/{Math.max(1, Math.ceil(this.props.displayedResults.length/this.props.PEOPLE_PER_PAGE))}</button>
+            <button type="button" className="btn btn-primary m-0 border-left border-right">
+              Page {this.state.page + 1}/{Math.max(1, Math.ceil(this.props.displayedResults.length/this.props.PEOPLE_PER_PAGE))}
+            </button>
             {this.state.page < Math.ceil((this.props.displayedResults.length)/this.props.PEOPLE_PER_PAGE) - 1 ?
               <button onClick={() => this.setState({page: this.state.page + 1})} className="btn btn-primary m-0" type="button">&rarr;</button> :
               <button className="btn btn-secondary m-0" type="button">&rarr;</button>}

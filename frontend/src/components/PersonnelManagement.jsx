@@ -60,6 +60,8 @@ export class PersonnelManagement extends React.Component {
   }
 
   onFilterChange = newFilter => {
+    console.log("In onFilterChange");
+    console.log(newFilter);
     let newDisplayedResults = [];
     this.state.results.forEach(element => {
       if (this.personMatchesFilter(element, newFilter)) newDisplayedResults.push(element);
@@ -72,7 +74,7 @@ export class PersonnelManagement extends React.Component {
       name: "",
       gender: {Male: true, Female: true},
       age: {min: "0", max: "100"},
-      branch: 0, 
+      branch: "0", 
       rank: "", 
       location: "",
       baseName: "", 
@@ -89,7 +91,7 @@ export class PersonnelManagement extends React.Component {
     return (person.name.match(filter.name) &&
     filter.gender[person.gender] &&
     (person.age >= (parseInt(filter.age.min) || -Infinity) && person.age <= (parseInt(filter.age.max) || Infinity)) &&
-    (filter.branch === 0 || filter.branch === branches.indexOf(person.branch)) &&
+    (filter.branch === "0" || filter.branch === branches.indexOf(person.branch)) &&
     (filter.rank === "" || filter.rank === person.rank) &&
     person.location.match(filter.location) &&
     person.baseName.match(filter.baseName))
@@ -180,22 +182,20 @@ export class PersonnelManagement extends React.Component {
     return (<>
       {!this.props.authentication.loggedIn && <Redirect to="/"/>}
       <h1>Personnel Management</h1>
-      <form>
-        <ResultsTable
-          onFilterChange={this.onFilterChange}
-          clearFilter={this.clearFilter}
-          updateResults={this.updateResults}
-          updateProfile={this.updateProfile}
-          removeProfile={this.removeProfile}
-          addBlankUser={this.addBlankUser}
-          resetSort={this.resetSort}
-          results={this.state.results}
-          displayedResults={this.state.displayedResults}
-          filter={this.state.filter}
-          PEOPLE_PER_PAGE={PEOPLE_PER_PAGE}
-          editableContent
-          showClassifiedInfo/>
-      </form>
+      <ResultsTable
+        onFilterChange={this.onFilterChange}
+        clearFilter={this.clearFilter}
+        updateResults={this.updateResults}
+        updateProfile={this.updateProfile}
+        removeProfile={this.removeProfile}
+        addBlankUser={this.addBlankUser}
+        resetSort={this.resetSort}
+        results={this.state.results}
+        displayedResults={this.state.displayedResults}
+        filter={this.state.filter}
+        PEOPLE_PER_PAGE={PEOPLE_PER_PAGE}
+        editableContent
+        showClassifiedInfo/>
       <CSVLink className="btn btn-primary m-2" data={this.state.results} headers={this.headers} filename={"soldiersInfo.csv" }>Export Table</CSVLink>
     </>);
   }

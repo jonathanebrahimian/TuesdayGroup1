@@ -7,6 +7,10 @@
   .no-show-mobile {
     display: none;
   }
+  
+  .show-mobile {
+    display: default;
+  }
 
   .full-width-mobile {
     width: 100%;
@@ -17,6 +21,10 @@
 @media (min-width: 576px) and (max-width: 767.98px) {
   .no-show-mobile {
     display: none;
+  }
+
+  .show-mobile {
+    display: default;
   }
 
   .full-width-mobile {
@@ -33,6 +41,10 @@
   textarea.full-width-mobile {
     width: 50%;
   }
+
+  .show-mobile {
+    display: none;
+  }
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -44,6 +56,10 @@
   textarea.full-width-mobile {
     width: 50%;
   }
+
+  .show-mobile {
+    display: none;
+  }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
@@ -54,5 +70,9 @@
 
   textarea.full-width-mobile {
     width: 50%;
+  }
+
+  .show-mobile {
+    display: none;
   }
 }

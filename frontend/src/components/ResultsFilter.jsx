@@ -112,7 +112,7 @@ export const ResultsFilter = props => {
                 className="form-control"
                 value={props.filter.branch}
                 onChange={event => {
-                  let newBranch = parseInt(event.target.value) || 0;
+                  let newBranch = parseInt(event.target.value) || "0";
                   let newFilter = props.filter;
                   newFilter.branch = newBranch;
 
@@ -143,11 +143,11 @@ export const ResultsFilter = props => {
                 {{ // Army, Navy, Marines, Air Force, Coast Guard
                   "0": [],
                   "1": ["Private", "Private First Class", "Specialist", "Corporal", "Sergeant", "Staff Sergeant", "Sergeant First Class", "Master Sergeant", "First Sergeant", "Sergeant Major", "Command Sergeant Major", "Sergeant Major of the Army"],
-                  "2": ["Seaman Recruit", "Seaman Apprentice", "Seaman", "Petty Officer Third Class", "Petty Officer Second Class", "Petty Officer First Class", "Chief Petty Officer", "Senior Chief Petty Officer", "Master Chief Petty Officer", "Command Master Chief Petty Officer", "Master Chief Petty Officer of the Coast Guard", "Chief Warrant Officer 2", "Chief Warrant Officer 3", "Chief Warrant Officer 4", "Chief Warrant Officer 5", "Ensign", "Lieutenant Junior Grade", "Lieutenant", "Lieutenant Commander", "Commander", "Captain", "Rear Admiral Lower Half", "Rear Admiral", "Vice Admiral", "Admiral", "Fleet Admiral"],
-                  "3": ["Private", "Private First Class", "Corporal", "Sergeant", "Staff Sergeant", "Gunnery Sergeant", "Master Sergeant", "First Sergeant", "Master Gunnery Sergeant", "Sergeant Major", "Sergeant Major of the Marine Corps"],
+                  "2": ["Private", "Private First Class", "Corporal", "Sergeant", "Staff Sergeant", "Gunnery Sergeant", "Master Sergeant", "First Sergeant", "Master Gunnery Sergeant", "Sergeant Major", "Sergeant Major of the Marine Corps"],
+                  "3": ["Seaman Recruit", "Seaman Apprentice", "Seaman", "Petty Officer Third Class", "Petty Officer Second Class", "Petty Officer First Class", "Chief Petty Officer", "Senior Chief Petty Officer", "Master Chief Petty Officer", "Command Master Chief Petty Officer", "Master Chief Petty Officer of the Coast Guard", "Chief Warrant Officer 2", "Chief Warrant Officer 3", "Chief Warrant Officer 4", "Chief Warrant Officer 5", "Ensign", "Lieutenant Junior Grade", "Lieutenant", "Lieutenant Commander", "Commander", "Captain", "Rear Admiral Lower Half", "Rear Admiral", "Vice Admiral", "Admiral", "Fleet Admiral"],
                   "4": ["Airman Basic", "Airman", "Airman First Class", "Senior Airman", "Staff Sergeant", "Technical Sergeant", "Master Sergeant", "Senior Master Sergeant", "Chief Master Sergeant", "Command Master Sergeant", "Command Chief Master Sergeant", "Chief Master Sergeant of the Aur Force", "Second Lieutenant", "First Lieutenant", "Captain", "Major", "Lieutenant Colonel", "Colonel", "Brigadier General", "Major General", "Lieutenant General", "General", "General of the Air Force"],
                   "5": ["Seaman Recruit", "Seaman Apprentice", "Seaman", "Petty Officer Third Class", "Petty Officer Second Class", "Petty Officer First Class", "Chief Petty Officer", "Senior Chief Petty Officer", "Master Chief Petty Officer", "Command Master Chief Petty Officer", "Master Chief Petty Officer of the Coast Guard", "Chief Warrant Officer 2", "Chief Warrant Officer 3", "Chief Warrant Officer 4", "Ensign", "Lieutenant Junior Grade", "Lieutenant", "Lieutenant Commander", "Commander", "Captain", "Rear Admiral Lower Half", "Rear Admiral", "Vice Admiral", "Admiral"],
-                }[props.filter.branch].map(x => <option value={x}>{x}</option>)}
+                }[props.filter.branch].map((x, i) => <option key={i} value={x}>{x}</option>)}
               </select>
             </td>
             {props.showAll && <>

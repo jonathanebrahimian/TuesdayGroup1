@@ -7,7 +7,6 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import axios from 'axios';
-import { ResultsFilter } from './ResultsFilter';
 import { ResultsTable } from './ResultsTable';
 
 const PEOPLE_PER_PAGE = 5;
@@ -60,8 +59,6 @@ export class PersonnelManagement extends React.Component {
   }
 
   onFilterChange = newFilter => {
-    console.log("In onFilterChange");
-    console.log(newFilter);
     let newDisplayedResults = [];
     this.state.results.forEach(element => {
       if (this.personMatchesFilter(element, newFilter)) newDisplayedResults.push(element);
@@ -109,13 +106,17 @@ export class PersonnelManagement extends React.Component {
     this.onFilterChange(this.state.filter);
   }
 
-  updateProfile = (index, field, value) => {
-    if (this.state.editedSoldierIDs.indexOf(this.state.displayedResults[index].id) == -1)
-      this.state.editedSoldierIDs.push(this.state.displayedResults[index].id);
-    this.setState(prevState => {
-      prevState.results[index][field] = value;
-      return prevState;
-    })
+  updateProfile = (soldierId, field, value) => {
+    if (this.state.editedSoldierIDs.indexOf(soldierId) === -1)
+      this.state.editedSoldierIDs.push(soldierId);
+    let results = this.state.results;
+    for (let i=0; i<results.length; i++) {
+      if (results[i].id === soldierId) {
+        results[i][field] = value;
+        break;
+      }
+    }
+    this.setState({results});
   }
 
   resetSort = () => {
@@ -143,6 +144,7 @@ export class PersonnelManagement extends React.Component {
         if (!reversed) return a[field].localeCompare(b[field]);
         else return b[field].localeCompare(a[field]);
       }
+      return 0;
     });
 
     this.setState({results: previousResults, lastSort: field, reversed: reversed});

@@ -79,25 +79,25 @@ export class ResultsTable extends React.Component {
                   this.props.editableContent ?
                   <tr key={i}>
                     <td><input type="text" className="form-control" value={person.name} onChange={e => {
-                      this.props.updateProfile(i, "name", e.target.value);
+                      this.props.updateProfile(person.id, "name", e.target.value);
                     }}/></td>
                     <td><input type="text" className="form-control" value={person.age} onChange={e => {
-                      this.props.updateProfile(i, "age", e.target.value);
+                      this.props.updateProfile(person.id, "age", e.target.value);
                     }}/></td>
                     <td><input type="text" className="form-control" value={person.gender} onChange={e => {
-                      this.props.updateProfile(i, "gender", e.target.value);
+                      this.props.updateProfile(person.id, "gender", e.target.value);
                     }}/></td>
                     <td><input type="text" className="form-control" value={person.branch} onChange={e => {
-                      this.props.updateProfile(i, "branch", e.target.value);
+                      this.props.updateProfile(person.id, "branch", e.target.value);
                     }}/></td>
                     <td><input type="text" className="form-control" value={person.rank} onChange={e => {
-                      this.props.updateProfile(i, "rank", e.target.value);
+                      this.props.updateProfile(person.id, "rank", e.target.value);
                     }}/></td>
                     <td><input type="text" className="form-control" value={person.baseName} onChange={e => {
-                      this.props.updateProfile(i, "baseName", e.target.value);
+                      this.props.updateProfile(person.id, "baseName", e.target.value);
                     }}/></td>
                     <td><input type="text" className="form-control" value={person.location} onChange={e => {
-                      this.props.updateProfile(i, "location", e.target.value);
+                      this.props.updateProfile(person.id, "location", e.target.value);
                     }}/></td>
                     <td><button type="button" className="form-control btn btn-danger m-0" onClick={() => this.props.removeProfile(i)}>Remove</button></td>
                   </tr> :

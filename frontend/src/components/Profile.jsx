@@ -2,6 +2,8 @@ import React from "react"
 import { Redirect } from "react-router-dom";
 import '../style/Profile.css';
 import '../style/ResponsiveDesign.css';
+import { ProfilePicture } from '../api/ProfilePicture';
+
 export class Profile extends React.Component{
     state= {
         name: "Parker Smith",
@@ -12,6 +14,12 @@ export class Profile extends React.Component{
         account:"public",
         editing: false,
         bio: ""
+    }
+    profilePicService = new ProfilePicture();
+
+    componentDidMount(){
+        this.profilePicService.getProfileURL()
+        .then(x => console.log(x));
     }
 
     doneClick(){

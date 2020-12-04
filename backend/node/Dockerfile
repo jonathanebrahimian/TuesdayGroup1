@@ -1,14 +1,9 @@
-# Here we set up the build for the NODE container, we simply set the working directory within docker
-#   and then proceed to copy our package.json files and install necessary node modules.
-# We also expose the port to our API, 8080, and specify our start up command.
-# Docker compose handles all the cross platform persistence via volumes so we don't need to worry about
-#   copying over any of the actual code files for the backend.
+FROM node:9-slim 
 
-# We are using node version 8
-FROM node:12
-
-# Set the working directory within docker image
-WORKDIR /usr/src/app
-
-# expose port 8000
-EXPOSE 8000
+#WORKDIR specifies the application directory 
+WORKDIR /app 
+COPY package.json /app
+RUN npm install 
+RUN npm install mysql 
+COPY . /app 
+CMD ["npm", "start"]

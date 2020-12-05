@@ -22,7 +22,7 @@ export class NotificationPage extends React.Component {
   accepted(notification){
     let newNotifications = this.state.notifications;
     newNotifications = newNotifications.filter(function(ele){
-      return ele != notification;
+      return ele !== notification;
     })
     this.setState({notifications:newNotifications,comments:""});
   }
@@ -30,7 +30,7 @@ export class NotificationPage extends React.Component {
   remove(notification){
     let newNotifications = this.state.notifications;
     newNotifications = newNotifications.filter(function(ele){
-      return ele != notification;
+      return ele !== notification;
     })
     this.setState({notifications:newNotifications,comments:""});
   }
@@ -42,7 +42,7 @@ export class NotificationPage extends React.Component {
   denied(notification){
     let newNotifications = this.state.notifications;
     newNotifications = newNotifications.filter(function(ele){
-        return ele != notification;
+        return ele !== notification;
     })
     
     this.setState({notifications:newNotifications,comments:""});
@@ -52,7 +52,7 @@ export class NotificationPage extends React.Component {
     return <>
       {!this.props.authentication.loggedIn && <Redirect to="/"/>}
       <h1>Notifications - ({this.state.notifications.length})</h1>
-      {this.state.notifications.length != 0 ? "" : <h3>You have no notifications at this time!</h3>}
+      {this.state.notifications.length !== 0 ? "" : <h3>You have no notifications at this time!</h3>}
       <div className="accordion" id="notificationAccordion">
         {this.state.notifications.map((x, i) => (
           <div key={i} className="card">

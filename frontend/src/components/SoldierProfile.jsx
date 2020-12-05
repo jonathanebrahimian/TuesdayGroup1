@@ -1,7 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom";
 import "../style/SoldierProfile.css";
-import imageURL from "../images/face.jpg";
 import { InformationRequest } from "./InformationRequest";
 import { SendMessage } from './SendMessage';
 import { Notification } from '../models/Notification';
@@ -66,7 +65,6 @@ export class SoldierProfile extends React.Component{
 
     submitMessage = (message) => {
         alert("Your message has been sent!");
-        console.log(message);
         let notification = new Notification(this.props.authentication.userID,this.state.id,"Message from " + this.props.authentication.username,message,"message");
         console.log(notification);
 

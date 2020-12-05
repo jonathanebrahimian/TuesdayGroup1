@@ -16,7 +16,6 @@ export class InformationRequest extends React.Component {
   }
 
   submit = () =>  {
-    console.log(this.state.messages);
     if(this.state.extraInfoMessage === ""){
       this.setState({error:"Message field cannot be blank."});
     }else if(this.props.authentication.identity !== true){

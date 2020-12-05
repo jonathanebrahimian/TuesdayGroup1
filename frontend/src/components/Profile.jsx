@@ -4,7 +4,6 @@ import '../style/Profile.css';
 import '../style/ResponsiveDesign.css';
 import { ProfilePicture } from '../api/ProfilePicture';
 
-import imageURL from "../images/face.jpg";
 export class Profile extends React.Component{
     state= {
         name: "Parker Smith",

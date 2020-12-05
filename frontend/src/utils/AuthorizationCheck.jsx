@@ -16,7 +16,6 @@ export class AuthorizationCheck {
     }
 
     redirectToLogin(){
-        console.log("hello");
         let redirect = <></>
         try {
             if(sessionStorage.getItem('loggedIn') == false || sessionStorage.getItem('loggedIn') == null){

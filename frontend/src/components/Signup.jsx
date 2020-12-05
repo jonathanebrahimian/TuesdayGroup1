@@ -16,21 +16,21 @@ export class Signup extends React.Component{
 
     onCreateClick(){
         //click the create button
-        if(this.state.username == ""){
+        if(this.state.username === ""){
             this.setState({error: "Please enter a username."});
-        }else if(this.state.password == ""){
+        }else if(this.state.password === ""){
             this.setState({error: "Please enter a password."});
         }
-        else if(this.state.name==""){
+        else if(this.state.name === ""){
             this.setState({error: "Please enter a name"});
         }
-        else if(this.state.rank==""){
+        else if(this.state.rank === ""){
             this.setState({error: "Please enter a rank"});
         }
-        else if(this.state.age==0){
+        else if(this.state.age === 0){
             this.setState({error: "Please enter an age"});
         }
-        else if(this.state.gender==""){
+        else if(this.state.gender === ""){
             this.setState({error: "Please enter a gender"});
         }
 
@@ -42,7 +42,6 @@ export class Signup extends React.Component{
             console.log(this.state.age);
             console.log(this.state.rank);
             console.log(this.state.gender);
-
             
             let newAuth = this.props.authentication;
             newAuth.username = this.state.username;
@@ -53,7 +52,6 @@ export class Signup extends React.Component{
                 
                 newAuth.identity = false;
                 newAuth.authLevel = 0;
-                console.log(newAuth);
 
 
             }else if(this.state.rank === "soldier"){
@@ -64,7 +62,6 @@ export class Signup extends React.Component{
                 newAuth.identity = true;
                 newAuth.authLevel = 2;
             } 
-            console.log(newAuth);
             
             this.props.onAuthChange(newAuth);
             this.setState({error: "",goodCreate:true});

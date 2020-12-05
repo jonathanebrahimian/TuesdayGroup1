@@ -79,7 +79,7 @@ export class PersonnelManagement extends React.Component {
     };
     this.setState({filter: clean});
     this.onFilterChange(clean);
-    console.log("In clear filter");
+    
   }
 
   personMatchesFilter(person, filter) {

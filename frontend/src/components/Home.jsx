@@ -1,8 +1,7 @@
 import React from "react"
 import "../style/Home.css"
-import military from "./militaryBackground.jpg"
 import { Link } from 'react-router-dom';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 
 export const Home = props => {
@@ -37,8 +36,8 @@ export const Home = props => {
         <div className="jumbotron d-inline-block w-50">
             <h2 className="text-warning text-center">Developer</h2>
             <p className="text-info d-lg-inline-block">DB Side</p>
-            <p>J. Babcock</p>
-            <p>D. Caro</p><br/>
+            <p>J. Babcock</p><br/>
+            <p></p><br/>
             <p></p>
         </div>
     </div>

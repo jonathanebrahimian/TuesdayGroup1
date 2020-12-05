@@ -16,7 +16,6 @@ export class SendMessage extends React.Component {
     if(this.state.message === ""){
         this.setState({error:"Message field cannot be blank."});
     }else{
-      console.log(this.state.message);
       this.props.submitMessage(this.state.message);
       this.setState({error:""});
 

@@ -33,8 +33,6 @@ export class DocumentSubmission extends React.Component {
     }
 
     filechanged(event){
-        console.log(event.target.value);
-        console.log("file loaded");
         this.setState({
             fileName:event.target.value
         })
